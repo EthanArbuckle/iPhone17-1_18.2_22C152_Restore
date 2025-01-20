@@ -1,0 +1,177 @@
+@interface MTRMediaPlaybackClusterRewindParams
+- (ChipError)_encodeToTLVReader:(SEL)a3;
+- (MTRMediaPlaybackClusterRewindParams)init;
+- (NSNumber)audioAdvanceUnmuted;
+- (NSNumber)serverSideProcessingTimeout;
+- (NSNumber)timedInvokeTimeoutMs;
+- (id)_encodeAsDataValue:(id *)a3;
+- (id)copyWithZone:(_NSZone *)a3;
+- (id)description;
+- (void)setAudioAdvanceUnmuted:(id)a3;
+- (void)setServerSideProcessingTimeout:(NSNumber *)serverSideProcessingTimeout;
+- (void)setTimedInvokeTimeoutMs:(NSNumber *)timedInvokeTimeoutMs;
+@end
+
+@implementation MTRMediaPlaybackClusterRewindParams
+
+- (MTRMediaPlaybackClusterRewindParams)init
+{
+  v8.receiver = self;
+  v8.super_class = (Class)MTRMediaPlaybackClusterRewindParams;
+  v2 = [(MTRMediaPlaybackClusterRewindParams *)&v8 init];
+  v3 = v2;
+  if (v2)
+  {
+    audioAdvanceUnmuted = v2->_audioAdvanceUnmuted;
+    v2->_audioAdvanceUnmuted = 0;
+
+    timedInvokeTimeoutMs = v3->_timedInvokeTimeoutMs;
+    v3->_timedInvokeTimeoutMs = 0;
+
+    serverSideProcessingTimeout = v3->_serverSideProcessingTimeout;
+    v3->_serverSideProcessingTimeout = 0;
+  }
+  return v3;
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  v4 = objc_alloc_init(MTRMediaPlaybackClusterRewindParams);
+  v7 = objc_msgSend_audioAdvanceUnmuted(self, v5, v6);
+  objc_msgSend_setAudioAdvanceUnmuted_(v4, v8, (uint64_t)v7);
+
+  v11 = objc_msgSend_timedInvokeTimeoutMs(self, v9, v10);
+  objc_msgSend_setTimedInvokeTimeoutMs_(v4, v12, (uint64_t)v11);
+
+  v15 = objc_msgSend_serverSideProcessingTimeout(self, v13, v14);
+  objc_msgSend_setServerSideProcessingTimeout_(v4, v16, (uint64_t)v15);
+
+  return v4;
+}
+
+- (id)description
+{
+  v3 = NSString;
+  v4 = (objc_class *)objc_opt_class();
+  v5 = NSStringFromClass(v4);
+  objc_msgSend_stringWithFormat_(v3, v6, @"<%@: audioAdvanceUnmuted:%@; >",
+    v5,
+  v7 = self->_audioAdvanceUnmuted);
+
+  return v7;
+}
+
+- (NSNumber)audioAdvanceUnmuted
+{
+  return self->_audioAdvanceUnmuted;
+}
+
+- (void)setAudioAdvanceUnmuted:(id)a3
+{
+}
+
+- (NSNumber)timedInvokeTimeoutMs
+{
+  return self->_timedInvokeTimeoutMs;
+}
+
+- (void)setTimedInvokeTimeoutMs:(NSNumber *)timedInvokeTimeoutMs
+{
+}
+
+- (NSNumber)serverSideProcessingTimeout
+{
+  return self->_serverSideProcessingTimeout;
+}
+
+- (void)setServerSideProcessingTimeout:(NSNumber *)serverSideProcessingTimeout
+{
+}
+
+- (void).cxx_destruct
+{
+  objc_storeStrong((id *)&self->_serverSideProcessingTimeout, 0);
+  objc_storeStrong((id *)&self->_timedInvokeTimeoutMs, 0);
+
+  objc_storeStrong((id *)&self->_audioAdvanceUnmuted, 0);
+}
+
+- (ChipError)_encodeToTLVReader:(SEL)a3
+{
+  LOBYTE(v22) = 0;
+  v21[0] = 0;
+  v21[1] = 0;
+  v20 = v21;
+  v7 = objc_msgSend_audioAdvanceUnmuted(self, a3, (uint64_t)a4);
+
+  if (v7)
+  {
+    __int16 v22 = 1;
+    uint64_t v10 = objc_msgSend_audioAdvanceUnmuted(self, v8, v9);
+    HIBYTE(v22) = objc_msgSend_BOOLValue(v10, v11, v12);
+  }
+  sub_244CC8F5C(0x62FuLL, 0, &v19);
+  if (v19)
+  {
+    sub_244CB62B8((uint64_t)v14);
+    v16 = 0;
+    v17 = 0;
+    v15 = &unk_26F9536C8;
+    char v18 = 0;
+    sub_2447945A0((uint64_t)&v15, &v19, 0);
+    sub_244CB6318((uint64_t)v14, (uint64_t)&v15, 0xFFFFFFFF, (uint64_t)v23);
+    *(void *)&retstr->mError = 0;
+    retstr->mFile = 0;
+    *(void *)&retstr->mLine = 0;
+    sub_24483400C(&v22, v14, 256, (uint64_t)retstr);
+    if (!retstr->mError)
+    {
+      *(void *)&retstr->mError = 0;
+      retstr->mFile = 0;
+      *(void *)&retstr->mLine = 0;
+      sub_2446DE160((uint64_t)v14, &v19, retstr);
+      if (!retstr->mError)
+      {
+        sub_2446DE1E4((uint64_t)a4, &v19);
+        sub_244CB55E4((uint64_t)a4, 21, 256, retstr);
+      }
+    }
+    v15 = &unk_26F9536C8;
+    sub_244794634(&v17);
+    sub_244794634(&v16);
+  }
+  else
+  {
+    retstr->mError = 11;
+    retstr->mFile = "/Library/Caches/com.apple.xbs/Sources/CHIPFramework/connectedhomeip/src/darwin/Framework/CHIP/zap-ge"
+                    "nerated/MTRCommandPayloadsObjc.mm";
+    retstr->mLine = 28113;
+  }
+  sub_244794634(&v19);
+  return (ChipError *)sub_24479466C((uint64_t)&v20);
+}
+
+- (id)_encodeAsDataValue:(id *)a3
+{
+  double v5 = sub_244CB3988((uint64_t)v14);
+  v15 = 0;
+  long long v12 = 0uLL;
+  uint64_t v13 = 0;
+  objc_msgSend__encodeToTLVReader_(self, v6, (uint64_t)v14, v5);
+  uint64_t v7 = sub_2447D5B3C((uint64_t)v14, 0);
+  objc_super v8 = (void *)v7;
+  if (a3 && !v7)
+  {
+    LODWORD(v10) = 3;
+    *((void *)&v10 + 1) = "/Library/Caches/com.apple.xbs/Sources/CHIPFramework/connectedhomeip/src/darwin/Framework/CHI"
+                            "P/zap-generated/MTRCommandPayloadsObjc.mm";
+    int v11 = 28142;
+    sub_244B26908((uint64_t)MTRError, &v10);
+    *a3 = (id)objc_claimAutoreleasedReturnValue();
+  }
+  sub_244794634(&v15);
+
+  return v8;
+}
+
+@end

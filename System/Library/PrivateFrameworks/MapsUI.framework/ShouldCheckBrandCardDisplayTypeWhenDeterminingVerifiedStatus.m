@@ -1,0 +1,11 @@
+@interface ShouldCheckBrandCardDisplayTypeWhenDeterminingVerifiedStatus
+@end
+
+@implementation ShouldCheckBrandCardDisplayTypeWhenDeterminingVerifiedStatus
+
+uint64_t MapsUIConfig_ShouldCheckBrandCardDisplayTypeWhenDeterminingVerifiedStatus_Metadata_block_invoke_33()
+{
+  return MEMORY[0x1E4F1CC38];
+}
+
+@end

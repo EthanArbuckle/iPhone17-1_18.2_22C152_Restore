@@ -1,0 +1,427 @@
+@interface NNMKProtoMailboxSelection
++ (Class)mailboxesType;
++ (id)protoMailboxSelectionFromMailboxSelection:(id)a3 fullSyncVersion:(unint64_t)a4;
+- (BOOL)hasFullSyncVersion;
+- (BOOL)isEqual:(id)a3;
+- (BOOL)readFrom:(id)a3;
+- (NSMutableArray)mailboxes;
+- (id)copyWithZone:(_NSZone *)a3;
+- (id)description;
+- (id)dictionaryRepresentation;
+- (id)mailboxSelection;
+- (id)mailboxesAtIndex:(unint64_t)a3;
+- (unint64_t)hash;
+- (unint64_t)mailboxesCount;
+- (unsigned)fullSyncVersion;
+- (void)addMailboxes:(id)a3;
+- (void)clearMailboxes;
+- (void)copyTo:(id)a3;
+- (void)mergeFrom:(id)a3;
+- (void)setFullSyncVersion:(unsigned int)a3;
+- (void)setHasFullSyncVersion:(BOOL)a3;
+- (void)setMailboxes:(id)a3;
+- (void)writeTo:(id)a3;
+@end
+
+@implementation NNMKProtoMailboxSelection
+
+- (void)setFullSyncVersion:(unsigned int)a3
+{
+  *(unsigned char *)&self->_has |= 1u;
+  self->_fullSyncVersion = a3;
+}
+
+- (void)setHasFullSyncVersion:(BOOL)a3
+{
+  *(unsigned char *)&self->_has = *(unsigned char *)&self->_has & 0xFE | a3;
+}
+
+- (BOOL)hasFullSyncVersion
+{
+  return *(unsigned char *)&self->_has & 1;
+}
+
+- (void)clearMailboxes
+{
+}
+
+- (void)addMailboxes:(id)a3
+{
+  id v4 = a3;
+  mailboxes = self->_mailboxes;
+  id v8 = v4;
+  if (!mailboxes)
+  {
+    v6 = (NSMutableArray *)objc_alloc_init(MEMORY[0x263EFF980]);
+    v7 = self->_mailboxes;
+    self->_mailboxes = v6;
+
+    id v4 = v8;
+    mailboxes = self->_mailboxes;
+  }
+  [(NSMutableArray *)mailboxes addObject:v4];
+}
+
+- (unint64_t)mailboxesCount
+{
+  return [(NSMutableArray *)self->_mailboxes count];
+}
+
+- (id)mailboxesAtIndex:(unint64_t)a3
+{
+  return (id)[(NSMutableArray *)self->_mailboxes objectAtIndex:a3];
+}
+
++ (Class)mailboxesType
+{
+  return (Class)objc_opt_class();
+}
+
+- (id)description
+{
+  v3 = NSString;
+  v8.receiver = self;
+  v8.super_class = (Class)NNMKProtoMailboxSelection;
+  id v4 = [(NNMKProtoMailboxSelection *)&v8 description];
+  v5 = [(NNMKProtoMailboxSelection *)self dictionaryRepresentation];
+  v6 = [v3 stringWithFormat:@"%@ %@", v4, v5];
+
+  return v6;
+}
+
+- (id)dictionaryRepresentation
+{
+  uint64_t v18 = *MEMORY[0x263EF8340];
+  v3 = [MEMORY[0x263EFF9A0] dictionary];
+  if (*(unsigned char *)&self->_has)
+  {
+    id v4 = [NSNumber numberWithUnsignedInt:self->_fullSyncVersion];
+    [v3 setObject:v4 forKey:@"fullSyncVersion"];
+  }
+  if ([(NSMutableArray *)self->_mailboxes count])
+  {
+    v5 = objc_msgSend(objc_alloc(MEMORY[0x263EFF980]), "initWithCapacity:", -[NSMutableArray count](self->_mailboxes, "count"));
+    long long v13 = 0u;
+    long long v14 = 0u;
+    long long v15 = 0u;
+    long long v16 = 0u;
+    v6 = self->_mailboxes;
+    uint64_t v7 = [(NSMutableArray *)v6 countByEnumeratingWithState:&v13 objects:v17 count:16];
+    if (v7)
+    {
+      uint64_t v8 = v7;
+      uint64_t v9 = *(void *)v14;
+      do
+      {
+        for (uint64_t i = 0; i != v8; ++i)
+        {
+          if (*(void *)v14 != v9) {
+            objc_enumerationMutation(v6);
+          }
+          v11 = objc_msgSend(*(id *)(*((void *)&v13 + 1) + 8 * i), "dictionaryRepresentation", (void)v13);
+          [v5 addObject:v11];
+        }
+        uint64_t v8 = [(NSMutableArray *)v6 countByEnumeratingWithState:&v13 objects:v17 count:16];
+      }
+      while (v8);
+    }
+
+    [v3 setObject:v5 forKey:@"mailboxes"];
+  }
+  return v3;
+}
+
+- (BOOL)readFrom:(id)a3
+{
+  return NNMKProtoMailboxSelectionReadFrom((uint64_t)self, (uint64_t)a3);
+}
+
+- (void)writeTo:(id)a3
+{
+  uint64_t v15 = *MEMORY[0x263EF8340];
+  id v4 = a3;
+  if (*(unsigned char *)&self->_has) {
+    PBDataWriterWriteUint32Field();
+  }
+  long long v12 = 0u;
+  long long v13 = 0u;
+  long long v10 = 0u;
+  long long v11 = 0u;
+  v5 = self->_mailboxes;
+  uint64_t v6 = [(NSMutableArray *)v5 countByEnumeratingWithState:&v10 objects:v14 count:16];
+  if (v6)
+  {
+    uint64_t v7 = v6;
+    uint64_t v8 = *(void *)v11;
+    do
+    {
+      uint64_t v9 = 0;
+      do
+      {
+        if (*(void *)v11 != v8) {
+          objc_enumerationMutation(v5);
+        }
+        PBDataWriterWriteSubmessage();
+        ++v9;
+      }
+      while (v7 != v9);
+      uint64_t v7 = [(NSMutableArray *)v5 countByEnumeratingWithState:&v10 objects:v14 count:16];
+    }
+    while (v7);
+  }
+}
+
+- (void)copyTo:(id)a3
+{
+  id v4 = a3;
+  if (*(unsigned char *)&self->_has)
+  {
+    v4[2] = self->_fullSyncVersion;
+    *((unsigned char *)v4 + 24) |= 1u;
+  }
+  id v9 = v4;
+  if ([(NNMKProtoMailboxSelection *)self mailboxesCount])
+  {
+    [v9 clearMailboxes];
+    unint64_t v5 = [(NNMKProtoMailboxSelection *)self mailboxesCount];
+    if (v5)
+    {
+      unint64_t v6 = v5;
+      for (uint64_t i = 0; i != v6; ++i)
+      {
+        uint64_t v8 = [(NNMKProtoMailboxSelection *)self mailboxesAtIndex:i];
+        [v9 addMailboxes:v8];
+      }
+    }
+  }
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  uint64_t v19 = *MEMORY[0x263EF8340];
+  uint64_t v5 = objc_msgSend((id)objc_msgSend((id)objc_opt_class(), "allocWithZone:", a3), "init");
+  unint64_t v6 = (void *)v5;
+  if (*(unsigned char *)&self->_has)
+  {
+    *(_DWORD *)(v5 + 8) = self->_fullSyncVersion;
+    *(unsigned char *)(v5 + 24) |= 1u;
+  }
+  long long v16 = 0u;
+  long long v17 = 0u;
+  long long v14 = 0u;
+  long long v15 = 0u;
+  uint64_t v7 = self->_mailboxes;
+  uint64_t v8 = [(NSMutableArray *)v7 countByEnumeratingWithState:&v14 objects:v18 count:16];
+  if (v8)
+  {
+    uint64_t v9 = v8;
+    uint64_t v10 = *(void *)v15;
+    do
+    {
+      uint64_t v11 = 0;
+      do
+      {
+        if (*(void *)v15 != v10) {
+          objc_enumerationMutation(v7);
+        }
+        long long v12 = objc_msgSend(*(id *)(*((void *)&v14 + 1) + 8 * v11), "copyWithZone:", a3, (void)v14);
+        [v6 addMailboxes:v12];
+
+        ++v11;
+      }
+      while (v9 != v11);
+      uint64_t v9 = [(NSMutableArray *)v7 countByEnumeratingWithState:&v14 objects:v18 count:16];
+    }
+    while (v9);
+  }
+
+  return v6;
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  id v4 = a3;
+  if (![v4 isMemberOfClass:objc_opt_class()]) {
+    goto LABEL_9;
+  }
+  if (*(unsigned char *)&self->_has)
+  {
+    if ((*((unsigned char *)v4 + 24) & 1) == 0 || self->_fullSyncVersion != *((_DWORD *)v4 + 2)) {
+      goto LABEL_9;
+    }
+  }
+  else if (*((unsigned char *)v4 + 24))
+  {
+LABEL_9:
+    char v6 = 0;
+    goto LABEL_10;
+  }
+  mailboxes = self->_mailboxes;
+  if ((unint64_t)mailboxes | *((void *)v4 + 2)) {
+    char v6 = -[NSMutableArray isEqual:](mailboxes, "isEqual:");
+  }
+  else {
+    char v6 = 1;
+  }
+LABEL_10:
+
+  return v6;
+}
+
+- (unint64_t)hash
+{
+  if (*(unsigned char *)&self->_has) {
+    uint64_t v2 = 2654435761 * self->_fullSyncVersion;
+  }
+  else {
+    uint64_t v2 = 0;
+  }
+  return [(NSMutableArray *)self->_mailboxes hash] ^ v2;
+}
+
+- (void)mergeFrom:(id)a3
+{
+  uint64_t v16 = *MEMORY[0x263EF8340];
+  id v4 = a3;
+  uint64_t v5 = v4;
+  if (*((unsigned char *)v4 + 24))
+  {
+    self->_fullSyncVersion = *((_DWORD *)v4 + 2);
+    *(unsigned char *)&self->_has |= 1u;
+  }
+  long long v13 = 0u;
+  long long v14 = 0u;
+  long long v11 = 0u;
+  long long v12 = 0u;
+  id v6 = *((id *)v4 + 2);
+  uint64_t v7 = [v6 countByEnumeratingWithState:&v11 objects:v15 count:16];
+  if (v7)
+  {
+    uint64_t v8 = v7;
+    uint64_t v9 = *(void *)v12;
+    do
+    {
+      uint64_t v10 = 0;
+      do
+      {
+        if (*(void *)v12 != v9) {
+          objc_enumerationMutation(v6);
+        }
+        -[NNMKProtoMailboxSelection addMailboxes:](self, "addMailboxes:", *(void *)(*((void *)&v11 + 1) + 8 * v10++), (void)v11);
+      }
+      while (v8 != v10);
+      uint64_t v8 = [v6 countByEnumeratingWithState:&v11 objects:v15 count:16];
+    }
+    while (v8);
+  }
+}
+
+- (unsigned)fullSyncVersion
+{
+  return self->_fullSyncVersion;
+}
+
+- (NSMutableArray)mailboxes
+{
+  return self->_mailboxes;
+}
+
+- (void)setMailboxes:(id)a3
+{
+}
+
+- (void).cxx_destruct
+{
+}
+
+- (id)mailboxSelection
+{
+  uint64_t v21 = *MEMORY[0x263EF8340];
+  v3 = [MEMORY[0x263EFF980] array];
+  long long v16 = 0u;
+  long long v17 = 0u;
+  long long v18 = 0u;
+  long long v19 = 0u;
+  id v4 = [(NNMKProtoMailboxSelection *)self mailboxes];
+  uint64_t v5 = [v4 countByEnumeratingWithState:&v16 objects:v20 count:16];
+  if (v5)
+  {
+    uint64_t v6 = v5;
+    uint64_t v7 = *(void *)v17;
+    do
+    {
+      for (uint64_t i = 0; i != v6; ++i)
+      {
+        if (*(void *)v17 != v7) {
+          objc_enumerationMutation(v4);
+        }
+        uint64_t v9 = [*(id *)(*((void *)&v16 + 1) + 8 * i) mailbox];
+        [v3 addObject:v9];
+      }
+      uint64_t v6 = [v4 countByEnumeratingWithState:&v16 objects:v20 count:16];
+    }
+    while (v6);
+  }
+
+  uint64_t v10 = [(NNMKProtoMailboxSelection *)self mailboxes];
+  uint64_t v11 = [v10 count];
+
+  if (!v11)
+  {
+    long long v12 = qword_26AC21850;
+    if (os_log_type_enabled((os_log_t)qword_26AC21850, OS_LOG_TYPE_DEFAULT))
+    {
+      *(_WORD *)long long v15 = 0;
+      _os_log_impl(&dword_23D3DF000, v12, OS_LOG_TYPE_DEFAULT, "Proto Maibox selection is empty.", v15, 2u);
+    }
+  }
+  long long v13 = [[NNMKMailboxSelection alloc] initWithMailboxes:v3];
+
+  return v13;
+}
+
++ (id)protoMailboxSelectionFromMailboxSelection:(id)a3 fullSyncVersion:(unint64_t)a4
+{
+  uint64_t v21 = *MEMORY[0x263EF8340];
+  id v5 = a3;
+  uint64_t v6 = objc_alloc_init(NNMKProtoMailboxSelection);
+  long long v16 = 0u;
+  long long v17 = 0u;
+  long long v18 = 0u;
+  long long v19 = 0u;
+  uint64_t v7 = [v5 allMailboxesSyncEnabled];
+  uint64_t v8 = [v7 countByEnumeratingWithState:&v16 objects:v20 count:16];
+  if (v8)
+  {
+    uint64_t v9 = v8;
+    uint64_t v10 = *(void *)v17;
+    do
+    {
+      for (uint64_t i = 0; i != v9; ++i)
+      {
+        if (*(void *)v17 != v10) {
+          objc_enumerationMutation(v7);
+        }
+        long long v12 = +[NNMKProtoMailbox protoMailboxFromMailbox:*(void *)(*((void *)&v16 + 1) + 8 * i)];
+        [(NNMKProtoMailboxSelection *)v6 addMailboxes:v12];
+      }
+      uint64_t v9 = [v7 countByEnumeratingWithState:&v16 objects:v20 count:16];
+    }
+    while (v9);
+  }
+
+  if (![(NNMKProtoMailboxSelection *)v6 mailboxesCount])
+  {
+    long long v13 = qword_26AC21850;
+    if (os_log_type_enabled((os_log_t)qword_26AC21850, OS_LOG_TYPE_DEFAULT))
+    {
+      *(_WORD *)long long v15 = 0;
+      _os_log_impl(&dword_23D3DF000, v13, OS_LOG_TYPE_DEFAULT, "Sending Proto mailbox selection with no mailboxes", v15, 2u);
+    }
+  }
+  [(NNMKProtoMailboxSelection *)v6 setFullSyncVersion:a4];
+
+  return v6;
+}
+
+@end

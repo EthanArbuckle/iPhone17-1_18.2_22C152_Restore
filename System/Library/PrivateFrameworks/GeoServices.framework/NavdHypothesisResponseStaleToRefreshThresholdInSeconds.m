@@ -1,0 +1,11 @@
+@interface NavdHypothesisResponseStaleToRefreshThresholdInSeconds
+@end
+
+@implementation NavdHypothesisResponseStaleToRefreshThresholdInSeconds
+
+void *GeoServicesConfig_NavdHypothesisResponseStaleToRefreshThresholdInSeconds_Metadata_block_invoke_261()
+{
+  return &unk_1ED73E470;
+}
+
+@end

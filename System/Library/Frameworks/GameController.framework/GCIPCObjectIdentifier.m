@@ -1,0 +1,16 @@
+@interface GCIPCObjectIdentifier
+@end
+
+@implementation GCIPCObjectIdentifier
+
+void __GCIPCObjectIdentifier_Classes_block_invoke()
+{
+  id v0 = objc_alloc((Class)&off_26D2B4E80);
+  uint64_t v1 = objc_opt_class();
+  uint64_t v2 = objc_opt_class();
+  uint64_t v3 = objc_msgSend(v0, "initWithObjects:", v1, v2, objc_opt_class(), 0);
+  v4 = (void *)GCIPCObjectIdentifier_Classes_IPCObjectIdentifierTypes;
+  GCIPCObjectIdentifier_Classes_IPCObjectIdentifierTypes = v3;
+}
+
+@end

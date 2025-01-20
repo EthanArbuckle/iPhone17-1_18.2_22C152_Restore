@@ -1,0 +1,20 @@
+@interface NowPlayingArtworkBackgroundEffect.SnapshotColorAdjustmentsLayer.Mask
+- (_TtCCV11MediaCoreUI33NowPlayingArtworkBackgroundEffectP33_0BADDE1E8FA0478530CC88B691A6D29129SnapshotColorAdjustmentsLayer4Mask)init;
+- (_TtCCV11MediaCoreUI33NowPlayingArtworkBackgroundEffectP33_0BADDE1E8FA0478530CC88B691A6D29129SnapshotColorAdjustmentsLayer4Mask)initWithCoder:(id)a3;
+@end
+
+@implementation NowPlayingArtworkBackgroundEffect.SnapshotColorAdjustmentsLayer.Mask
+
+- (_TtCCV11MediaCoreUI33NowPlayingArtworkBackgroundEffectP33_0BADDE1E8FA0478530CC88B691A6D29129SnapshotColorAdjustmentsLayer4Mask)init
+{
+  return (_TtCCV11MediaCoreUI33NowPlayingArtworkBackgroundEffectP33_0BADDE1E8FA0478530CC88B691A6D29129SnapshotColorAdjustmentsLayer4Mask *)sub_255B41D8C();
+}
+
+- (_TtCCV11MediaCoreUI33NowPlayingArtworkBackgroundEffectP33_0BADDE1E8FA0478530CC88B691A6D29129SnapshotColorAdjustmentsLayer4Mask)initWithCoder:(id)a3
+{
+  result = (_TtCCV11MediaCoreUI33NowPlayingArtworkBackgroundEffectP33_0BADDE1E8FA0478530CC88B691A6D29129SnapshotColorAdjustmentsLayer4Mask *)sub_255C81248();
+  __break(1u);
+  return result;
+}
+
+@end

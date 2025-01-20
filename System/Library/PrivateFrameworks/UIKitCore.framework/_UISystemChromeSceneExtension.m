@@ -1,0 +1,33 @@
+@interface _UISystemChromeSceneExtension
++ (id)clientComponents;
++ (id)hostComponents;
++ (id)settingsExtensions;
+@end
+
+@implementation _UISystemChromeSceneExtension
+
++ (id)settingsExtensions
+{
+  v4[1] = *MEMORY[0x1E4F143B8];
+  v4[0] = [MEMORY[0x1E4F62AE8] extensionForProtocol:&unk_1ED7018A0];
+  v2 = [MEMORY[0x1E4F1C978] arrayWithObjects:v4 count:1];
+  return v2;
+}
+
++ (id)hostComponents
+{
+  v4[1] = *MEMORY[0x1E4F143B8];
+  v4[0] = objc_opt_class();
+  v2 = [MEMORY[0x1E4F1C978] arrayWithObjects:v4 count:1];
+  return v2;
+}
+
++ (id)clientComponents
+{
+  v4[1] = *MEMORY[0x1E4F143B8];
+  v4[0] = objc_opt_class();
+  v2 = [MEMORY[0x1E4F1C978] arrayWithObjects:v4 count:1];
+  return v2;
+}
+
+@end

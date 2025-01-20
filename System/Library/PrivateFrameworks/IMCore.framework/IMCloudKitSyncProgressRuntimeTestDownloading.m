@@ -1,0 +1,15 @@
+@interface IMCloudKitSyncProgressRuntimeTestDownloading
+- (void)willUpdateSyncState:(id)a3;
+@end
+
+@implementation IMCloudKitSyncProgressRuntimeTestDownloading
+
+- (void)willUpdateSyncState:(id)a3
+{
+  id v9 = a3;
+  objc_msgSend_setIMCloudKitSyncDate_(v9, v3, 0, v4);
+  objc_msgSend_setIMCloudKitSyncControllerSyncState_(v9, v5, 2, v6);
+  objc_msgSend_setIMCloudKitSyncControllerSyncRecordType_(v9, v7, 1, v8);
+}
+
+@end

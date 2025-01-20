@@ -1,0 +1,122 @@
+@interface UARPTLVPersonalizationFTABSubfileDigestFilenameOS
++ (id)metaDataTableEntry;
++ (id)tlvFromPropertyListValue:(id)a3;
++ (id)tlvWithLength:(unint64_t)a3 value:(void *)a4;
++ (unsigned)tlvType;
+- (NSString)filename;
+- (UARPTLVPersonalizationFTABSubfileDigestFilenameOS)init;
+- (id)description;
+- (id)generateTLV;
+- (id)tlvValue;
+- (void)setFilename:(id)a3;
+@end
+
+@implementation UARPTLVPersonalizationFTABSubfileDigestFilenameOS
+
+- (UARPTLVPersonalizationFTABSubfileDigestFilenameOS)init
+{
+  v3.receiver = self;
+  v3.super_class = (Class)UARPTLVPersonalizationFTABSubfileDigestFilenameOS;
+  return [(UARPMetaDataTLVStringOS *)&v3 init];
+}
+
+- (void)setFilename:(id)a3
+{
+  id v4 = a3;
+  v5 = self;
+  objc_sync_enter(v5);
+  uint64_t v6 = [v4 copy];
+  filename = v5->_filename;
+  v5->_filename = (NSString *)v6;
+
+  objc_sync_exit(v5);
+}
+
+- (id)description
+{
+  id v3 = +[UARPTLVPersonalizationFTABSubfileDigestFilenameOS metaDataTableEntry];
+  id v4 = NSString;
+  id v5 = (id)[v3 objectForKeyedSubscript:@"Name"];
+  id v6 = (id)[v4 stringWithFormat:@"<%@: %@>", v5, self->_filename];
+
+  return v6;
+}
+
++ (unsigned)tlvType
+{
+  return -2001563338;
+}
+
+- (id)generateTLV
+{
+  uint64_t v3 = +[UARPTLVPersonalizationFTABSubfileDigestFilenameOS tlvType];
+  filename = self->_filename;
+  v7.receiver = self;
+  v7.super_class = (Class)UARPTLVPersonalizationFTABSubfileDigestFilenameOS;
+  id v5 = [(UARPMetaDataTLVStringOS *)&v7 generateTLV:v3 tlvValue:filename];
+
+  return v5;
+}
+
+- (id)tlvValue
+{
+  filename = self->_filename;
+  v5.receiver = self;
+  v5.super_class = (Class)UARPTLVPersonalizationFTABSubfileDigestFilenameOS;
+  id v3 = [(UARPMetaDataTLVStringOS *)&v5 tlvValue:filename];
+
+  return v3;
+}
+
++ (id)metaDataTableEntry
+{
+  v6[2] = *MEMORY[0x263EF8340];
+  v6[0] = &unk_26C81AF28;
+  v5[0] = @"Name";
+  v5[1] = @"Value";
+  id v2 = [(id)[NSNumber numberWithUnsignedInt:+[UARPTLVPersonalizationFTABSubfileDigestFilenameOS tlvType](UARPTLVPersonalizationFTABSubfileDigestFilenameOS, "tlvType")];
+  v6[1] = v2;
+  id v3 = (id)[NSDictionary dictionaryWithObjects:v6 forKeys:v5 count:2];
+
+  return v3;
+}
+
++ (id)tlvFromPropertyListValue:(id)a3
+{
+  id v3 = a3;
+  objc_opt_class();
+  if (objc_opt_isKindOfClass())
+  {
+    id v4 = objc_opt_new();
+    [v4 setFilename:v3];
+  }
+  else
+  {
+    id v4 = 0;
+  }
+
+  return v4;
+}
+
++ (id)tlvWithLength:(unint64_t)a3 value:(void *)a4
+{
+  id v4 = strndup((const char *)a4, a3);
+  objc_super v5 = objc_opt_new();
+  id v6 = (id)[NSString stringWithUTF8String:v4];
+  [v5 setFilename:v6];
+
+  free(v4);
+
+  return v5;
+}
+
+- (NSString)filename
+{
+  return (NSString *)objc_getProperty(self, a2, 32, 1);
+}
+
+- (void).cxx_destruct
+{
+}
+
+@end

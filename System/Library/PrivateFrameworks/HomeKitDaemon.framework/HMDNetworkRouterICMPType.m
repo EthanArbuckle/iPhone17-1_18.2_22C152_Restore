@@ -1,0 +1,392 @@
+@interface HMDNetworkRouterICMPType
++ (id)parsedFromData:(id)a3 error:(id *)a4;
++ (id)typeFromICMPType:(id)a3;
+- (BOOL)isEqual:(id)a3;
+- (BOOL)parseFromData:(id)a3 error:(id *)a4;
+- (HAPTLVUnsignedNumberValue)typeValue;
+- (HMDNetworkRouterICMPType)init;
+- (HMDNetworkRouterICMPType)initWithProtocol:(id)a3 typeValue:(id)a4;
+- (HMDNetworkRouterIPProtocolVersion)protocol;
+- (NSString)description;
+- (id)copyWithZone:(_NSZone *)a3;
+- (id)serializeWithError:(id *)a3;
+- (void)setProtocol:(id)a3;
+- (void)setTypeValue:(id)a3;
+@end
+
+@implementation HMDNetworkRouterICMPType
+
++ (id)typeFromICMPType:(id)a3
+{
+  id v3 = a3;
+  v4 = +[HMDNetworkRouterIPProtocolVersion protocolFromIPProtocolVersion:](HMDNetworkRouterIPProtocolVersion, "protocolFromIPProtocolVersion:", [v3 protocol]);
+  v5 = [v3 typeValue];
+  if (v5)
+  {
+    id v6 = objc_alloc(MEMORY[0x263F35AF0]);
+    v7 = [v3 typeValue];
+    v8 = (void *)[v6 initWithValue:v7];
+  }
+  else
+  {
+    v8 = 0;
+  }
+
+  if (v4) {
+    v9 = [[HMDNetworkRouterICMPType alloc] initWithProtocol:v4 typeValue:v8];
+  }
+  else {
+    v9 = 0;
+  }
+
+  return v9;
+}
+
+- (void).cxx_destruct
+{
+  objc_storeStrong((id *)&self->_typeValue, 0);
+  objc_storeStrong((id *)&self->_protocol, 0);
+}
+
+- (void)setTypeValue:(id)a3
+{
+}
+
+- (HAPTLVUnsignedNumberValue)typeValue
+{
+  return self->_typeValue;
+}
+
+- (void)setProtocol:(id)a3
+{
+}
+
+- (HMDNetworkRouterIPProtocolVersion)protocol
+{
+  return self->_protocol;
+}
+
+- (NSString)description
+{
+  id v3 = NSString;
+  v4 = [(HMDNetworkRouterICMPType *)self protocol];
+  v5 = [(HMDNetworkRouterICMPType *)self typeValue];
+  id v6 = [v3 stringWithFormat:@"<HMDNetworkRouterICMPType protocol=%@, typeValue=%@>", v4, v5];
+
+  return (NSString *)v6;
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  v5 = (HMDNetworkRouterICMPType *)a3;
+  if (self == v5)
+  {
+    char v10 = 1;
+  }
+  else
+  {
+    objc_opt_class();
+    if (objc_opt_isKindOfClass())
+    {
+      id v6 = v5;
+      v7 = [(HMDNetworkRouterICMPType *)self protocol];
+      v8 = [(HMDNetworkRouterICMPType *)v6 protocol];
+      if (v7 != v8)
+      {
+        v9 = [(HMDNetworkRouterICMPType *)self protocol];
+        id v3 = [(HMDNetworkRouterICMPType *)v6 protocol];
+        if (![v9 isEqual:v3])
+        {
+          char v10 = 0;
+LABEL_13:
+
+LABEL_14:
+          goto LABEL_15;
+        }
+        v16 = v9;
+      }
+      v11 = [(HMDNetworkRouterICMPType *)self typeValue];
+      v12 = [(HMDNetworkRouterICMPType *)v6 typeValue];
+      if (v11 == v12)
+      {
+        char v10 = 1;
+      }
+      else
+      {
+        v13 = [(HMDNetworkRouterICMPType *)self typeValue];
+        v14 = [(HMDNetworkRouterICMPType *)v6 typeValue];
+        char v10 = [v13 isEqual:v14];
+      }
+      v9 = v16;
+      if (v7 == v8) {
+        goto LABEL_14;
+      }
+      goto LABEL_13;
+    }
+    char v10 = 0;
+  }
+LABEL_15:
+
+  return v10;
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  v4 = +[HMDNetworkRouterICMPType allocWithZone:a3];
+  v5 = [(HMDNetworkRouterICMPType *)self protocol];
+  id v6 = [(HMDNetworkRouterICMPType *)self typeValue];
+  v7 = [(HMDNetworkRouterICMPType *)v4 initWithProtocol:v5 typeValue:v6];
+
+  return v7;
+}
+
+- (id)serializeWithError:(id *)a3
+{
+  uint64_t v41 = *MEMORY[0x263EF8340];
+  long long v39 = 0u;
+  long long v40 = 0u;
+  long long v37 = 0u;
+  long long v38 = 0u;
+  long long v35 = 0u;
+  long long v36 = 0u;
+  long long v33 = 0u;
+  long long v34 = 0u;
+  long long v31 = 0u;
+  long long v32 = 0u;
+  long long v29 = 0u;
+  long long v30 = 0u;
+  long long v27 = 0u;
+  long long v28 = 0u;
+  long long v25 = 0u;
+  long long v26 = 0u;
+  long long v23 = 0u;
+  long long v24 = 0u;
+  long long v21 = 0u;
+  long long v22 = 0u;
+  long long v20 = 0u;
+  TLV8BufferInit();
+  v5 = [(HMDNetworkRouterICMPType *)self protocol];
+
+  if (v5)
+  {
+    id v6 = [(HMDNetworkRouterICMPType *)self protocol];
+    id v19 = 0;
+    v7 = [v6 serializeWithError:&v19];
+    id v8 = v19;
+
+    if (v8) {
+      goto LABEL_6;
+    }
+    id v9 = v7;
+    [v9 bytes];
+    [v9 length];
+    int v10 = TLV8BufferAppend();
+
+    if (v10)
+    {
+LABEL_9:
+      if (a3)
+      {
+        HMErrorFromOSStatus();
+        id v13 = (id)objc_claimAutoreleasedReturnValue();
+        id v8 = 0;
+        goto LABEL_11;
+      }
+      id v8 = 0;
+      goto LABEL_14;
+    }
+  }
+  v11 = [(HMDNetworkRouterICMPType *)self typeValue];
+
+  if (!v11)
+  {
+LABEL_12:
+    v16 = objc_msgSend(MEMORY[0x263EFF8F8], "dataWithBytes:length:", v20);
+    id v8 = 0;
+    goto LABEL_15;
+  }
+  v12 = [(HMDNetworkRouterICMPType *)self typeValue];
+  id v18 = 0;
+  v7 = [v12 serializeWithError:&v18];
+  id v8 = v18;
+
+  if (!v8)
+  {
+    id v14 = v7;
+    [v14 bytes];
+    [v14 length];
+    int v15 = TLV8BufferAppend();
+
+    if (v15) {
+      goto LABEL_9;
+    }
+    goto LABEL_12;
+  }
+LABEL_6:
+
+  if (a3)
+  {
+    id v13 = v8;
+    id v8 = v13;
+LABEL_11:
+    v16 = 0;
+    *a3 = v13;
+    goto LABEL_15;
+  }
+LABEL_14:
+  v16 = 0;
+LABEL_15:
+  TLV8BufferFree();
+
+  return v16;
+}
+
+- (BOOL)parseFromData:(id)a3 error:(id *)a4
+{
+  id v6 = a3;
+  if (a4) {
+    *a4 = 0;
+  }
+  id v7 = v6;
+  uint64_t v8 = [v7 bytes];
+  uint64_t v9 = [v7 length];
+  if (!v9)
+  {
+    int v10 = 0;
+    v11 = 0;
+    goto LABEL_26;
+  }
+  long long v22 = self;
+  int v10 = 0;
+  v11 = 0;
+  v12 = 0;
+  uint64_t v13 = v8 + v9;
+  do
+  {
+    char v29 = 0;
+    long long v27 = 0;
+    uint64_t v28 = 0;
+    uint64_t v25 = 0;
+    uint64_t v26 = 0;
+    if (TLV8GetNext() || TLV8GetOrCopyCoalesced())
+    {
+      if (a4)
+      {
+        HMErrorFromOSStatus();
+        id v18 = (id)objc_claimAutoreleasedReturnValue();
+        goto LABEL_22;
+      }
+LABEL_23:
+      BOOL v19 = 0;
+      goto LABEL_27;
+    }
+    if (!v28)
+    {
+      uint64_t v20 = [MEMORY[0x263F087E8] errorWithDomain:*MEMORY[0x263F41FD8] code:3 userInfo:0];
+
+      v12 = (void *)v20;
+      if (!v20) {
+        goto LABEL_25;
+      }
+LABEL_17:
+      if (a4)
+      {
+        id v18 = v12;
+        v12 = v18;
+LABEL_22:
+        BOOL v19 = 0;
+        *a4 = v18;
+        goto LABEL_27;
+      }
+      goto LABEL_23;
+    }
+    if (v29 == 2)
+    {
+      id v14 = objc_msgSend(MEMORY[0x263EFF8F8], "dataWithBytesNoCopy:length:freeWhenDone:");
+      long long v23 = v12;
+      int v15 = &v23;
+      [MEMORY[0x263F35AF0] parsedFromData:v14 error:&v23];
+      int v10 = v16 = v10;
+    }
+    else
+    {
+      if (v29 != 1) {
+        goto LABEL_13;
+      }
+      id v14 = objc_msgSend(MEMORY[0x263EFF8F8], "dataWithBytesNoCopy:length:freeWhenDone:");
+      long long v24 = v12;
+      int v15 = &v24;
+      +[HMDNetworkRouterIPProtocolVersion parsedFromData:v14 error:&v24];
+      v11 = v16 = v11;
+    }
+    id v17 = *v15;
+
+    v12 = v17;
+LABEL_13:
+    if (v27) {
+      free(v27);
+    }
+  }
+  while (v25 != v13);
+  if (v12) {
+    goto LABEL_17;
+  }
+LABEL_25:
+  self = v22;
+LABEL_26:
+  -[HMDNetworkRouterICMPType setProtocol:](self, "setProtocol:", v11, v22);
+  [(HMDNetworkRouterICMPType *)self setTypeValue:v10];
+  v12 = 0;
+  BOOL v19 = 1;
+LABEL_27:
+
+  return v19;
+}
+
+- (HMDNetworkRouterICMPType)initWithProtocol:(id)a3 typeValue:(id)a4
+{
+  id v7 = a3;
+  id v8 = a4;
+  v12.receiver = self;
+  v12.super_class = (Class)HMDNetworkRouterICMPType;
+  uint64_t v9 = [(HMDNetworkRouterICMPType *)&v12 init];
+  int v10 = v9;
+  if (v9)
+  {
+    objc_storeStrong((id *)&v9->_protocol, a3);
+    objc_storeStrong((id *)&v10->_typeValue, a4);
+  }
+
+  return v10;
+}
+
+- (HMDNetworkRouterICMPType)init
+{
+  v3.receiver = self;
+  v3.super_class = (Class)HMDNetworkRouterICMPType;
+  return [(HMDNetworkRouterICMPType *)&v3 init];
+}
+
++ (id)parsedFromData:(id)a3 error:(id *)a4
+{
+  id v5 = a3;
+  id v6 = objc_alloc_init(HMDNetworkRouterICMPType);
+  id v7 = v6;
+  if (v6)
+  {
+    id v10 = 0;
+    [(HMDNetworkRouterICMPType *)v6 parseFromData:v5 error:&v10];
+    id v8 = v10;
+    if (v8)
+    {
+
+      id v7 = 0;
+      if (a4) {
+        *a4 = v8;
+      }
+    }
+  }
+  return v7;
+}
+
+@end

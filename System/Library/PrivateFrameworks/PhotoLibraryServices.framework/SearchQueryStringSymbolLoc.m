@@ -1,0 +1,15 @@
+@interface SearchQueryStringSymbolLoc
+@end
+
+@implementation SearchQueryStringSymbolLoc
+
+void *__getVCPMediaAnalyzerOption_SearchQueryStringSymbolLoc_block_invoke(uint64_t a1)
+{
+  v2 = MediaAnalysisLibrary_44831();
+  result = dlsym(v2, "VCPMediaAnalyzerOption_SearchQueryString");
+  *(void *)(*(void *)(*(void *)(a1 + 32) + 8) + 24) = result;
+  getVCPMediaAnalyzerOption_SearchQueryStringSymbolLoc_ptr = *(void *)(*(void *)(*(void *)(a1 + 32) + 8) + 24);
+  return result;
+}
+
+@end

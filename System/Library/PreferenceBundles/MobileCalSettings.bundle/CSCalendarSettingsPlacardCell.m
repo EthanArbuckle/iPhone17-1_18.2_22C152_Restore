@@ -1,0 +1,56 @@
+@interface CSCalendarSettingsPlacardCell
+- (_TtC17MobileCalSettings29CSCalendarSettingsPlacardCell)initWithCoder:(id)a3;
+- (_TtC17MobileCalSettings29CSCalendarSettingsPlacardCell)initWithStyle:(int64_t)a3 reuseIdentifier:(id)a4;
+- (_TtC17MobileCalSettings29CSCalendarSettingsPlacardCell)initWithStyle:(int64_t)a3 reuseIdentifier:(id)a4 specifier:(id)a5;
+- (void)refreshCellContentsWithSpecifier:(id)a3;
+@end
+
+@implementation CSCalendarSettingsPlacardCell
+
+- (void)refreshCellContentsWithSpecifier:(id)a3
+{
+  id v5 = a3;
+  v6 = self;
+  sub_FC94(a3);
+}
+
+- (_TtC17MobileCalSettings29CSCalendarSettingsPlacardCell)initWithStyle:(int64_t)a3 reuseIdentifier:(id)a4 specifier:(id)a5
+{
+  if (a4)
+  {
+    uint64_t v7 = sub_11B70();
+    uint64_t v9 = v8;
+  }
+  else
+  {
+    uint64_t v7 = 0;
+    uint64_t v9 = 0;
+  }
+  id v10 = a5;
+  return (_TtC17MobileCalSettings29CSCalendarSettingsPlacardCell *)sub_10AE0(a3, v7, v9, a5);
+}
+
+- (_TtC17MobileCalSettings29CSCalendarSettingsPlacardCell)initWithStyle:(int64_t)a3 reuseIdentifier:(id)a4
+{
+  ObjectType = (objc_class *)swift_getObjectType();
+  if (a4)
+  {
+    sub_11B70();
+    a4 = sub_11B40();
+    swift_bridgeObjectRelease();
+  }
+  v10.receiver = self;
+  v10.super_class = ObjectType;
+  uint64_t v8 = [(CSCalendarSettingsPlacardCell *)&v10 initWithStyle:a3 reuseIdentifier:a4];
+
+  return v8;
+}
+
+- (_TtC17MobileCalSettings29CSCalendarSettingsPlacardCell)initWithCoder:(id)a3
+{
+  v5.receiver = self;
+  v5.super_class = (Class)swift_getObjectType();
+  return [(CSCalendarSettingsPlacardCell *)&v5 initWithCoder:a3];
+}
+
+@end

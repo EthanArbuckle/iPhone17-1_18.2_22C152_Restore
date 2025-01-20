@@ -1,0 +1,11 @@
+@interface OfflineNavigationRecommendedRouteDistanceThreshold
+@end
+
+@implementation OfflineNavigationRecommendedRouteDistanceThreshold
+
+void *NavigationConfig_OfflineNavigationRecommendedRouteDistanceThreshold_Metadata_block_invoke_165()
+{
+  return &unk_1F0E354A8;
+}
+
+@end

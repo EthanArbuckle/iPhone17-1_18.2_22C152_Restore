@@ -1,0 +1,34 @@
+@interface WFCompressPDFAction
+- (WFCompressPDFAction)init;
+- (WFCompressPDFAction)initWithIdentifier:(id)a3 definition:(id)a4 serializedParameters:(id)a5;
+- (void)runAsynchronouslyWithInput:(id)a3;
+@end
+
+@implementation WFCompressPDFAction
+
+- (void)runAsynchronouslyWithInput:(id)a3
+{
+  id v4 = a3;
+  v5 = self;
+  sub_23C3C5FF8(v4);
+}
+
+- (WFCompressPDFAction)initWithIdentifier:(id)a3 definition:(id)a4 serializedParameters:(id)a5
+{
+  uint64_t v7 = sub_23C6D5568();
+  uint64_t v9 = v8;
+  if (a5)
+  {
+    __swift_instantiateConcreteTypeFromMangledName(&qword_268BA62F0);
+    a5 = (id)sub_23C6D5418();
+  }
+  id v10 = a4;
+  return (WFCompressPDFAction *)sub_23C3C7098(v7, v9, a4, (uint64_t)a5);
+}
+
+- (WFCompressPDFAction)init
+{
+  return (WFCompressPDFAction *)sub_23C3C7204();
+}
+
+@end

@@ -1,0 +1,12 @@
+@interface NTKBundleIDToComplicationTypesMappingCompanion
+@end
+
+@implementation NTKBundleIDToComplicationTypesMappingCompanion
+
+void ___NTKBundleIDToComplicationTypesMappingCompanion_block_invoke()
+{
+  v0 = (void *)_NTKBundleIDToComplicationTypesMappingCompanion_bundleIDToComplicationTypesMapping;
+  _NTKBundleIDToComplicationTypesMappingCompanion_bundleIDToComplicationTypesMapping = (uint64_t)&unk_1F16E8B10;
+}
+
+@end

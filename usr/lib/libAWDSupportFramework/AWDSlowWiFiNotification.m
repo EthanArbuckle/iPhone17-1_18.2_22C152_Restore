@@ -1,0 +1,677 @@
+@interface AWDSlowWiFiNotification
+- (BOOL)facetimeCallInProgress;
+- (BOOL)hasActionField;
+- (BOOL)hasFacetimeCallInProgress;
+- (BOOL)hasRecoveryAction;
+- (BOOL)hasRecoveryReason;
+- (BOOL)hasTimestamp;
+- (BOOL)hasUserInput;
+- (BOOL)isEqual:(id)a3;
+- (BOOL)readFrom:(id)a3;
+- (id)copyWithZone:(_NSZone *)a3;
+- (id)description;
+- (id)dictionaryRepresentation;
+- (unint64_t)hash;
+- (unint64_t)timestamp;
+- (unsigned)actionField;
+- (unsigned)recoveryAction;
+- (unsigned)recoveryReason;
+- (unsigned)userInput;
+- (void)copyTo:(id)a3;
+- (void)mergeFrom:(id)a3;
+- (void)setActionField:(unsigned int)a3;
+- (void)setFacetimeCallInProgress:(BOOL)a3;
+- (void)setHasActionField:(BOOL)a3;
+- (void)setHasFacetimeCallInProgress:(BOOL)a3;
+- (void)setHasRecoveryAction:(BOOL)a3;
+- (void)setHasRecoveryReason:(BOOL)a3;
+- (void)setHasTimestamp:(BOOL)a3;
+- (void)setHasUserInput:(BOOL)a3;
+- (void)setRecoveryAction:(unsigned int)a3;
+- (void)setRecoveryReason:(unsigned int)a3;
+- (void)setTimestamp:(unint64_t)a3;
+- (void)setUserInput:(unsigned int)a3;
+- (void)writeTo:(id)a3;
+@end
+
+@implementation AWDSlowWiFiNotification
+
+- (void)setTimestamp:(unint64_t)a3
+{
+  *(unsigned char *)&self->_has |= 1u;
+  self->_timestamp = a3;
+}
+
+- (void)setHasTimestamp:(BOOL)a3
+{
+  *(unsigned char *)&self->_has = *(unsigned char *)&self->_has & 0xFE | a3;
+}
+
+- (BOOL)hasTimestamp
+{
+  return *(unsigned char *)&self->_has & 1;
+}
+
+- (void)setActionField:(unsigned int)a3
+{
+  *(unsigned char *)&self->_has |= 2u;
+  self->_actionField = a3;
+}
+
+- (void)setHasActionField:(BOOL)a3
+{
+  if (a3) {
+    char v3 = 2;
+  }
+  else {
+    char v3 = 0;
+  }
+  *(unsigned char *)&self->_has = *(unsigned char *)&self->_has & 0xFD | v3;
+}
+
+- (BOOL)hasActionField
+{
+  return (*(unsigned char *)&self->_has >> 1) & 1;
+}
+
+- (void)setRecoveryAction:(unsigned int)a3
+{
+  *(unsigned char *)&self->_has |= 4u;
+  self->_recoveryAction = a3;
+}
+
+- (void)setHasRecoveryAction:(BOOL)a3
+{
+  if (a3) {
+    char v3 = 4;
+  }
+  else {
+    char v3 = 0;
+  }
+  *(unsigned char *)&self->_has = *(unsigned char *)&self->_has & 0xFB | v3;
+}
+
+- (BOOL)hasRecoveryAction
+{
+  return (*(unsigned char *)&self->_has >> 2) & 1;
+}
+
+- (void)setRecoveryReason:(unsigned int)a3
+{
+  *(unsigned char *)&self->_has |= 8u;
+  self->_recoveryReason = a3;
+}
+
+- (void)setHasRecoveryReason:(BOOL)a3
+{
+  if (a3) {
+    char v3 = 8;
+  }
+  else {
+    char v3 = 0;
+  }
+  *(unsigned char *)&self->_has = *(unsigned char *)&self->_has & 0xF7 | v3;
+}
+
+- (BOOL)hasRecoveryReason
+{
+  return (*(unsigned char *)&self->_has >> 3) & 1;
+}
+
+- (void)setUserInput:(unsigned int)a3
+{
+  *(unsigned char *)&self->_has |= 0x10u;
+  self->_userInput = a3;
+}
+
+- (void)setHasUserInput:(BOOL)a3
+{
+  if (a3) {
+    char v3 = 16;
+  }
+  else {
+    char v3 = 0;
+  }
+  *(unsigned char *)&self->_has = *(unsigned char *)&self->_has & 0xEF | v3;
+}
+
+- (BOOL)hasUserInput
+{
+  return (*(unsigned char *)&self->_has >> 4) & 1;
+}
+
+- (void)setFacetimeCallInProgress:(BOOL)a3
+{
+  *(unsigned char *)&self->_has |= 0x20u;
+  self->_facetimeCallInProgress = a3;
+}
+
+- (void)setHasFacetimeCallInProgress:(BOOL)a3
+{
+  if (a3) {
+    char v3 = 32;
+  }
+  else {
+    char v3 = 0;
+  }
+  *(unsigned char *)&self->_has = *(unsigned char *)&self->_has & 0xDF | v3;
+}
+
+- (BOOL)hasFacetimeCallInProgress
+{
+  return (*(unsigned char *)&self->_has >> 5) & 1;
+}
+
+- (id)description
+{
+  v3.receiver = self;
+  v3.super_class = (Class)AWDSlowWiFiNotification;
+  return (id)[NSString stringWithFormat:@"%@ %@", -[AWDSlowWiFiNotification description](&v3, sel_description), -[AWDSlowWiFiNotification dictionaryRepresentation](self, "dictionaryRepresentation")];
+}
+
+- (id)dictionaryRepresentation
+{
+  objc_super v3 = (void *)[MEMORY[0x263EFF9A0] dictionary];
+  char has = (char)self->_has;
+  if (has)
+  {
+    [v3 setObject:[NSNumber numberWithUnsignedLongLong:self->_timestamp] forKey:@"timestamp"];
+    char has = (char)self->_has;
+    if ((has & 2) == 0)
+    {
+LABEL_3:
+      if ((has & 4) == 0) {
+        goto LABEL_4;
+      }
+      goto LABEL_11;
+    }
+  }
+  else if ((*(unsigned char *)&self->_has & 2) == 0)
+  {
+    goto LABEL_3;
+  }
+  [v3 setObject:[NSNumber numberWithUnsignedInt:self->_actionField] forKey:@"actionField"];
+  char has = (char)self->_has;
+  if ((has & 4) == 0)
+  {
+LABEL_4:
+    if ((has & 8) == 0) {
+      goto LABEL_5;
+    }
+    goto LABEL_12;
+  }
+LABEL_11:
+  [v3 setObject:[NSNumber numberWithUnsignedInt:self->_recoveryAction] forKey:@"recoveryAction"];
+  char has = (char)self->_has;
+  if ((has & 8) == 0)
+  {
+LABEL_5:
+    if ((has & 0x10) == 0) {
+      goto LABEL_6;
+    }
+LABEL_13:
+    [v3 setObject:[NSNumber numberWithUnsignedInt:self->_userInput] forKey:@"userInput"];
+    if ((*(unsigned char *)&self->_has & 0x20) == 0) {
+      return v3;
+    }
+    goto LABEL_7;
+  }
+LABEL_12:
+  [v3 setObject:[NSNumber numberWithUnsignedInt:self->_recoveryReason] forKey:@"recoveryReason"];
+  char has = (char)self->_has;
+  if ((has & 0x10) != 0) {
+    goto LABEL_13;
+  }
+LABEL_6:
+  if ((has & 0x20) != 0) {
+LABEL_7:
+  }
+    [v3 setObject:[NSNumber numberWithBool:self->_facetimeCallInProgress] forKey:@"facetimeCallInProgress"];
+  return v3;
+}
+
+- (BOOL)readFrom:(id)a3
+{
+  return AWDSlowWiFiNotificationReadFrom((uint64_t)self, (uint64_t)a3);
+}
+
+- (void)writeTo:(id)a3
+{
+  char has = (char)self->_has;
+  if (has)
+  {
+    PBDataWriterWriteUint64Field();
+    char has = (char)self->_has;
+    if ((has & 2) == 0)
+    {
+LABEL_3:
+      if ((has & 4) == 0) {
+        goto LABEL_4;
+      }
+      goto LABEL_10;
+    }
+  }
+  else if ((*(unsigned char *)&self->_has & 2) == 0)
+  {
+    goto LABEL_3;
+  }
+  PBDataWriterWriteUint32Field();
+  char has = (char)self->_has;
+  if ((has & 4) == 0)
+  {
+LABEL_4:
+    if ((has & 8) == 0) {
+      goto LABEL_5;
+    }
+    goto LABEL_11;
+  }
+LABEL_10:
+  PBDataWriterWriteUint32Field();
+  char has = (char)self->_has;
+  if ((has & 8) == 0)
+  {
+LABEL_5:
+    if ((has & 0x10) == 0) {
+      goto LABEL_6;
+    }
+LABEL_12:
+    PBDataWriterWriteUint32Field();
+    if ((*(unsigned char *)&self->_has & 0x20) == 0) {
+      return;
+    }
+    goto LABEL_13;
+  }
+LABEL_11:
+  PBDataWriterWriteUint32Field();
+  char has = (char)self->_has;
+  if ((has & 0x10) != 0) {
+    goto LABEL_12;
+  }
+LABEL_6:
+  if ((has & 0x20) == 0) {
+    return;
+  }
+LABEL_13:
+
+  PBDataWriterWriteBOOLField();
+}
+
+- (void)copyTo:(id)a3
+{
+  char has = (char)self->_has;
+  if (has)
+  {
+    *((void *)a3 + 1) = self->_timestamp;
+    *((unsigned char *)a3 + 36) |= 1u;
+    char has = (char)self->_has;
+    if ((has & 2) == 0)
+    {
+LABEL_3:
+      if ((has & 4) == 0) {
+        goto LABEL_4;
+      }
+      goto LABEL_10;
+    }
+  }
+  else if ((*(unsigned char *)&self->_has & 2) == 0)
+  {
+    goto LABEL_3;
+  }
+  *((_DWORD *)a3 + 4) = self->_actionField;
+  *((unsigned char *)a3 + 36) |= 2u;
+  char has = (char)self->_has;
+  if ((has & 4) == 0)
+  {
+LABEL_4:
+    if ((has & 8) == 0) {
+      goto LABEL_5;
+    }
+    goto LABEL_11;
+  }
+LABEL_10:
+  *((_DWORD *)a3 + 5) = self->_recoveryAction;
+  *((unsigned char *)a3 + 36) |= 4u;
+  char has = (char)self->_has;
+  if ((has & 8) == 0)
+  {
+LABEL_5:
+    if ((has & 0x10) == 0) {
+      goto LABEL_6;
+    }
+    goto LABEL_12;
+  }
+LABEL_11:
+  *((_DWORD *)a3 + 6) = self->_recoveryReason;
+  *((unsigned char *)a3 + 36) |= 8u;
+  char has = (char)self->_has;
+  if ((has & 0x10) == 0)
+  {
+LABEL_6:
+    if ((has & 0x20) == 0) {
+      return;
+    }
+LABEL_13:
+    *((unsigned char *)a3 + 32) = self->_facetimeCallInProgress;
+    *((unsigned char *)a3 + 36) |= 0x20u;
+    return;
+  }
+LABEL_12:
+  *((_DWORD *)a3 + 7) = self->_userInput;
+  *((unsigned char *)a3 + 36) |= 0x10u;
+  if ((*(unsigned char *)&self->_has & 0x20) != 0) {
+    goto LABEL_13;
+  }
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  id result = [(id)[(id)[(id)objc_opt_class() allocWithZone:a3] init];
+  char has = (char)self->_has;
+  if (has)
+  {
+    *((void *)result + 1) = self->_timestamp;
+    *((unsigned char *)result + 36) |= 1u;
+    char has = (char)self->_has;
+    if ((has & 2) == 0)
+    {
+LABEL_3:
+      if ((has & 4) == 0) {
+        goto LABEL_4;
+      }
+      goto LABEL_11;
+    }
+  }
+  else if ((*(unsigned char *)&self->_has & 2) == 0)
+  {
+    goto LABEL_3;
+  }
+  *((_DWORD *)result + 4) = self->_actionField;
+  *((unsigned char *)result + 36) |= 2u;
+  char has = (char)self->_has;
+  if ((has & 4) == 0)
+  {
+LABEL_4:
+    if ((has & 8) == 0) {
+      goto LABEL_5;
+    }
+    goto LABEL_12;
+  }
+LABEL_11:
+  *((_DWORD *)result + 5) = self->_recoveryAction;
+  *((unsigned char *)result + 36) |= 4u;
+  char has = (char)self->_has;
+  if ((has & 8) == 0)
+  {
+LABEL_5:
+    if ((has & 0x10) == 0) {
+      goto LABEL_6;
+    }
+    goto LABEL_13;
+  }
+LABEL_12:
+  *((_DWORD *)result + 6) = self->_recoveryReason;
+  *((unsigned char *)result + 36) |= 8u;
+  char has = (char)self->_has;
+  if ((has & 0x10) == 0)
+  {
+LABEL_6:
+    if ((has & 0x20) == 0) {
+      return result;
+    }
+    goto LABEL_7;
+  }
+LABEL_13:
+  *((_DWORD *)result + 7) = self->_userInput;
+  *((unsigned char *)result + 36) |= 0x10u;
+  if ((*(unsigned char *)&self->_has & 0x20) == 0) {
+    return result;
+  }
+LABEL_7:
+  *((unsigned char *)result + 32) = self->_facetimeCallInProgress;
+  *((unsigned char *)result + 36) |= 0x20u;
+  return result;
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  int v5 = [a3 isMemberOfClass:objc_opt_class()];
+  if (v5)
+  {
+    if (*(unsigned char *)&self->_has)
+    {
+      if ((*((unsigned char *)a3 + 36) & 1) == 0 || self->_timestamp != *((void *)a3 + 1)) {
+        goto LABEL_29;
+      }
+    }
+    else if (*((unsigned char *)a3 + 36))
+    {
+      goto LABEL_29;
+    }
+    if ((*(unsigned char *)&self->_has & 2) != 0)
+    {
+      if ((*((unsigned char *)a3 + 36) & 2) == 0 || self->_actionField != *((_DWORD *)a3 + 4)) {
+        goto LABEL_29;
+      }
+    }
+    else if ((*((unsigned char *)a3 + 36) & 2) != 0)
+    {
+      goto LABEL_29;
+    }
+    if ((*(unsigned char *)&self->_has & 4) != 0)
+    {
+      if ((*((unsigned char *)a3 + 36) & 4) == 0 || self->_recoveryAction != *((_DWORD *)a3 + 5)) {
+        goto LABEL_29;
+      }
+    }
+    else if ((*((unsigned char *)a3 + 36) & 4) != 0)
+    {
+      goto LABEL_29;
+    }
+    if ((*(unsigned char *)&self->_has & 8) != 0)
+    {
+      if ((*((unsigned char *)a3 + 36) & 8) == 0 || self->_recoveryReason != *((_DWORD *)a3 + 6)) {
+        goto LABEL_29;
+      }
+    }
+    else if ((*((unsigned char *)a3 + 36) & 8) != 0)
+    {
+      goto LABEL_29;
+    }
+    if ((*(unsigned char *)&self->_has & 0x10) != 0)
+    {
+      if ((*((unsigned char *)a3 + 36) & 0x10) == 0 || self->_userInput != *((_DWORD *)a3 + 7)) {
+        goto LABEL_29;
+      }
+    }
+    else if ((*((unsigned char *)a3 + 36) & 0x10) != 0)
+    {
+      goto LABEL_29;
+    }
+    LOBYTE(v5) = (*((unsigned char *)a3 + 36) & 0x20) == 0;
+    if ((*(unsigned char *)&self->_has & 0x20) != 0)
+    {
+      if ((*((unsigned char *)a3 + 36) & 0x20) == 0)
+      {
+LABEL_29:
+        LOBYTE(v5) = 0;
+        return v5;
+      }
+      if (self->_facetimeCallInProgress)
+      {
+        if (!*((unsigned char *)a3 + 32)) {
+          goto LABEL_29;
+        }
+      }
+      else if (*((unsigned char *)a3 + 32))
+      {
+        goto LABEL_29;
+      }
+      LOBYTE(v5) = 1;
+    }
+  }
+  return v5;
+}
+
+- (unint64_t)hash
+{
+  if (*(unsigned char *)&self->_has)
+  {
+    unint64_t v2 = 2654435761u * self->_timestamp;
+    if ((*(unsigned char *)&self->_has & 2) != 0)
+    {
+LABEL_3:
+      uint64_t v3 = 2654435761 * self->_actionField;
+      if ((*(unsigned char *)&self->_has & 4) != 0) {
+        goto LABEL_4;
+      }
+      goto LABEL_10;
+    }
+  }
+  else
+  {
+    unint64_t v2 = 0;
+    if ((*(unsigned char *)&self->_has & 2) != 0) {
+      goto LABEL_3;
+    }
+  }
+  uint64_t v3 = 0;
+  if ((*(unsigned char *)&self->_has & 4) != 0)
+  {
+LABEL_4:
+    uint64_t v4 = 2654435761 * self->_recoveryAction;
+    if ((*(unsigned char *)&self->_has & 8) != 0) {
+      goto LABEL_5;
+    }
+    goto LABEL_11;
+  }
+LABEL_10:
+  uint64_t v4 = 0;
+  if ((*(unsigned char *)&self->_has & 8) != 0)
+  {
+LABEL_5:
+    uint64_t v5 = 2654435761 * self->_recoveryReason;
+    if ((*(unsigned char *)&self->_has & 0x10) != 0) {
+      goto LABEL_6;
+    }
+LABEL_12:
+    uint64_t v6 = 0;
+    if ((*(unsigned char *)&self->_has & 0x20) != 0) {
+      goto LABEL_7;
+    }
+LABEL_13:
+    uint64_t v7 = 0;
+    return v3 ^ v2 ^ v4 ^ v5 ^ v6 ^ v7;
+  }
+LABEL_11:
+  uint64_t v5 = 0;
+  if ((*(unsigned char *)&self->_has & 0x10) == 0) {
+    goto LABEL_12;
+  }
+LABEL_6:
+  uint64_t v6 = 2654435761 * self->_userInput;
+  if ((*(unsigned char *)&self->_has & 0x20) == 0) {
+    goto LABEL_13;
+  }
+LABEL_7:
+  uint64_t v7 = 2654435761 * self->_facetimeCallInProgress;
+  return v3 ^ v2 ^ v4 ^ v5 ^ v6 ^ v7;
+}
+
+- (void)mergeFrom:(id)a3
+{
+  char v3 = *((unsigned char *)a3 + 36);
+  if (v3)
+  {
+    self->_timestamp = *((void *)a3 + 1);
+    *(unsigned char *)&self->_has |= 1u;
+    char v3 = *((unsigned char *)a3 + 36);
+    if ((v3 & 2) == 0)
+    {
+LABEL_3:
+      if ((v3 & 4) == 0) {
+        goto LABEL_4;
+      }
+      goto LABEL_10;
+    }
+  }
+  else if ((*((unsigned char *)a3 + 36) & 2) == 0)
+  {
+    goto LABEL_3;
+  }
+  self->_actionField = *((_DWORD *)a3 + 4);
+  *(unsigned char *)&self->_has |= 2u;
+  char v3 = *((unsigned char *)a3 + 36);
+  if ((v3 & 4) == 0)
+  {
+LABEL_4:
+    if ((v3 & 8) == 0) {
+      goto LABEL_5;
+    }
+    goto LABEL_11;
+  }
+LABEL_10:
+  self->_recoveryAction = *((_DWORD *)a3 + 5);
+  *(unsigned char *)&self->_has |= 4u;
+  char v3 = *((unsigned char *)a3 + 36);
+  if ((v3 & 8) == 0)
+  {
+LABEL_5:
+    if ((v3 & 0x10) == 0) {
+      goto LABEL_6;
+    }
+    goto LABEL_12;
+  }
+LABEL_11:
+  self->_recoveryReason = *((_DWORD *)a3 + 6);
+  *(unsigned char *)&self->_has |= 8u;
+  char v3 = *((unsigned char *)a3 + 36);
+  if ((v3 & 0x10) == 0)
+  {
+LABEL_6:
+    if ((v3 & 0x20) == 0) {
+      return;
+    }
+LABEL_13:
+    self->_facetimeCallInProgress = *((unsigned char *)a3 + 32);
+    *(unsigned char *)&self->_has |= 0x20u;
+    return;
+  }
+LABEL_12:
+  self->_userInput = *((_DWORD *)a3 + 7);
+  *(unsigned char *)&self->_has |= 0x10u;
+  if ((*((unsigned char *)a3 + 36) & 0x20) != 0) {
+    goto LABEL_13;
+  }
+}
+
+- (unint64_t)timestamp
+{
+  return self->_timestamp;
+}
+
+- (unsigned)actionField
+{
+  return self->_actionField;
+}
+
+- (unsigned)recoveryAction
+{
+  return self->_recoveryAction;
+}
+
+- (unsigned)recoveryReason
+{
+  return self->_recoveryReason;
+}
+
+- (unsigned)userInput
+{
+  return self->_userInput;
+}
+
+- (BOOL)facetimeCallInProgress
+{
+  return self->_facetimeCallInProgress;
+}
+
+@end

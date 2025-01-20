@@ -1,0 +1,178 @@
+@interface GEOPDSearchCapabilitiesParameters
+- (BOOL)isEqual:(id)a3;
+- (BOOL)readFrom:(id)a3;
+- (id)_dictionaryRepresentation:(uint64_t)a1;
+- (id)copyWithZone:(_NSZone *)a3;
+- (id)description;
+- (id)dictionaryRepresentation;
+- (id)jsonRepresentation;
+- (unint64_t)hash;
+- (void)setViewportInfo:(uint64_t)a1;
+- (void)writeTo:(id)a3;
+@end
+
+@implementation GEOPDSearchCapabilitiesParameters
+
+- (void)setViewportInfo:(uint64_t)a1
+{
+  id v4 = a2;
+  if (a1) {
+    objc_storeStrong((id *)(a1 + 16), a2);
+  }
+}
+
+- (id)description
+{
+  v3 = NSString;
+  v8.receiver = self;
+  v8.super_class = (Class)GEOPDSearchCapabilitiesParameters;
+  id v4 = [(GEOPDSearchCapabilitiesParameters *)&v8 description];
+  v5 = [(GEOPDSearchCapabilitiesParameters *)self dictionaryRepresentation];
+  v6 = [v3 stringWithFormat:@"%@ %@", v4, v5];
+
+  return v6;
+}
+
+- (id)dictionaryRepresentation
+{
+  return -[GEOPDSearchCapabilitiesParameters _dictionaryRepresentation:]((uint64_t)self, 0);
+}
+
+- (id)_dictionaryRepresentation:(uint64_t)a1
+{
+  if (a1)
+  {
+    id v4 = [MEMORY[0x1E4F1CA60] dictionary];
+    id v5 = *(id *)(a1 + 16);
+    v6 = v5;
+    if (v5)
+    {
+      if (a2)
+      {
+        v7 = [v5 jsonRepresentation];
+        objc_super v8 = @"viewportInfo";
+      }
+      else
+      {
+        v7 = [v5 dictionaryRepresentation];
+        objc_super v8 = @"viewport_info";
+      }
+      [v4 setObject:v7 forKey:v8];
+    }
+    v9 = *(void **)(a1 + 8);
+    if (v9)
+    {
+      v10 = [v9 dictionaryRepresentation];
+      v11 = v10;
+      if (a2)
+      {
+        v12 = objc_msgSend(MEMORY[0x1E4F1CA60], "dictionaryWithCapacity:", objc_msgSend(v10, "count"));
+        v16[0] = MEMORY[0x1E4F143A8];
+        v16[1] = 3221225472;
+        v16[2] = __63__GEOPDSearchCapabilitiesParameters__dictionaryRepresentation___block_invoke;
+        v16[3] = &unk_1E53D8860;
+        id v13 = v12;
+        id v17 = v13;
+        [v11 enumerateKeysAndObjectsUsingBlock:v16];
+        id v14 = v13;
+
+        v11 = v14;
+      }
+      [v4 setObject:v11 forKey:@"Unknown Fields"];
+    }
+  }
+  else
+  {
+    id v4 = 0;
+  }
+
+  return v4;
+}
+
+- (id)jsonRepresentation
+{
+  return -[GEOPDSearchCapabilitiesParameters _dictionaryRepresentation:]((uint64_t)self, 1);
+}
+
+void __63__GEOPDSearchCapabilitiesParameters__dictionaryRepresentation___block_invoke(uint64_t a1, void *a2, void *a3)
+{
+  id v10 = a2;
+  id v5 = a3;
+  objc_opt_class();
+  char isKindOfClass = objc_opt_isKindOfClass();
+  v7 = *(void **)(a1 + 32);
+  if (isKindOfClass)
+  {
+    objc_super v8 = [v5 base64EncodedStringWithOptions:0];
+    v9 = [v10 description];
+    [v7 setObject:v8 forKey:v9];
+  }
+  else
+  {
+    objc_super v8 = [v10 description];
+    [v7 setObject:v5 forKey:v8];
+  }
+}
+
+- (BOOL)readFrom:(id)a3
+{
+  return GEOPDSearchCapabilitiesParametersReadAllFrom((uint64_t)self, a3);
+}
+
+- (void)writeTo:(id)a3
+{
+  id v4 = a3;
+  id v5 = v4;
+  if (self->_viewportInfo)
+  {
+    PBDataWriterWriteSubmessage();
+    id v4 = v5;
+  }
+  [(PBUnknownFields *)self->_unknownFields writeTo:v4];
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  uint64_t v5 = objc_msgSend((id)objc_msgSend((id)objc_opt_class(), "allocWithZone:", a3), "init");
+  id v6 = [(GEOPDViewportInfo *)self->_viewportInfo copyWithZone:a3];
+  v7 = *(void **)(v5 + 16);
+  *(void *)(v5 + 16) = v6;
+
+  objc_storeStrong((id *)(v5 + 8), self->_unknownFields);
+  return (id)v5;
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  id v4 = a3;
+  if ([v4 isMemberOfClass:objc_opt_class()])
+  {
+    viewportInfo = self->_viewportInfo;
+    if ((unint64_t)viewportInfo | v4[2]) {
+      char v6 = -[GEOPDViewportInfo isEqual:](viewportInfo, "isEqual:");
+    }
+    else {
+      char v6 = 1;
+    }
+  }
+  else
+  {
+    char v6 = 0;
+  }
+
+  return v6;
+}
+
+- (unint64_t)hash
+{
+  return [(GEOPDViewportInfo *)self->_viewportInfo hash];
+}
+
+- (void).cxx_destruct
+{
+  objc_storeStrong((id *)&self->_viewportInfo, 0);
+
+  objc_storeStrong((id *)&self->_unknownFields, 0);
+}
+
+@end

@@ -1,0 +1,201 @@
+@interface SIRINLUEXTERNALRRAnnotation
+- (BOOL)hasKey;
+- (BOOL)hasValue;
+- (BOOL)isEqual:(id)a3;
+- (BOOL)readFrom:(id)a3;
+- (SIRICOMMONStringValue)key;
+- (SIRICOMMONStringValue)value;
+- (id)copyWithZone:(_NSZone *)a3;
+- (id)description;
+- (id)dictionaryRepresentation;
+- (unint64_t)hash;
+- (void)copyTo:(id)a3;
+- (void)mergeFrom:(id)a3;
+- (void)setKey:(id)a3;
+- (void)setValue:(id)a3;
+- (void)writeTo:(id)a3;
+@end
+
+@implementation SIRINLUEXTERNALRRAnnotation
+
+- (void).cxx_destruct
+{
+  objc_storeStrong((id *)&self->_value, 0);
+  objc_storeStrong((id *)&self->_key, 0);
+}
+
+- (void)setValue:(id)a3
+{
+}
+
+- (SIRICOMMONStringValue)value
+{
+  return self->_value;
+}
+
+- (void)setKey:(id)a3
+{
+}
+
+- (SIRICOMMONStringValue)key
+{
+  return self->_key;
+}
+
+- (void)mergeFrom:(id)a3
+{
+  v4 = a3;
+  key = self->_key;
+  uint64_t v6 = v4[1];
+  v9 = v4;
+  if (key)
+  {
+    if (!v6) {
+      goto LABEL_7;
+    }
+    -[SIRICOMMONStringValue mergeFrom:](key, "mergeFrom:");
+  }
+  else
+  {
+    if (!v6) {
+      goto LABEL_7;
+    }
+    -[SIRINLUEXTERNALRRAnnotation setKey:](self, "setKey:");
+  }
+  v4 = v9;
+LABEL_7:
+  value = self->_value;
+  uint64_t v8 = v4[2];
+  if (value)
+  {
+    if (v8) {
+      -[SIRICOMMONStringValue mergeFrom:](value, "mergeFrom:");
+    }
+  }
+  else if (v8)
+  {
+    -[SIRINLUEXTERNALRRAnnotation setValue:](self, "setValue:");
+  }
+  MEMORY[0x1F41817F8]();
+}
+
+- (unint64_t)hash
+{
+  unint64_t v3 = [(SIRICOMMONStringValue *)self->_key hash];
+  return [(SIRICOMMONStringValue *)self->_value hash] ^ v3;
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  v4 = a3;
+  if ([v4 isMemberOfClass:objc_opt_class()]
+    && ((key = self->_key, !((unint64_t)key | v4[1])) || -[SIRICOMMONStringValue isEqual:](key, "isEqual:")))
+  {
+    value = self->_value;
+    if ((unint64_t)value | v4[2]) {
+      char v7 = -[SIRICOMMONStringValue isEqual:](value, "isEqual:");
+    }
+    else {
+      char v7 = 1;
+    }
+  }
+  else
+  {
+    char v7 = 0;
+  }
+
+  return v7;
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  v5 = objc_msgSend((id)objc_msgSend((id)objc_opt_class(), "allocWithZone:", a3), "init");
+  id v6 = [(SIRICOMMONStringValue *)self->_key copyWithZone:a3];
+  char v7 = (void *)v5[1];
+  v5[1] = v6;
+
+  id v8 = [(SIRICOMMONStringValue *)self->_value copyWithZone:a3];
+  v9 = (void *)v5[2];
+  v5[2] = v8;
+
+  return v5;
+}
+
+- (void)copyTo:(id)a3
+{
+  id v4 = a3;
+  id v5 = v4;
+  if (self->_key)
+  {
+    objc_msgSend(v4, "setKey:");
+    id v4 = v5;
+  }
+  if (self->_value)
+  {
+    objc_msgSend(v5, "setValue:");
+    id v4 = v5;
+  }
+}
+
+- (void)writeTo:(id)a3
+{
+  id v4 = a3;
+  id v5 = v4;
+  if (self->_key)
+  {
+    PBDataWriterWriteSubmessage();
+    id v4 = v5;
+  }
+  if (self->_value)
+  {
+    PBDataWriterWriteSubmessage();
+    id v4 = v5;
+  }
+}
+
+- (BOOL)readFrom:(id)a3
+{
+  return SIRINLUEXTERNALRRAnnotationReadFrom((uint64_t)self, (uint64_t)a3);
+}
+
+- (id)dictionaryRepresentation
+{
+  unint64_t v3 = [MEMORY[0x1E4F1CA60] dictionary];
+  key = self->_key;
+  if (key)
+  {
+    id v5 = [(SIRICOMMONStringValue *)key dictionaryRepresentation];
+    [v3 setObject:v5 forKey:@"key"];
+  }
+  value = self->_value;
+  if (value)
+  {
+    char v7 = [(SIRICOMMONStringValue *)value dictionaryRepresentation];
+    [v3 setObject:v7 forKey:@"value"];
+  }
+  return v3;
+}
+
+- (id)description
+{
+  unint64_t v3 = NSString;
+  v8.receiver = self;
+  v8.super_class = (Class)SIRINLUEXTERNALRRAnnotation;
+  id v4 = [(SIRINLUEXTERNALRRAnnotation *)&v8 description];
+  id v5 = [(SIRINLUEXTERNALRRAnnotation *)self dictionaryRepresentation];
+  id v6 = [v3 stringWithFormat:@"%@ %@", v4, v5];
+
+  return v6;
+}
+
+- (BOOL)hasValue
+{
+  return self->_value != 0;
+}
+
+- (BOOL)hasKey
+{
+  return self->_key != 0;
+}
+
+@end

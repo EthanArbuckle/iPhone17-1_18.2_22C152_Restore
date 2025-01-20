@@ -1,0 +1,74 @@
+@interface MGRoom
++ (id)predicateForCurrentDevice;
++ (id)predicateForType;
++ (id)type;
+- (MGRoom)initWithClientService:(id)a3 room:(id)a4 home:(id)a5;
+- (MGRoom)initWithConnectionProvider:(id)a3 room:(id)a4 home:(id)a5;
+- (id)HomeKitRoomIdentifier;
+- (id)HomeKitRoomWithHomeManager:(id)a3;
+@end
+
+@implementation MGRoom
+
+- (MGRoom)initWithClientService:(id)a3 room:(id)a4 home:(id)a5
+{
+  id v8 = a5;
+  id v9 = a4;
+  id v10 = a3;
+  v11 = MGGroupIdentifierForRoomInHome(v9, v8);
+  v12 = [(id)objc_opt_class() type];
+  v13 = [v9 name];
+  v14 = MGMemberIdentifiersForRoomInHome(v9, v8);
+
+  v15 = [(MGGroup *)self initWithClientService:v10 type:v12 identifier:v11 name:v13 properties:0 memberIdentifiers:v14];
+  return v15;
+}
+
+- (MGRoom)initWithConnectionProvider:(id)a3 room:(id)a4 home:(id)a5
+{
+  id v8 = a5;
+  id v9 = a4;
+  id v10 = a3;
+  v11 = [(id)objc_opt_class() clientServiceWithConnectionProvider:v10];
+
+  v12 = [(MGRoom *)self initWithClientService:v11 room:v9 home:v8];
+  return v12;
+}
+
++ (id)type
+{
+  return @"com.apple.media-group.room";
+}
+
+- (id)HomeKitRoomIdentifier
+{
+  v2 = [(MGGroup *)self identifier];
+  v3 = MGRoomIdentifierForGroupIdentifier(v2);
+
+  return v3;
+}
+
+- (id)HomeKitRoomWithHomeManager:(id)a3
+{
+  id v4 = a3;
+  v5 = [(MGGroup *)self identifier];
+  v6 = MGRoomFromHomeManagerForGroupIdentifier(v4, v5);
+
+  return v6;
+}
+
++ (id)predicateForType
+{
+  v2 = (void *)MEMORY[0x263F08A98];
+  v3 = [a1 type];
+  id v4 = [v2 predicateWithFormat:@"SELF.type = %@", v3];
+
+  return v4;
+}
+
++ (id)predicateForCurrentDevice
+{
+  return (id)[MEMORY[0x263F08A98] predicateWithFormat:@"($CURRENT_ROOM != nil) && (SELF.identifier == $CURRENT_ROOM.identifier)"];
+}
+
+@end

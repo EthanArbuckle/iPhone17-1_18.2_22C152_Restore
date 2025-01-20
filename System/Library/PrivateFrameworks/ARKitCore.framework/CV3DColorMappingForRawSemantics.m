@@ -1,0 +1,113 @@
+@interface CV3DColorMappingForRawSemantics
+@end
+
+@implementation CV3DColorMappingForRawSemantics
+
+double ___CV3DColorMappingForRawSemantics_block_invoke()
+{
+  _CV3DColorMappingForRawSemantics_cv3DColors = (__int128)vdupq_n_s32(0x3EC8C8C9u);
+  xmmword_1E9EED6B0 = xmmword_1B8A2B0C0;
+  xmmword_1E9EED6C0 = xmmword_1B8A2B0D0;
+  xmmword_1E9EED6D0 = xmmword_1B8A2ECF0;
+  xmmword_1E9EED6E0 = xmmword_1B8A2ED00;
+  unk_1E9EED6F0 = xmmword_1B8A2ED10;
+  xmmword_1E9EED700 = xmmword_1B8A2ED20;
+  xmmword_1E9EED710 = xmmword_1B8A2ED30;
+  xmmword_1E9EED720 = xmmword_1B8A2ED40;
+  unk_1E9EED730 = xmmword_1B8A2ED50;
+  xmmword_1E9EED740 = xmmword_1B8A2ED60;
+  xmmword_1E9EED750 = xmmword_1B8A2ED70;
+  xmmword_1E9EED760 = xmmword_1B8A2ED80;
+  unk_1E9EED770 = xmmword_1B8A2ED90;
+  xmmword_1E9EED780 = xmmword_1B8A2EDA0;
+  xmmword_1E9EED790 = xmmword_1B8A2EDB0;
+  xmmword_1E9EED7A0 = xmmword_1B8A2EDC0;
+  unk_1E9EED7B0 = xmmword_1B8A2EDD0;
+  xmmword_1E9EED7C0 = xmmword_1B8A2EDE0;
+  xmmword_1E9EED7D0 = xmmword_1B8A2EDF0;
+  xmmword_1E9EED7E0 = xmmword_1B8A2EE00;
+  unk_1E9EED7F0 = xmmword_1B8A2EE10;
+  xmmword_1E9EED800 = xmmword_1B8A2EE20;
+  unk_1E9EED810 = xmmword_1B8A2EE30;
+  xmmword_1E9EED820 = xmmword_1B8A2EE40;
+  unk_1E9EED830 = xmmword_1B8A2EE50;
+  xmmword_1E9EED840 = xmmword_1B8A2EE60;
+  unk_1E9EED850 = xmmword_1B8A2EE70;
+  xmmword_1E9EED860 = xmmword_1B8A2EE80;
+  unk_1E9EED870 = xmmword_1B8A2EE90;
+  xmmword_1E9EED880 = xmmword_1B8A2EEA0;
+  unk_1E9EED890 = xmmword_1B8A2EEB0;
+  xmmword_1E9EED8A0 = xmmword_1B8A2EEC0;
+  unk_1E9EED8B0 = xmmword_1B8A2EED0;
+  xmmword_1E9EED8C0 = xmmword_1B8A2EEE0;
+  unk_1E9EED8D0 = xmmword_1B8A2EEF0;
+  xmmword_1E9EED8E0 = xmmword_1B8A2EF00;
+  unk_1E9EED8F0 = xmmword_1B8A2EF10;
+  xmmword_1E9EED900 = xmmword_1B8A2EF20;
+  unk_1E9EED910 = xmmword_1B8A2EF30;
+  xmmword_1E9EED920 = xmmword_1B8A2EF40;
+  unk_1E9EED930 = xmmword_1B8A2EF50;
+  xmmword_1E9EED940 = xmmword_1B8A2EF60;
+  unk_1E9EED950 = xmmword_1B8A2EF70;
+  xmmword_1E9EED960 = xmmword_1B8A2EF80;
+  unk_1E9EED970 = xmmword_1B8A2EF90;
+  xmmword_1E9EED980 = xmmword_1B8A2EFA0;
+  unk_1E9EED990 = xmmword_1B8A2EFB0;
+  xmmword_1E9EED9A0 = xmmword_1B8A2EFC0;
+  unk_1E9EED9B0 = xmmword_1B8A2EFD0;
+  xmmword_1E9EED9C0 = xmmword_1B8A2EFE0;
+  unk_1E9EED9D0 = xmmword_1B8A2EFF0;
+  xmmword_1E9EED9E0 = xmmword_1B8A2F000;
+  unk_1E9EED9F0 = xmmword_1B8A2F010;
+  xmmword_1E9EEDA00 = xmmword_1B8A2F020;
+  unk_1E9EEDA10 = xmmword_1B8A2F030;
+  xmmword_1E9EEDA20 = xmmword_1B8A2F040;
+  unk_1E9EEDA30 = xmmword_1B8A2F050;
+  xmmword_1E9EEDA40 = xmmword_1B8A2F060;
+  unk_1E9EEDA50 = xmmword_1B8A2F070;
+  xmmword_1E9EEDA60 = xmmword_1B8A2F080;
+  unk_1E9EEDA70 = xmmword_1B8A2F090;
+  xmmword_1E9EEDA80 = xmmword_1B8A2F0A0;
+  unk_1E9EEDA90 = xmmword_1B8A2F0B0;
+  xmmword_1E9EEDAA0 = xmmword_1B8A2F0C0;
+  xmmword_1E9EEDAB0 = xmmword_1B8A2F0D0;
+  xmmword_1E9EEDAC0 = xmmword_1B8A2F0E0;
+  xmmword_1E9EEDAD0 = xmmword_1B8A2F0F0;
+  xmmword_1E9EEDAE0 = xmmword_1B8A2F100;
+  xmmword_1E9EEDAF0 = xmmword_1B8A2F110;
+  xmmword_1E9EEDB00 = xmmword_1B8A2F120;
+  xmmword_1E9EEDB10 = xmmword_1B8A2F130;
+  xmmword_1E9EEDB20 = xmmword_1B8A2F140;
+  xmmword_1E9EEDB30 = xmmword_1B8A2F150;
+  xmmword_1E9EEDB40 = xmmword_1B8A2F160;
+  xmmword_1E9EEDB50 = xmmword_1B8A2F170;
+  xmmword_1E9EEDB60 = xmmword_1B8A2F180;
+  xmmword_1E9EEDB70 = xmmword_1B8A2F190;
+  xmmword_1E9EEDB80 = xmmword_1B8A2F1A0;
+  xmmword_1E9EEDB90 = xmmword_1B8A2F1B0;
+  xmmword_1E9EEDBA0 = xmmword_1B8A2F1C0;
+  xmmword_1E9EEDBB0 = xmmword_1B8A2F1D0;
+  xmmword_1E9EEDBC0 = xmmword_1B8A2F1E0;
+  xmmword_1E9EEDBD0 = (__int128)vdupq_n_s32(0x3EE5846Au);
+  xmmword_1E9EEDBE0 = xmmword_1B8A2F1F0;
+  xmmword_1E9EEDBF0 = xmmword_1B8A2F200;
+  xmmword_1E9EEDC00 = xmmword_1B8A2F210;
+  xmmword_1E9EEDC10 = xmmword_1B8A2F220;
+  xmmword_1E9EEDC20 = xmmword_1B8A2F230;
+  xmmword_1E9EEDC30 = xmmword_1B8A2F240;
+  xmmword_1E9EEDC40 = xmmword_1B8A2F250;
+  xmmword_1E9EEDC50 = xmmword_1B8A2F260;
+  xmmword_1E9EEDC60 = xmmword_1B8A2F270;
+  xmmword_1E9EEDC70 = xmmword_1B8A2F280;
+  xmmword_1E9EEDC80 = xmmword_1B8A2F290;
+  xmmword_1E9EEDC90 = xmmword_1B8A2F2A0;
+  xmmword_1E9EEDCA0 = xmmword_1B8A2F2B0;
+  xmmword_1E9EEDCB0 = xmmword_1B8A2F2C0;
+  xmmword_1E9EEDCC0 = xmmword_1B8A2F2D0;
+  xmmword_1E9EEDCD0 = xmmword_1B8A2F2E0;
+  double result = 0.0000557735038;
+  xmmword_1E9EEDCE0 = xmmword_1B8A2F2F0;
+  return result;
+}
+
+@end

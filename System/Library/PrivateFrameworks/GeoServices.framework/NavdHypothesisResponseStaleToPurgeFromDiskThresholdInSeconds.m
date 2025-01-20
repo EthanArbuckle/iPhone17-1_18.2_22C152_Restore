@@ -1,0 +1,11 @@
+@interface NavdHypothesisResponseStaleToPurgeFromDiskThresholdInSeconds
+@end
+
+@implementation NavdHypothesisResponseStaleToPurgeFromDiskThresholdInSeconds
+
+void *GeoServicesConfig_NavdHypothesisResponseStaleToPurgeFromDiskThresholdInSeconds_Metadata_block_invoke_262()
+{
+  return &unk_1ED73E638;
+}
+
+@end

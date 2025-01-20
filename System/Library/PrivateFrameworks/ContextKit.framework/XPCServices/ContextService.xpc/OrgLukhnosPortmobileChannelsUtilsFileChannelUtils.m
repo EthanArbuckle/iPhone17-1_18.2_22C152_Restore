@@ -1,0 +1,12 @@
+@interface OrgLukhnosPortmobileChannelsUtilsFileChannelUtils
++ (id)openWithOrgLukhnosPortmobileFilePath:(id)a3 withOrgLukhnosPortmobileFileStandardOpenOptionEnumArray:(id)a4;
+@end
+
+@implementation OrgLukhnosPortmobileChannelsUtilsFileChannelUtils
+
++ (id)openWithOrgLukhnosPortmobileFilePath:(id)a3 withOrgLukhnosPortmobileFileStandardOpenOptionEnumArray:(id)a4
+{
+  return OrgLukhnosPortmobileChannelsUtilsFileChannelUtils_openWithOrgLukhnosPortmobileFilePath_withOrgLukhnosPortmobileFileStandardOpenOptionEnumArray_(a3, a4);
+}
+
+@end

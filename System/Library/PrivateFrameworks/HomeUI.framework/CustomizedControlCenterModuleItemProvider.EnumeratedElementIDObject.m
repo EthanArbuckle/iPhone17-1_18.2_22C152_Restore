@@ -1,0 +1,18 @@
+@interface CustomizedControlCenterModuleItemProvider.EnumeratedElementIDObject
+- (_TtCC6HomeUI41CustomizedControlCenterModuleItemProviderP33_D7BDC30BA4CA1D0244E55B62F4FA1CEA25EnumeratedElementIDObject)init;
+@end
+
+@implementation CustomizedControlCenterModuleItemProvider.EnumeratedElementIDObject
+
+- (_TtCC6HomeUI41CustomizedControlCenterModuleItemProviderP33_D7BDC30BA4CA1D0244E55B62F4FA1CEA25EnumeratedElementIDObject)init
+{
+  result = (_TtCC6HomeUI41CustomizedControlCenterModuleItemProviderP33_D7BDC30BA4CA1D0244E55B62F4FA1CEA25EnumeratedElementIDObject *)_swift_stdlib_reportUnimplementedInitializer();
+  __break(1u);
+  return result;
+}
+
+- (void).cxx_destruct
+{
+}
+
+@end

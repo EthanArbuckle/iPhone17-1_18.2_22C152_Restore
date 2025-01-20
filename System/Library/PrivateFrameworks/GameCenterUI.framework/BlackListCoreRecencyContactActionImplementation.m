@@ -1,0 +1,12 @@
+@interface BlackListCoreRecencyContactActionImplementation
+- (_TtC12GameCenterUI47BlackListCoreRecencyContactActionImplementation)init;
+@end
+
+@implementation BlackListCoreRecencyContactActionImplementation
+
+- (_TtC12GameCenterUI47BlackListCoreRecencyContactActionImplementation)init
+{
+  return (_TtC12GameCenterUI47BlackListCoreRecencyContactActionImplementation *)sub_1AF6AF118();
+}
+
+@end

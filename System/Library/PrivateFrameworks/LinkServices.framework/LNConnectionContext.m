@@ -1,0 +1,163 @@
+@interface LNConnectionContext
++ (BOOL)supportsSecureCoding;
+- (BOOL)isEqual:(id)a3;
+- (LNConnectionContext)initWithCoder:(id)a3;
+- (LNConnectionContext)initWithUserIdentity:(id)a3 effectiveBundleIdentifier:(id)a4;
+- (LNEffectiveBundleIdentifier)effectiveBundleIdentifier;
+- (LNUserIdentity)userIdentity;
+- (id)description;
+- (unint64_t)hash;
+- (void)encodeWithCoder:(id)a3;
+@end
+
+@implementation LNConnectionContext
+
+- (void)encodeWithCoder:(id)a3
+{
+  id v4 = a3;
+  v5 = [(LNConnectionContext *)self userIdentity];
+  [v4 encodeObject:v5 forKey:@"userIdentity"];
+
+  id v6 = [(LNConnectionContext *)self effectiveBundleIdentifier];
+  [v4 encodeObject:v6 forKey:@"effectiveBundleIdentifier"];
+}
+
+- (LNUserIdentity)userIdentity
+{
+  return self->_userIdentity;
+}
+
+- (LNEffectiveBundleIdentifier)effectiveBundleIdentifier
+{
+  return self->_effectiveBundleIdentifier;
+}
+
++ (BOOL)supportsSecureCoding
+{
+  return 1;
+}
+
+- (LNConnectionContext)initWithCoder:(id)a3
+{
+  id v4 = a3;
+  v5 = [v4 decodeObjectOfClass:objc_opt_class() forKey:@"userIdentity"];
+  id v6 = [v4 decodeObjectOfClass:objc_opt_class() forKey:@"effectiveBundleIdentifier"];
+
+  v7 = [(LNConnectionContext *)self initWithUserIdentity:v5 effectiveBundleIdentifier:v6];
+  return v7;
+}
+
+- (LNConnectionContext)initWithUserIdentity:(id)a3 effectiveBundleIdentifier:(id)a4
+{
+  id v6 = a3;
+  id v7 = a4;
+  v13.receiver = self;
+  v13.super_class = (Class)LNConnectionContext;
+  v8 = [(LNConnectionContext *)&v13 init];
+  if (v8)
+  {
+    uint64_t v9 = [v6 copy];
+    userIdentity = v8->_userIdentity;
+    v8->_userIdentity = (LNUserIdentity *)v9;
+
+    objc_storeStrong((id *)&v8->_effectiveBundleIdentifier, a4);
+    v11 = v8;
+  }
+
+  return v8;
+}
+
+- (void).cxx_destruct
+{
+  objc_storeStrong((id *)&self->_effectiveBundleIdentifier, 0);
+  objc_storeStrong((id *)&self->_userIdentity, 0);
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  id v4 = (LNConnectionContext *)a3;
+  v5 = v4;
+  if (self != v4)
+  {
+    id v6 = v4;
+    if (!v6 || (objc_opt_class(), (objc_opt_isKindOfClass() & 1) == 0))
+    {
+      LOBYTE(v12) = 0;
+LABEL_20:
+
+      goto LABEL_21;
+    }
+    id v7 = [(LNConnectionContext *)self userIdentity];
+    v8 = [(LNConnectionContext *)v6 userIdentity];
+    id v9 = v7;
+    id v10 = v8;
+    v11 = v10;
+    if (v9 == v10)
+    {
+    }
+    else
+    {
+      LOBYTE(v12) = 0;
+      objc_super v13 = v10;
+      id v14 = v9;
+      if (!v9 || !v10)
+      {
+LABEL_18:
+
+LABEL_19:
+        goto LABEL_20;
+      }
+      int v12 = [v9 isEqual:v10];
+
+      if (!v12) {
+        goto LABEL_19;
+      }
+    }
+    v15 = [(LNConnectionContext *)self effectiveBundleIdentifier];
+    v16 = [(LNConnectionContext *)v6 effectiveBundleIdentifier];
+    id v14 = v15;
+    id v17 = v16;
+    objc_super v13 = v17;
+    if (v14 == v17)
+    {
+      LOBYTE(v12) = 1;
+    }
+    else
+    {
+      LOBYTE(v12) = 0;
+      if (v14 && v17) {
+        LOBYTE(v12) = [v14 isEqual:v17];
+      }
+    }
+
+    goto LABEL_18;
+  }
+  LOBYTE(v12) = 1;
+LABEL_21:
+
+  return v12;
+}
+
+- (unint64_t)hash
+{
+  v3 = [(LNConnectionContext *)self userIdentity];
+  uint64_t v4 = [v3 hash];
+  v5 = [(LNConnectionContext *)self effectiveBundleIdentifier];
+  unint64_t v6 = [v5 hash] ^ v4;
+
+  return v6;
+}
+
+- (id)description
+{
+  v3 = NSString;
+  uint64_t v4 = (objc_class *)objc_opt_class();
+  v5 = NSStringFromClass(v4);
+  unint64_t v6 = [(LNConnectionContext *)self userIdentity];
+  id v7 = [(LNConnectionContext *)self effectiveBundleIdentifier];
+  v8 = [v3 stringWithFormat:@"<%@: %p, userIdentity: %@, effectiveBundleIdentifier: %@>", v5, self, v6, v7];
+
+  return v8;
+}
+
+@end

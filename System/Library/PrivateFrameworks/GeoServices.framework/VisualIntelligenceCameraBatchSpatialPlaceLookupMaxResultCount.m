@@ -1,0 +1,11 @@
+@interface VisualIntelligenceCameraBatchSpatialPlaceLookupMaxResultCount
+@end
+
+@implementation VisualIntelligenceCameraBatchSpatialPlaceLookupMaxResultCount
+
+void *GeoServicesConfig_VisualIntelligenceCameraBatchSpatialPlaceLookupMaxResultCount_Metadata_block_invoke_474()
+{
+  return &unk_1ED73E890;
+}
+
+@end

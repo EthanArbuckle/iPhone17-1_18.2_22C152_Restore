@@ -1,0 +1,361 @@
+@interface PXStoryMutableDummyTimeline
+- (id)copyWithZone:(_NSZone *)a3;
+- (int64_t)addClipWithTimeRange:(id *)a3 frame:(CGRect)a4 resource:(id)a5 playbackStyle:(int64_t)a6 transitionInfo:(id *)a7;
+- (int64_t)addSegmentWithResources:(id)a3 preferredDuration:(id *)a4 compositionInfo:(id *)a5 transitionInfo:(id *)a6;
+- (int64_t)addSegmentWithTimeRange:(id *)a3 compositionInfo:(id *)a4 transitionInfo:(id *)a5;
+@end
+
+@implementation PXStoryMutableDummyTimeline
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  v4 = [PXStoryDummyTimeline alloc];
+  return [(PXStoryDummyTimeline *)v4 initWithTimeline:self];
+}
+
+- (int64_t)addSegmentWithResources:(id)a3 preferredDuration:(id *)a4 compositionInfo:(id *)a5 transitionInfo:(id *)a6
+{
+  long long v21 = 0u;
+  long long v22 = 0u;
+  long long v20 = 0u;
+  id v10 = a3;
+  [(PXStoryDummyTimeline *)self timeRange];
+  memset(&v19, 0, sizeof(v19));
+  v18.epoch = 0;
+  *(_OWORD *)&v18.value = PXStoryTimeZero;
+  *($3CC8671D27C23BF42ADDB32F2B5E48AE *)duration = *a4;
+  *(_OWORD *)&range.start.value = PXStoryTimeZero;
+  range.start.epoch = 0;
+  CMTimeRangeMake(&v19, &range.start, (CMTime *)duration);
+  CMTimeRange range = v19;
+  long long v11 = *(_OWORD *)&a5->var2;
+  *(_OWORD *)duration = *(_OWORD *)&a5->var0;
+  *(_OWORD *)&duration[16] = v11;
+  int64_t var4 = a5->var4;
+  long long v12 = *(_OWORD *)&a6->var2.var1;
+  v14[0] = *(_OWORD *)&a6->var0;
+  v14[1] = v12;
+  uint64_t v15 = *(void *)&a6->var3;
+  [(PXStoryMutableDummyTimeline *)self addSegmentWithTimeRange:&range compositionInfo:duration transitionInfo:v14];
+  [(PXStoryDummyTimeline *)self size];
+  PXRectWithOriginAndSize();
+}
+
+void __104__PXStoryMutableDummyTimeline_addSegmentWithResources_preferredDuration_compositionInfo_transitionInfo___block_invoke(uint64_t a1, void *a2, unint64_t a3)
+{
+  id v5 = a2;
+  double v6 = *(double *)(a1 + 40);
+  double v7 = *(double *)(a1 + 48);
+  double v8 = *(double *)(a1 + 56);
+  double v9 = *(double *)(a1 + 64);
+  double v10 = *(double *)(a1 + 72);
+  uint64_t v11 = *(void *)(a1 + 80);
+  if (objc_msgSend(v5, "px_storyResourceKind") == 1)
+  {
+    long long v12 = objc_msgSend(v5, "px_storyResourceDisplayAsset");
+    uint64_t v13 = [v12 playbackStyle];
+  }
+  else
+  {
+    uint64_t v13 = 0;
+  }
+  v14 = *(void **)(a1 + 32);
+  long long v15 = *(_OWORD *)(a1 + 144);
+  v19[0] = *(_OWORD *)(a1 + 128);
+  v19[1] = v15;
+  v19[2] = *(_OWORD *)(a1 + 160);
+  long long v16 = *(_OWORD *)(a1 + 104);
+  v17[0] = *(_OWORD *)(a1 + 88);
+  v17[1] = v16;
+  uint64_t v18 = *(void *)(a1 + 120);
+  objc_msgSend(v14, "addClipWithTimeRange:frame:resource:playbackStyle:transitionInfo:", v19, v5, v13, v17, v6, v7 + (double)a3 * (v10 + (v9 + v10) / (double)v11 - v10), v8);
+}
+
+- (int64_t)addSegmentWithTimeRange:(id *)a3 compositionInfo:(id *)a4 transitionInfo:(id *)a5
+{
+  double v8 = self;
+  int64_t v9 = [(PXStoryDummyTimeline *)self numberOfSegments];
+  [(PXStoryDummyTimeline *)v8 setNumberOfSegments:v9 + 1];
+  memset(&v31[56], 0, 7);
+  *($3CC8671D27C23BF42ADDB32F2B5E48AE *)&v54[8] = a3->var1;
+  *(void *)v54 = 0;
+  long long v53 = PXStoryTimeZero;
+  memset(v56, 0, 40);
+  long long v55 = PXStoryTimeMaximum;
+  long long v50 = 0u;
+  long long v51 = 0u;
+  uint64_t v52 = 0;
+  long long v47 = 0u;
+  long long v48 = 0u;
+  uint64_t v49 = 0;
+  long long v40 = 0u;
+  long long v41 = 0u;
+  long long v42 = 0u;
+  long long v43 = 0u;
+  long long v44 = 0u;
+  long long v45 = 0u;
+  uint64_t v46 = 0;
+  v39[0] = 0;
+  *(_DWORD *)((char *)v39 + 3) = 0;
+  long long v10 = *(_OWORD *)&a5->var2.var1;
+  *(_OWORD *)v31 = *(_OWORD *)&a5->var0;
+  *(_OWORD *)&v31[16] = v10;
+  *(void *)&v31[32] = *(void *)&a5->var3;
+  long long v11 = *(_OWORD *)&a4->var2;
+  long long v28 = *(_OWORD *)&a4->var0;
+  long long v29 = v11;
+  *(void *)&long long v30 = a4->var4;
+  long long v32 = PXStoryTimeZero;
+  long long v33 = *(_OWORD *)v54;
+  uint64_t v38 = 0;
+  long long v36 = v56[0];
+  long long v37 = v56[1];
+  long long v34 = *(_OWORD *)&v54[16];
+  long long v35 = PXStoryTimeMaximum;
+  int64_t add = (int)atomic_fetch_add(PXStorySegmentIdentifierMakeUnique_uniqueIdentifier, 1u);
+  long long v50 = v28;
+  long long v51 = v29;
+  uint64_t v52 = v30;
+  long long v47 = *(_OWORD *)v31;
+  long long v48 = *(_OWORD *)&v31[16];
+  uint64_t v49 = *(void *)&v31[32];
+  long long v44 = v36;
+  long long v45 = v37;
+  uint64_t v46 = v38;
+  long long v40 = v32;
+  long long v41 = v33;
+  long long v42 = v34;
+  long long v43 = v35;
+  *(_DWORD *)((char *)v39 + 3) = *(_DWORD *)&v31[59];
+  v39[0] = *(_DWORD *)&v31[56];
+  uint64_t v13 = &v8->super._segmentTimeRanges[v9];
+  long long v15 = *(_OWORD *)&a3->var0.var3;
+  long long v14 = *(_OWORD *)&a3->var1.var1;
+  *(_OWORD *)&v13->var0.var0 = *(_OWORD *)&a3->var0.var0;
+  *(_OWORD *)&v13->var0.var3 = v15;
+  *(_OWORD *)&v13->var1.var1 = v14;
+  uint64_t v16 = (uint64_t)v8->super._segmentInfos + 200 * v9;
+  *(void *)uint64_t v16 = add;
+  long long v17 = v51;
+  *(_OWORD *)(v16 + 8) = v50;
+  *(_OWORD *)(v16 + 24) = v17;
+  *(void *)(v16 + 40) = v52;
+  long long v18 = v48;
+  *(_OWORD *)(v16 + 48) = v47;
+  *(_OWORD *)(v16 + 64) = v18;
+  *(void *)(v16 + 80) = v49;
+  long long v19 = v43;
+  *(_OWORD *)(v16 + 120) = v42;
+  long long v20 = v40;
+  *(_OWORD *)(v16 + 104) = v41;
+  *(_OWORD *)(v16 + 88) = v20;
+  long long v21 = v44;
+  long long v22 = v45;
+  *(void *)(v16 + 184) = v46;
+  *(_OWORD *)(v16 + 168) = v22;
+  *(_OWORD *)(v16 + 152) = v21;
+  *(_OWORD *)(v16 + 136) = v19;
+  *(unsigned char *)(v16 + 192) = 0;
+  int v23 = v39[0];
+  *(_DWORD *)(v16 + 196) = *(_DWORD *)((char *)v39 + 3);
+  *(_DWORD *)(v16 + 193) = v23;
+  double v8 = (PXStoryMutableDummyTimeline *)((char *)v8 + 8);
+  long long v24 = *(_OWORD *)&v8->super._timeRange.start.timescale;
+  *(_OWORD *)v31 = *(_OWORD *)&v8->super.super.super.isa;
+  *(_OWORD *)&v31[16] = v24;
+  *(_OWORD *)&v31[32] = *(_OWORD *)&v8->super._timeRange.duration.value;
+  long long v25 = *(_OWORD *)&a3->var0.var3;
+  long long v28 = *(_OWORD *)&a3->var0.var0;
+  long long v29 = v25;
+  long long v30 = *(_OWORD *)&a3->var1.var1;
+  PXStoryTimeRangeUnion((CMTimeRange *)v31, (uint64_t)&v28, (uint64_t)&v32);
+  long long v26 = v33;
+  *(_OWORD *)&v8->super.super.super.isa = v32;
+  *(_OWORD *)&v8->super._timeRange.start.timescale = v26;
+  *(_OWORD *)&v8->super._timeRange.duration.value = v34;
+  return add;
+}
+
+- (int64_t)addClipWithTimeRange:(id *)a3 frame:(CGRect)a4 resource:(id)a5 playbackStyle:(int64_t)a6 transitionInfo:(id *)a7
+{
+  CGFloat height = a4.size.height;
+  CGFloat width = a4.size.width;
+  CGFloat y = a4.origin.y;
+  CGFloat x = a4.origin.x;
+  *($3CC8671D27C23BF42ADDB32F2B5E48AE *)&v97[8] = a3->var1;
+  *(void *)v97 = 0;
+  long long v96 = PXStoryTimeZero;
+  memset(v99, 0, 40);
+  long long v98 = PXStoryTimeMaximum;
+  id v15 = a5;
+  uint64_t add = (int)atomic_fetch_add(PXStoryClipIdentifierMakeUnique_uniqueIdentifier, 1u);
+  uint64_t v17 = objc_msgSend(v15, "px_storyResourceKind");
+  uint64_t v18 = *(void *)off_1E5DAAF10;
+  uint64_t v19 = *((void *)off_1E5DAAF10 + 1);
+  uint64_t v20 = *((void *)off_1E5DAAF10 + 2);
+  uint64_t v21 = *((void *)off_1E5DAAF10 + 3);
+  long long v22 = *(_OWORD *)&a7->var2.var1;
+  long long v93 = *(_OWORD *)&a7->var0;
+  long long v94 = v22;
+  uint64_t v95 = *(void *)&a7->var3;
+  int64_t v23 = [(PXStoryDummyTimeline *)self numberOfClips];
+  [(PXStoryDummyTimeline *)self setNumberOfClips:v23 + 1];
+  long long v24 = &self->super._clipTimeRanges[v23];
+  long long v25 = *(_OWORD *)&a3->var0.var0;
+  long long v26 = *(_OWORD *)&a3->var1.var1;
+  *(_OWORD *)&v24->var0.var3 = *(_OWORD *)&a3->var0.var3;
+  *(_OWORD *)&v24->var1.var1 = v26;
+  *(_OWORD *)&v24->var0.var0 = v25;
+  v27 = &self->super._clipFrames[v23];
+  v27->origin.CGFloat x = x;
+  v27->origin.CGFloat y = y;
+  v27->size.CGFloat width = width;
+  v27->size.CGFloat height = height;
+  long long v28 = (char *)self->super._clipInfos + 768 * v23;
+  *(void *)long long v28 = add;
+  *((void *)v28 + 1) = v17;
+  *((CGFloat *)v28 + 2) = width;
+  *((CGFloat *)v28 + 3) = height;
+  *((void *)v28 + 4) = 0;
+  uint64_t v29 = *(void *)&v99[2];
+  long long v30 = v99[0];
+  *(_OWORD *)(v28 + 120) = v99[1];
+  *(_OWORD *)(v28 + 104) = v30;
+  long long v31 = *(_OWORD *)&v97[16];
+  *(_OWORD *)(v28 + 88) = v98;
+  *(_OWORD *)(v28 + 72) = v31;
+  long long v32 = v96;
+  *(_OWORD *)(v28 + 56) = *(_OWORD *)v97;
+  *(_OWORD *)(v28 + 40) = v32;
+  *((void *)v28 + 17) = v29;
+  *((void *)v28 + 18) = 0;
+  *((void *)v28 + 19) = a6;
+  *((_OWORD *)v28 + 12) = xmmword_1AB35D0C0;
+  *((_OWORD *)v28 + 13) = xmmword_1AB35D0D0;
+  *((_OWORD *)v28 + 10) = PXStoryAssetContentInfoNull;
+  *((_OWORD *)v28 + 11) = xmmword_1AB35D0B0;
+  *((_OWORD *)v28 + 17) = xmmword_1AB35D110;
+  *((_OWORD *)v28 + 18) = xmmword_1AB35D120;
+  *((_OWORD *)v28 + 15) = xmmword_1AB35D0F0;
+  *((_OWORD *)v28 + 16) = xmmword_1AB35D100;
+  *((_OWORD *)v28 + 14) = xmmword_1AB35D0E0;
+  *((void *)v28 + 38) = v18;
+  *((void *)v28 + 39) = v19;
+  *((void *)v28 + 40) = v20;
+  *((void *)v28 + 41) = v21;
+  *((void *)v28 + 68) = 0;
+  *((_OWORD *)v28 + 31) = xmmword_1AB35D1D0;
+  *((_OWORD *)v28 + 32) = xmmword_1AB35D1E0;
+  *((_OWORD *)v28 + 33) = xmmword_1AB35D1F0;
+  *((_OWORD *)v28 + 27) = xmmword_1AB35D190;
+  *((_OWORD *)v28 + 28) = unk_1AB35D1A0;
+  *((_OWORD *)v28 + 29) = xmmword_1AB35D1B0;
+  *((_OWORD *)v28 + 30) = xmmword_1AB35D1C0;
+  *((_OWORD *)v28 + 23) = xmmword_1AB35D150;
+  *((_OWORD *)v28 + 24) = unk_1AB35D160;
+  *((_OWORD *)v28 + 25) = xmmword_1AB35D170;
+  *((_OWORD *)v28 + 26) = unk_1AB35D180;
+  *((_OWORD *)v28 + 21) = PXStoryClippingAnimationInfoNone;
+  *((_OWORD *)v28 + 22) = unk_1AB35D140;
+  *((void *)v28 + 83) = 0;
+  *(_OWORD *)(v28 + 616) = xmmword_1AB35D248;
+  *(_OWORD *)(v28 + 632) = xmmword_1AB35D258;
+  *(_OWORD *)(v28 + 648) = xmmword_1AB35D268;
+  *(_OWORD *)(v28 + 552) = PXStoryKenBurnsAnimationInfoNone;
+  *(_OWORD *)(v28 + 568) = unk_1AB35D218;
+  *(_OWORD *)(v28 + 584) = xmmword_1AB35D228;
+  *(_OWORD *)(v28 + 600) = xmmword_1AB35D238;
+  long long v33 = v93;
+  long long v34 = v94;
+  *((void *)v28 + 88) = v95;
+  *((_OWORD *)v28 + 42) = v33;
+  *((_OWORD *)v28 + 43) = v34;
+  *(_OWORD *)(v28 + 712) = 0u;
+  *(_OWORD *)(v28 + 728) = 0u;
+  *(_OWORD *)(v28 + 744) = 0u;
+  *((void *)v28 + 95) = 0;
+  long long v35 = *(_OWORD *)&self->super._timeRange.start.epoch;
+  *(_OWORD *)&v92.start.value = *(_OWORD *)&self->super._timeRange.start.value;
+  *(_OWORD *)&v92.start.epoch = v35;
+  *(_OWORD *)&v92.duration.timescale = *(_OWORD *)&self->super._timeRange.duration.timescale;
+  long long v36 = *(_OWORD *)&a3->var0.var3;
+  v91[0] = *(_OWORD *)&a3->var0.var0;
+  v91[1] = v36;
+  v91[2] = *(_OWORD *)&a3->var1.var1;
+  PXStoryTimeRangeUnion(&v92, (uint64_t)v91, (uint64_t)&v46);
+  long long v37 = v47;
+  *(_OWORD *)&self->super._timeRange.start.value = v46;
+  *(_OWORD *)&self->super._timeRange.start.epoch = v37;
+  *(_OWORD *)&self->super._timeRange.duration.timescale = *(_OWORD *)v48;
+  uint64_t v38 = objc_msgSend(v15, "px_storyResourceIdentifier");
+  NSUInteger v39 = [(NSCountedSet *)self->super._resourceOccurrenceCounts countForObject:v38];
+  long long v40 = [PXStoryDummyClip alloc];
+  *(CGFloat *)&long long v47 = width;
+  *((CGFloat *)&v47 + 1) = height;
+  long long v49 = PXStoryAssetContentInfoNull;
+  long long v50 = xmmword_1AB35D0B0;
+  *(_OWORD *)&v48[7] = v98;
+  *(_OWORD *)&v48[9] = v99[0];
+  *(_OWORD *)&v48[11] = v99[1];
+  *(_OWORD *)&v48[1] = v96;
+  *(_OWORD *)&v48[3] = *(_OWORD *)v97;
+  *(_OWORD *)&v48[5] = *(_OWORD *)&v97[16];
+  *(void *)&long long v46 = add;
+  *((void *)&v46 + 1) = v17;
+  v48[0] = 0;
+  v48[13] = *(void *)&v99[2];
+  v48[14] = 0;
+  v48[15] = a6;
+  long long v51 = xmmword_1AB35D0C0;
+  long long v52 = xmmword_1AB35D0D0;
+  long long v56 = xmmword_1AB35D110;
+  long long v57 = xmmword_1AB35D120;
+  long long v53 = xmmword_1AB35D0E0;
+  long long v54 = xmmword_1AB35D0F0;
+  long long v55 = xmmword_1AB35D100;
+  uint64_t v58 = v18;
+  uint64_t v59 = v19;
+  uint64_t v60 = v20;
+  uint64_t v61 = v21;
+  uint64_t v75 = 0;
+  long long v72 = xmmword_1AB35D1D0;
+  long long v73 = xmmword_1AB35D1E0;
+  long long v74 = xmmword_1AB35D1F0;
+  long long v68 = xmmword_1AB35D190;
+  long long v69 = unk_1AB35D1A0;
+  long long v70 = xmmword_1AB35D1B0;
+  long long v71 = xmmword_1AB35D1C0;
+  long long v64 = xmmword_1AB35D150;
+  long long v65 = unk_1AB35D160;
+  long long v66 = xmmword_1AB35D170;
+  long long v67 = unk_1AB35D180;
+  long long v62 = PXStoryClippingAnimationInfoNone;
+  long long v63 = unk_1AB35D140;
+  long long v80 = xmmword_1AB35D248;
+  long long v81 = xmmword_1AB35D258;
+  long long v82 = xmmword_1AB35D268;
+  long long v76 = PXStoryKenBurnsAnimationInfoNone;
+  long long v77 = unk_1AB35D218;
+  long long v78 = xmmword_1AB35D228;
+  long long v79 = xmmword_1AB35D238;
+  uint64_t v83 = 0;
+  uint64_t v86 = v95;
+  long long v85 = v94;
+  long long v84 = v93;
+  long long v87 = 0u;
+  long long v88 = 0u;
+  long long v89 = 0u;
+  uint64_t v90 = 0;
+  long long v41 = [(PXStoryDummyClip *)v40 initWithInfo:&v46 resource:v15 resourceOccurrenceIndex:v39];
+
+  clipsByIdentifier = self->super._clipsByIdentifier;
+  long long v43 = objc_msgSend(NSNumber, "numberWithInteger:", -[PXStoryDummyClip identifier](v41, "identifier"));
+  [(NSMutableDictionary *)clipsByIdentifier setObject:v41 forKeyedSubscript:v43];
+
+  [(NSCountedSet *)self->super._resourceOccurrenceCounts addObject:v38];
+  int64_t v44 = [(PXStoryDummyClip *)v41 identifier];
+
+  return v44;
+}
+
+@end

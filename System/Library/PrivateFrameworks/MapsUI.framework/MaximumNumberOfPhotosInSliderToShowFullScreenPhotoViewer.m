@@ -1,0 +1,11 @@
+@interface MaximumNumberOfPhotosInSliderToShowFullScreenPhotoViewer
+@end
+
+@implementation MaximumNumberOfPhotosInSliderToShowFullScreenPhotoViewer
+
+void *MapsUIConfig_MaximumNumberOfPhotosInSliderToShowFullScreenPhotoViewer_Metadata_block_invoke_10()
+{
+  return &unk_1EE404F28;
+}
+
+@end

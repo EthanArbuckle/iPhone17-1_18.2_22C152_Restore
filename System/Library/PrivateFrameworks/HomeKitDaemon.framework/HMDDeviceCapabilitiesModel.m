@@ -1,0 +1,214 @@
+@interface HMDDeviceCapabilitiesModel
++ (id)properties;
++ (id)schemaHashRoot;
+@end
+
+@implementation HMDDeviceCapabilitiesModel
+
++ (id)properties
+{
+  if (properties_onceToken_216746 != -1) {
+    dispatch_once(&properties_onceToken_216746, &__block_literal_global_764);
+  }
+  v2 = (void *)properties__properties_216747;
+  return v2;
+}
+
+void __40__HMDDeviceCapabilitiesModel_properties__block_invoke()
+{
+  v64[61] = *MEMORY[0x263EF8340];
+  v63[0] = @"supportsKeychainSync";
+  v62 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[0] = v62;
+  v63[1] = @"supportsDeviceSetup";
+  v61 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[1] = v61;
+  v63[2] = @"supportsKeyTransferClient";
+  v60 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[2] = v60;
+  v63[3] = @"supportsKeyTransferServer";
+  v59 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[3] = v59;
+  v63[4] = @"supportsStandaloneMode";
+  v58 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[4] = v58;
+  v63[5] = @"supportsCloudDataSync";
+  v57 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[5] = v57;
+  v63[6] = @"supportsWholeHouseAudio";
+  v56 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[6] = v56;
+  v63[7] = @"supportsAssistantAccessControl";
+  v55 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[7] = v55;
+  v63[8] = @"residentCapable";
+  v54 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[8] = v54;
+  v63[9] = @"remoteGatewayCapable";
+  v53 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[9] = v53;
+  v63[10] = @"supportsHomeInvitation";
+  v52 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[10] = v52;
+  v63[11] = @"supportsTargetControl";
+  v51 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[11] = v51;
+  v63[12] = @"supportsMultiUser";
+  v50 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[12] = v50;
+  v63[13] = @"supportsHomeLevelLocationServiceSetting";
+  v49 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[13] = v49;
+  v63[14] = @"supportsCompanionInitiatedRestart";
+  v48 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[14] = v48;
+  v63[15] = @"supportsCompanionInitiatedObliterate";
+  v47 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[15] = v47;
+  v63[16] = @"supportsCameraRecording";
+  v46 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[16] = v46;
+  v63[17] = @"supportsRouterManagement";
+  v45 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[17] = v45;
+  v63[18] = @"supportsShortcutActions";
+  v44 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[18] = v44;
+  v63[19] = @"supportsMediaActions";
+  v43 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[19] = v43;
+  v63[20] = @"supportsFirmwareUpdate";
+  v42 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[20] = v42;
+  v63[21] = @"supportsResidentFirmwareUpdate";
+  v41 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[21] = v41;
+  v63[22] = @"supportsCameraActivityZones";
+  v40 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[22] = v40;
+  v63[23] = @"supportsMusicAlarm";
+  v39 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[23] = v39;
+  v63[24] = @"supportsFaceClassification";
+  v38 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[24] = v38;
+  v63[25] = @"supportsNaturalLighting";
+  v37 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[25] = v37;
+  v63[26] = @"supportsIDSActivityMonitorPresence";
+  v36 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[26] = v36;
+  v63[27] = @"supportsCameraRecordingReachabilityNotifications";
+  v35 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[27] = v35;
+  v63[28] = @"supportsAnnounce";
+  v34 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[28] = v34;
+  v63[29] = @"supportsAudioAnalysis";
+  v33 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[29] = v33;
+  v63[30] = @"supportsDropIn";
+  v32 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[30] = v32;
+  v63[31] = @"supportsThirdPartyMusic";
+  v31 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[31] = v31;
+  v63[32] = @"supportsPreferredMediaUser";
+  v30 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[32] = v30;
+  v63[33] = @"supportsThreadBorderRouter";
+  v29 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[33] = v29;
+  v63[34] = @"supportsSiriEndpointSetup";
+  v28 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[34] = v28;
+  v63[35] = @"supportsHomeHub";
+  v27 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[35] = v27;
+  v63[36] = @"supportsWakeOnLAN";
+  v26 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[36] = v26;
+  v63[37] = @"supportsLockNotificationContext";
+  v25 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[37] = v25;
+  v63[38] = @"supportsCoordinationDoorbellChime";
+  v24 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[38] = v24;
+  v63[39] = @"supportsCoordinationFreeDoorbellChime";
+  v23 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[39] = v23;
+  v63[40] = @"supportsTVOSUpdateManualUpdateAvailableNotification";
+  v22 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[40] = v22;
+  v63[41] = @"supportsAudioReturnChannel";
+  v21 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[41] = v21;
+  v63[42] = @"supportsWalletKey";
+  v20 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[42] = v20;
+  v63[43] = @"supportsCameraPackageDetection";
+  v19 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[43] = v19;
+  v63[44] = @"supportsAccessCodes";
+  v18 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[44] = v18;
+  v63[45] = @"supportsCHIP";
+  v17 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[45] = v17;
+  v63[46] = @"supportsDoorbellChime";
+  v16 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[46] = v16;
+  v63[47] = @"supportsUserMediaSettings";
+  v15 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[47] = v15;
+  v63[48] = @"supportsUnifiedMediaNotifications";
+  v14 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[48] = v14;
+  v63[49] = @"supportsManagedConfigurationProfile";
+  v13 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[49] = v13;
+  v63[50] = @"supportsCaptiveNetworks";
+  v12 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[50] = v12;
+  v63[51] = @"supportsModernTransport";
+  v11 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[51] = v11;
+  v63[52] = @"supportsResidentFirstAccessoryCommunication";
+  v0 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[52] = v0;
+  v63[53] = @"supportsMessagedHomePodSettings";
+  v1 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[53] = v1;
+  v63[54] = @"supportsCustomMediaApplicationDestination";
+  v2 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[54] = v2;
+  v63[55] = @"supportsThreadNetworkCredentialSharing";
+  v3 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[55] = v3;
+  v63[56] = @"supportsMatterSharedAdminPairing";
+  v4 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[56] = v4;
+  v63[57] = @"supportsRMVonAppleTV";
+  v5 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[57] = v5;
+  v63[58] = @"supportsJustSiri";
+  v6 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[58] = v6;
+  v63[59] = @"supportsThreadService";
+  v7 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[59] = v7;
+  v63[60] = @"supportsMatterOwnerCertFetch";
+  v8 = +[HMDBackingStoreModelObjectStorageInfo infoWithClass:objc_opt_class()];
+  v64[60] = v8;
+  uint64_t v9 = [NSDictionary dictionaryWithObjects:v64 forKeys:v63 count:61];
+  v10 = (void *)properties__properties_216747;
+  properties__properties_216747 = v9;
+}
+
++ (id)schemaHashRoot
+{
+  v2 = (void *)[@"D1529AFE-D6F2-4562-AFD9-33A176868B4E" copy];
+  return v2;
+}
+
+@end

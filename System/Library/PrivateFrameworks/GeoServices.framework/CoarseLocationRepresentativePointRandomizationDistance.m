@@ -1,0 +1,11 @@
+@interface CoarseLocationRepresentativePointRandomizationDistance
+@end
+
+@implementation CoarseLocationRepresentativePointRandomizationDistance
+
+void *GeoServicesConfig_CoarseLocationRepresentativePointRandomizationDistance_Metadata_block_invoke_332()
+{
+  return &unk_1ED73E758;
+}
+
+@end

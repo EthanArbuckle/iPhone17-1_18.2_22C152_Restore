@@ -1,0 +1,93 @@
+@interface MFYahooSMTPAccount
++ (id)accountTypeIdentifier;
+- (BOOL)shouldFetchACEDBInfoForError:(id)a3;
+- (BOOL)shouldUseAuthentication;
+- (BOOL)usesSSL;
+- (YahooAccount)mailAccountIfAvailable;
+- (id)accountForRenewingCredentials;
+- (id)displayHostname;
+- (id)hostname;
+- (id)oauth2Token;
+- (id)password;
+- (id)preferredAuthScheme;
+- (id)username;
+- (unsigned)portNumber;
+- (void)setMailAccount:(id)a3;
+@end
+
+@implementation MFYahooSMTPAccount
+
++ (id)accountTypeIdentifier
+{
+  return 0;
+}
+
+- (id)accountForRenewingCredentials
+{
+  return [(MFAccount *)self->_account accountForRenewingCredentials];
+}
+
+- (BOOL)shouldUseAuthentication
+{
+  return 1;
+}
+
+- (BOOL)usesSSL
+{
+  return +[YahooAccount deliveryAccountUsesSSL];
+}
+
+- (id)hostname
+{
+  return +[YahooAccount deliveryAccountHostname];
+}
+
+- (unsigned)portNumber
+{
+  return +[YahooAccount deliveryAccountPortNumber];
+}
+
+- (id)username
+{
+  return [(MFAccount *)self->_account username];
+}
+
+- (id)password
+{
+  return [(MFAccount *)self->_account password];
+}
+
+- (id)oauth2Token
+{
+  return [(MFAccount *)self->_account oauth2Token];
+}
+
+- (id)preferredAuthScheme
+{
+  return [(YahooAccount *)self->_account preferredAuthScheme];
+}
+
+- (id)displayHostname
+{
+  return MFLookupLocalizedString(@"YAHOO_DELIVERY_HOSTNAME", @"Yahoo! SMTP Server", @"Delayed");
+}
+
+- (BOOL)shouldFetchACEDBInfoForError:(id)a3
+{
+  return 0;
+}
+
+- (YahooAccount)mailAccountIfAvailable
+{
+  return self->_account;
+}
+
+- (void)setMailAccount:(id)a3
+{
+}
+
+- (void).cxx_destruct
+{
+}
+
+@end

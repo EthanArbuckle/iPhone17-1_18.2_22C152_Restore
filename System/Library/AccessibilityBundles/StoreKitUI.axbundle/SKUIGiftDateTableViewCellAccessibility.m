@@ -1,0 +1,87 @@
+@interface SKUIGiftDateTableViewCellAccessibility
++ (Class)safeCategoryBaseClass;
++ (id)safeCategoryTargetClassName;
++ (void)_accessibilityPerformValidations:(id)a3;
+- (BOOL)isAccessibilityElement;
+- (id)_accessibilitySupplementaryFooterViews;
+- (id)accessibilityHint;
+- (id)accessibilityLabel;
+- (id)accessibilityValue;
+- (unint64_t)accessibilityTraits;
+@end
+
+@implementation SKUIGiftDateTableViewCellAccessibility
+
++ (id)safeCategoryTargetClassName
+{
+  return @"SKUIGiftDateTableViewCell";
+}
+
++ (Class)safeCategoryBaseClass
+{
+  return (Class)objc_opt_class();
+}
+
++ (void)_accessibilityPerformValidations:(id)a3
+{
+  id v3 = a3;
+  objc_msgSend(v3, "validateClass:hasInstanceMethod:withFullSignature:", @"SKUIGiftDateTableViewCell", @"label", "@", 0);
+  objc_msgSend(v3, "validateClass:hasInstanceMethod:withFullSignature:", @"SKUIGiftDateTableViewCell", @"date", "@", 0);
+  [v3 validateClass:@"SKUIGiftDateTableViewCell" hasInstanceVariable:@"_datePicker" withType:"UIDatePicker"];
+}
+
+- (BOOL)isAccessibilityElement
+{
+  return 1;
+}
+
+- (unint64_t)accessibilityTraits
+{
+  uint64_t v2 = *MEMORY[0x263F1CEE8];
+  int v3 = [(SKUIGiftDateTableViewCellAccessibility *)self safeBoolForKey:@"isChecked"];
+  uint64_t v4 = *MEMORY[0x263F1CF38];
+  if (!v3) {
+    uint64_t v4 = 0;
+  }
+  return v4 | v2;
+}
+
+- (id)accessibilityLabel
+{
+  return (id)[(SKUIGiftDateTableViewCellAccessibility *)self safeValueForKey:@"label"];
+}
+
+- (id)accessibilityValue
+{
+  uint64_t v2 = [(SKUIGiftDateTableViewCellAccessibility *)self safeValueForKey:@"_datePicker"];
+  int v3 = [v2 accessibilityLabel];
+
+  return v3;
+}
+
+- (id)accessibilityHint
+{
+  return accessibilitySKUILocalizedString(@"send.gift.date.hint");
+}
+
+- (id)_accessibilitySupplementaryFooterViews
+{
+  v8[1] = *MEMORY[0x263EF8340];
+  int v3 = [(SKUIGiftDateTableViewCellAccessibility *)self safeValueForKey:@"_datePicker"];
+  if ([v3 isDescendantOfView:self])
+  {
+    v8[0] = v3;
+    uint64_t v4 = [MEMORY[0x263EFF8C0] arrayWithObjects:v8 count:1];
+  }
+  else
+  {
+    v7.receiver = self;
+    v7.super_class = (Class)SKUIGiftDateTableViewCellAccessibility;
+    uint64_t v4 = [(SKUIGiftDateTableViewCellAccessibility *)&v7 _accessibilitySupplementaryFooterViews];
+  }
+  v5 = (void *)v4;
+
+  return v5;
+}
+
+@end

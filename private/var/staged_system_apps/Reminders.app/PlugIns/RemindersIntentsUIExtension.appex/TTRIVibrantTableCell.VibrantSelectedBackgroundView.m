@@ -1,0 +1,26 @@
+@interface TTRIVibrantTableCell.VibrantSelectedBackgroundView
+- (_TtCC27RemindersIntentsUIExtension20TTRIVibrantTableCellP33_A16CC222747B0398DAEED7873719199929VibrantSelectedBackgroundView)init;
+- (_TtCC27RemindersIntentsUIExtension20TTRIVibrantTableCellP33_A16CC222747B0398DAEED7873719199929VibrantSelectedBackgroundView)initWithCoder:(id)a3;
+- (_TtCC27RemindersIntentsUIExtension20TTRIVibrantTableCellP33_A16CC222747B0398DAEED7873719199929VibrantSelectedBackgroundView)initWithEffect:(id)a3;
+@end
+
+@implementation TTRIVibrantTableCell.VibrantSelectedBackgroundView
+
+- (_TtCC27RemindersIntentsUIExtension20TTRIVibrantTableCellP33_A16CC222747B0398DAEED7873719199929VibrantSelectedBackgroundView)init
+{
+  return (_TtCC27RemindersIntentsUIExtension20TTRIVibrantTableCellP33_A16CC222747B0398DAEED7873719199929VibrantSelectedBackgroundView *)sub_100012E14();
+}
+
+- (_TtCC27RemindersIntentsUIExtension20TTRIVibrantTableCellP33_A16CC222747B0398DAEED7873719199929VibrantSelectedBackgroundView)initWithEffect:(id)a3
+{
+  v5.receiver = self;
+  v5.super_class = (Class)type metadata accessor for TTRIVibrantTableCell.VibrantSelectedBackgroundView();
+  return [(TTRIVibrantTableCell.VibrantSelectedBackgroundView *)&v5 initWithEffect:a3];
+}
+
+- (_TtCC27RemindersIntentsUIExtension20TTRIVibrantTableCellP33_A16CC222747B0398DAEED7873719199929VibrantSelectedBackgroundView)initWithCoder:(id)a3
+{
+  return (_TtCC27RemindersIntentsUIExtension20TTRIVibrantTableCellP33_A16CC222747B0398DAEED7873719199929VibrantSelectedBackgroundView *)sub_10001327C(self, (uint64_t)a2, (uint64_t)a3, 0, (uint64_t (*)(uint64_t))type metadata accessor for TTRIVibrantTableCell.VibrantSelectedBackgroundView);
+}
+
+@end

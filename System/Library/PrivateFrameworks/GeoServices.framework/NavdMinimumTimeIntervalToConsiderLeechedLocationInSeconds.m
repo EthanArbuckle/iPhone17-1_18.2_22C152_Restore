@@ -1,0 +1,11 @@
+@interface NavdMinimumTimeIntervalToConsiderLeechedLocationInSeconds
+@end
+
+@implementation NavdMinimumTimeIntervalToConsiderLeechedLocationInSeconds
+
+void *GeoServicesConfig_NavdMinimumTimeIntervalToConsiderLeechedLocationInSeconds_Metadata_block_invoke_246()
+{
+  return &unk_1ED73E470;
+}
+
+@end

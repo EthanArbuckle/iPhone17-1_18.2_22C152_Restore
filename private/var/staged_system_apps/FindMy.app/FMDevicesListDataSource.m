@@ -1,0 +1,91 @@
+@interface FMDevicesListDataSource
+- (_TtC6FindMy23FMDevicesListDataSource)init;
+- (id)tableView:(id)a3 cellForRowAtIndexPath:(id)a4;
+- (id)tableView:(id)a3 titleForHeaderInSection:(int64_t)a4;
+- (int64_t)numberOfSectionsInTableView:(id)a3;
+- (int64_t)tableView:(id)a3 numberOfRowsInSection:(int64_t)a4;
+@end
+
+@implementation FMDevicesListDataSource
+
+- (int64_t)numberOfSectionsInTableView:(id)a3
+{
+  return (*(void **)((char *)&self->super.isa + OBJC_IVAR____TtC6FindMy23FMDevicesListDataSource_cellsViewModel))[2];
+}
+
+- (int64_t)tableView:(id)a3 numberOfRowsInSection:(int64_t)a4
+{
+  if (a4 < 0)
+  {
+    __break(1u);
+  }
+  else
+  {
+    uint64_t v4 = *(void *)(self + OBJC_IVAR____TtC6FindMy23FMDevicesListDataSource_cellsViewModel);
+    if (*(void *)(v4 + 16) > (unint64_t)a4) {
+      return *(void *)(*(void *)(v4 + 8 * a4 + 32) + 16);
+    }
+  }
+  __break(1u);
+  return self;
+}
+
+- (id)tableView:(id)a3 cellForRowAtIndexPath:(id)a4
+{
+  uint64_t v6 = type metadata accessor for IndexPath();
+  uint64_t v7 = *(void *)(v6 - 8);
+  __chkstk_darwin(v6);
+  v9 = (char *)&v14 - ((v8 + 15) & 0xFFFFFFFFFFFFFFF0);
+  static IndexPath._unconditionallyBridgeFromObjectiveC(_:)();
+  id v10 = a3;
+  v11 = self;
+  v12 = (void *)sub_10032DC2C(v10);
+
+  (*(void (**)(char *, uint64_t))(v7 + 8))(v9, v6);
+
+  return v12;
+}
+
+- (id)tableView:(id)a3 titleForHeaderInSection:(int64_t)a4
+{
+  id v6 = a3;
+  uint64_t v7 = self;
+  sub_10033A914(a4);
+  uint64_t v9 = v8;
+
+  if (v9)
+  {
+    NSString v10 = String._bridgeToObjectiveC()();
+    swift_bridgeObjectRelease();
+  }
+  else
+  {
+    NSString v10 = 0;
+  }
+
+  return v10;
+}
+
+- (_TtC6FindMy23FMDevicesListDataSource)init
+{
+  result = (_TtC6FindMy23FMDevicesListDataSource *)_swift_stdlib_reportUnimplementedInitializer();
+  __break(1u);
+  return result;
+}
+
+- (void).cxx_destruct
+{
+  sub_100068760((uint64_t)self + OBJC_IVAR____TtC6FindMy23FMDevicesListDataSource_delegate);
+  swift_release();
+
+  swift_release();
+  swift_release();
+  swift_bridgeObjectRelease();
+  swift_release();
+
+  swift_release();
+
+  swift_bridgeObjectRelease();
+}
+
+@end

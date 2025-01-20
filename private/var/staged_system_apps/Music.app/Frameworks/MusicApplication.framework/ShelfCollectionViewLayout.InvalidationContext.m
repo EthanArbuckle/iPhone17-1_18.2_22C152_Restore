@@ -1,0 +1,12 @@
+@interface ShelfCollectionViewLayout.InvalidationContext
+- (_TtCC16MusicApplication25ShelfCollectionViewLayoutP33_8F3A1CCF37430C45DA7B42CF7C548BFA19InvalidationContext)init;
+@end
+
+@implementation ShelfCollectionViewLayout.InvalidationContext
+
+- (_TtCC16MusicApplication25ShelfCollectionViewLayoutP33_8F3A1CCF37430C45DA7B42CF7C548BFA19InvalidationContext)init
+{
+  return (_TtCC16MusicApplication25ShelfCollectionViewLayoutP33_8F3A1CCF37430C45DA7B42CF7C548BFA19InvalidationContext *)sub_354100(self, (uint64_t)a2, &OBJC_IVAR____TtCC16MusicApplication25ShelfCollectionViewLayoutP33_8F3A1CCF37430C45DA7B42CF7C548BFA19InvalidationContext_invalidateItemLayoutMetrics, 0, (uint64_t (*)(uint64_t))type metadata accessor for ShelfCollectionViewLayout.InvalidationContext);
+}
+
+@end

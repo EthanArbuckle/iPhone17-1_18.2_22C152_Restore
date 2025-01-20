@@ -1,0 +1,99 @@
+@interface BCFrontmostWindowTracker
+- (BCFrontmostWindowTracker)init;
+- (BOOL)isFrontmost;
+- (UIWindow)window;
+- (id)onFrontmostChanged;
+- (void)dealloc;
+- (void)handleMainWindowNotification:(id)a3;
+- (void)handleSceneStateNotification:(id)a3;
+- (void)setOnFrontmostChanged:(id)a3;
+@end
+
+@implementation BCFrontmostWindowTracker
+
+- (UIWindow)window
+{
+  return (UIWindow *)objc_retainAutoreleaseReturnValue(*(id *)((char *)&self->super.isa
+                                                             + OBJC_IVAR___BCFrontmostWindowTracker_window));
+}
+
+- (BOOL)isFrontmost
+{
+  return (*(Class *)((char *)&self->super.isa + OBJC_IVAR___BCFrontmostWindowTracker_state) == 0) & self->appKitBundle[OBJC_IVAR___BCFrontmostWindowTracker_state] & self->appKitBundle[OBJC_IVAR___BCFrontmostWindowTracker_state + 1];
+}
+
+- (id)onFrontmostChanged
+{
+  v2 = (Class *)((char *)&self->super.isa + OBJC_IVAR___BCFrontmostWindowTracker_onFrontmostChanged);
+  swift_beginAccess();
+  if (*v2)
+  {
+    uint64_t v3 = v2[1];
+    aBlock[4] = *v2;
+    aBlock[5] = v3;
+    aBlock[0] = _NSConcreteStackBlock;
+    aBlock[1] = 1107296256;
+    aBlock[2] = sub_1DD3AC;
+    aBlock[3] = &unk_2CBCF8;
+    v4 = _Block_copy(aBlock);
+    swift_retain();
+    swift_release();
+  }
+  else
+  {
+    v4 = 0;
+  }
+
+  return v4;
+}
+
+- (void)setOnFrontmostChanged:(id)a3
+{
+  v4 = _Block_copy(a3);
+  if (v4)
+  {
+    uint64_t v5 = swift_allocObject();
+    *(void *)(v5 + 16) = v4;
+    v4 = sub_1A1D7C;
+  }
+  else
+  {
+    uint64_t v5 = 0;
+  }
+  v6 = (uint64_t *)((char *)self + OBJC_IVAR___BCFrontmostWindowTracker_onFrontmostChanged);
+  swift_beginAccess();
+  uint64_t v7 = *v6;
+  uint64_t *v6 = (uint64_t)v4;
+  v6[1] = v5;
+  sub_1A1B64(v7);
+}
+
+- (void)dealloc
+{
+  v2 = self;
+  FrontmostWindowTracker.__deallocating_deinit();
+}
+
+- (void).cxx_destruct
+{
+  uint64_t v3 = *(uint64_t *)((char *)&self->super.isa + OBJC_IVAR___BCFrontmostWindowTracker_onFrontmostChanged);
+
+  sub_1A1B64(v3);
+}
+
+- (BCFrontmostWindowTracker)init
+{
+  result = (BCFrontmostWindowTracker *)_swift_stdlib_reportUnimplementedInitializer();
+  __break(1u);
+  return result;
+}
+
+- (void)handleSceneStateNotification:(id)a3
+{
+}
+
+- (void)handleMainWindowNotification:(id)a3
+{
+}
+
+@end

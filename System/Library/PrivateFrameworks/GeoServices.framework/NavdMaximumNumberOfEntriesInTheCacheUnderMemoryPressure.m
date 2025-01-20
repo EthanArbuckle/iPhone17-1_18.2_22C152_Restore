@@ -1,0 +1,11 @@
+@interface NavdMaximumNumberOfEntriesInTheCacheUnderMemoryPressure
+@end
+
+@implementation NavdMaximumNumberOfEntriesInTheCacheUnderMemoryPressure
+
+void *GeoServicesConfig_NavdMaximumNumberOfEntriesInTheCacheUnderMemoryPressure_Metadata_block_invoke_264()
+{
+  return &unk_1ED73E650;
+}
+
+@end

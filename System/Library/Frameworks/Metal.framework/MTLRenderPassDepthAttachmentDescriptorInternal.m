@@ -1,0 +1,269 @@
+@interface MTLRenderPassDepthAttachmentDescriptorInternal
++ (id)attachmentDescriptor;
+- (BOOL)isEqual:(id)a3;
+- (BOOL)yInvert;
+- (MTLRenderPassDepthAttachmentDescriptorInternal)init;
+- (const)_descriptorPrivate;
+- (double)clearDepth;
+- (id)copyWithZone:(_NSZone *)a3;
+- (id)description;
+- (id)formattedDescription:(unint64_t)a3;
+- (id)resolveTexture;
+- (id)texture;
+- (unint64_t)depthPlane;
+- (unint64_t)depthResolveFilter;
+- (unint64_t)hash;
+- (unint64_t)level;
+- (unint64_t)loadAction;
+- (unint64_t)resolveDepthPlane;
+- (unint64_t)resolveLevel;
+- (unint64_t)resolveSlice;
+- (unint64_t)slice;
+- (unint64_t)storeAction;
+- (unint64_t)storeActionOptions;
+- (void)dealloc;
+- (void)setClearDepth:(double)a3;
+- (void)setDepthPlane:(unint64_t)a3;
+- (void)setDepthResolveFilter:(unint64_t)a3;
+- (void)setLevel:(unint64_t)a3;
+- (void)setLoadAction:(unint64_t)a3;
+- (void)setResolveDepthPlane:(unint64_t)a3;
+- (void)setResolveLevel:(unint64_t)a3;
+- (void)setResolveSlice:(unint64_t)a3;
+- (void)setResolveTexture:(id)a3;
+- (void)setSlice:(unint64_t)a3;
+- (void)setStoreAction:(unint64_t)a3;
+- (void)setStoreActionOptions:(unint64_t)a3;
+- (void)setTexture:(id)a3;
+- (void)setYInvert:(BOOL)a3;
+@end
+
+@implementation MTLRenderPassDepthAttachmentDescriptorInternal
+
+- (void)setTexture:(id)a3
+{
+  id v5 = a3;
+
+  if (a3 && MTLFailureTypeGetEnabled(1uLL) && ([a3 conformsToProtocol:&unk_1ECB41A58] & 1) == 0) {
+    MTLReportFailure(1uLL, "-[MTLRenderPassDepthAttachmentDescriptorInternal setTexture:]", 790, @"texture is not a MTLTextureImplementation.", v6, v7, v8, v9, v10);
+  }
+  self->_private.texture = (MTLTextureImplementation *)a3;
+}
+
+- (id)texture
+{
+  return self->_private.texture;
+}
+
+- (void)setStoreAction:(unint64_t)a3
+{
+  self->_private.storeAction = a3;
+}
+
+- (void)setLoadAction:(unint64_t)a3
+{
+  self->_private.loadAction = a3;
+}
+
+- (const)_descriptorPrivate
+{
+  return &self->_private;
+}
+
+- (void)setClearDepth:(double)a3
+{
+  self->_private.clearDepth = a3;
+}
+
+- (void)setLevel:(unint64_t)a3
+{
+  self->_private.level = a3;
+}
+
+- (void)setSlice:(unint64_t)a3
+{
+  self->_private.slice = a3;
+}
+
+- (void)setResolveSlice:(unint64_t)a3
+{
+  self->_private.resolveSlice = a3;
+}
+
+- (void)setStoreActionOptions:(unint64_t)a3
+{
+  self->_private.storeActionOptions = a3;
+}
+
+- (void)setResolveLevel:(unint64_t)a3
+{
+  self->_private.resolveLevel = a3;
+}
+
+- (void)setResolveDepthPlane:(unint64_t)a3
+{
+  self->_private.resolveDepthPlane = a3;
+}
+
+- (void)setDepthResolveFilter:(unint64_t)a3
+{
+  self->_private.resolveFilter = a3;
+}
+
+- (void)setDepthPlane:(unint64_t)a3
+{
+  self->_private.depthPlane = a3;
+}
+
+- (unint64_t)storeAction
+{
+  return self->_private.storeAction;
+}
+
+- (unint64_t)level
+{
+  return self->_private.level;
+}
+
+- (MTLRenderPassDepthAttachmentDescriptorInternal)init
+{
+  v3.receiver = self;
+  v3.super_class = (Class)MTLRenderPassDepthAttachmentDescriptorInternal;
+  result = [(MTLRenderPassDepthAttachmentDescriptorInternal *)&v3 init];
+  if (result)
+  {
+    *(_OWORD *)&result->_private.clearColor.red = _defaultClearColor;
+    result->_private.storeAction = 0;
+    result->_private.storeActionOptions = 0;
+    result->_private.loadAction = 2;
+    *(_OWORD *)&result->_private.clearColor.blue = unk_1828F1EA0;
+    result->_private.clearDepth = 1.0;
+    result->_private.clearStencil = 0;
+    result->_private.stencilResolveFilter = 0;
+  }
+  return result;
+}
+
+- (id)resolveTexture
+{
+  return self->_private.resolveTexture;
+}
+
+- (unint64_t)loadAction
+{
+  return self->_private.loadAction;
+}
+
+- (unint64_t)storeActionOptions
+{
+  return self->_private.storeActionOptions;
+}
+
+- (unint64_t)slice
+{
+  return self->_private.slice;
+}
+
+- (unint64_t)resolveSlice
+{
+  return self->_private.resolveSlice;
+}
+
+- (unint64_t)resolveLevel
+{
+  return self->_private.resolveLevel;
+}
+
+- (unint64_t)resolveDepthPlane
+{
+  return self->_private.resolveDepthPlane;
+}
+
+- (unint64_t)depthPlane
+{
+  return self->_private.depthPlane;
+}
+
+- (void)dealloc
+{
+  p_private = &self->_private;
+
+  v4.receiver = self;
+  v4.super_class = (Class)MTLRenderPassDepthAttachmentDescriptorInternal;
+  [(MTLRenderPassDepthAttachmentDescriptorInternal *)&v4 dealloc];
+}
+
+- (void)setResolveTexture:(id)a3
+{
+  id v5 = a3;
+  p_private = &self->_private;
+
+  if (a3 && MTLFailureTypeGetEnabled(1uLL) && ([a3 conformsToProtocol:&unk_1ECB41A58] & 1) == 0) {
+    MTLReportFailure(1uLL, "-[MTLRenderPassDepthAttachmentDescriptorInternal setResolveTexture:]", 791, @"resolveTexture is not a MTLTextureImplementation.", v7, v8, v9, v10, v11);
+  }
+  p_private->resolveTexture = (MTLTextureImplementation *)a3;
+}
+
++ (id)attachmentDescriptor
+{
+  id v2 = objc_alloc_init((Class)a1);
+
+  return v2;
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  uint64_t v4 = objc_msgSend((id)objc_msgSend((id)objc_opt_class(), "allocWithZone:", a3), "init");
+  copyAttachmentPrivate(&self->_private, (MTLRenderPassAttachmentDescriptorPrivate *)(v4 + 8));
+  return (id)v4;
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  if (a3 == self) {
+    return 1;
+  }
+  Class = object_getClass(self);
+  return Class == object_getClass(a3) && memcmp(&self->_private, (char *)a3 + 8, 0xB0uLL) == 0;
+}
+
+- (unint64_t)hash
+{
+  return _MTLHashState((int *)&self->_private, 0xB0uLL);
+}
+
+- (id)formattedDescription:(unint64_t)a3
+{
+  id v5 = NSString;
+  v8.receiver = self;
+  v8.super_class = (Class)MTLRenderPassDepthAttachmentDescriptorInternal;
+  id v6 = [(MTLRenderPassDepthAttachmentDescriptorInternal *)&v8 description];
+  return (id)[v5 stringWithFormat:@"%@%@", v6, depthAttachmentFormattedDescription(a3, &self->_private)];
+}
+
+- (id)description
+{
+  return [(MTLRenderPassDepthAttachmentDescriptorInternal *)self formattedDescription:0];
+}
+
+- (double)clearDepth
+{
+  return self->_private.clearDepth;
+}
+
+- (void)setYInvert:(BOOL)a3
+{
+  self->_private.yInvert = a3;
+}
+
+- (BOOL)yInvert
+{
+  return self->_private.yInvert;
+}
+
+- (unint64_t)depthResolveFilter
+{
+  return self->_private.resolveFilter;
+}
+
+@end

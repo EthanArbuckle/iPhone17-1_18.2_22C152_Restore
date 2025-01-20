@@ -1,0 +1,339 @@
+@interface ICNoteEditorActionMenu
++ (id)deferredActionMenuElementWithNote:(id)a3 invitation:(id)a4 presentingViewController:(id)a5 viewControllerManager:(id)a6 delegate:(id)a7 completion:(id)a8;
++ (id)menuWithNote:(id)a3 invitation:(id)a4 presentingViewController:(id)a5 presentingBarButtonItem:(id)a6 viewControllerManager:(id)a7 deferredChildren:(BOOL)a8 delegate:(id)a9 completion:(id)a10;
++ (id)menuWithNote:(id)a3 invitation:(id)a4 presentingViewController:(id)a5 presentingBarButtonItem:(id)a6 viewControllerManager:(id)a7 delegate:(id)a8 completion:(id)aBlock;
+- (BOOL)isMathEnabled;
+- (ICInvitation)invitation;
+- (ICNAEventReporter)eventReporter;
+- (ICNote)note;
+- (ICNoteEditorActionMenu)init;
+- (ICNoteEditorActionMenu)initWithNote:(id)a3 invitation:(id)a4 presentingViewController:(id)a5 presentingBarButtonItem:(id)a6 viewControllerManager:(id)a7 delegate:(id)a8 completion:(id)aBlock;
+- (ICNoteEditorActionMenuDelegate)delegate;
+- (ICViewControllerManager)viewControllerManager;
+- (UIBarButtonItem)presentingBarButtonItem;
+- (UIViewController)presentingViewController;
+- (id)completion;
+- (id)menuSections;
+- (void)setCompletion:(id)a3;
+- (void)setDelegate:(id)a3;
+- (void)setInvitation:(id)a3;
+- (void)setIsMathEnabled:(BOOL)a3;
+- (void)setNote:(id)a3;
+- (void)setPresentingBarButtonItem:(id)a3;
+- (void)setPresentingViewController:(id)a3;
+- (void)setViewControllerManager:(id)a3;
+- (void)willShowMenu;
+@end
+
+@implementation ICNoteEditorActionMenu
+
++ (id)deferredActionMenuElementWithNote:(id)a3 invitation:(id)a4 presentingViewController:(id)a5 viewControllerManager:(id)a6 delegate:(id)a7 completion:(id)a8
+{
+  v13 = (uint64_t (*)())_Block_copy(a8);
+  if (v13)
+  {
+    uint64_t v14 = swift_allocObject();
+    *(void *)(v14 + 16) = v13;
+    v13 = sub_1002A5318;
+  }
+  else
+  {
+    uint64_t v14 = 0;
+  }
+  id v15 = objc_allocWithZone((Class)type metadata accessor for NoteEditorActionMenu());
+  id v22 = a3;
+  id v16 = a4;
+  id v17 = a5;
+  id v18 = a6;
+  swift_unknownObjectRetain();
+  sub_10002E71C((uint64_t)v13);
+  id v19 = sub_1000125F8(a3, a4, (uint64_t)v17, 0, (uint64_t)v18, (uint64_t)a7, (uint64_t)v13, v14);
+  sub_10002E70C((uint64_t)v13);
+  sub_100034908();
+  v20.super.super.isa = ActionMenuProvider.makeDeferredMenuElement()().super.super.isa;
+
+  sub_10002E70C((uint64_t)v13);
+  swift_unknownObjectRelease();
+
+  return v20.super.super.isa;
+}
+
+- (ICNote)note
+{
+  return (ICNote *)objc_retainAutoreleaseReturnValue(*(id *)((char *)&self->super.isa
+                                                           + OBJC_IVAR___ICNoteEditorActionMenu_note));
+}
+
+- (void)setNote:(id)a3
+{
+  id v4 = *(Class *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_note);
+  *(Class *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_note) = (Class)a3;
+  id v3 = a3;
+}
+
+- (ICInvitation)invitation
+{
+  return (ICInvitation *)objc_retainAutoreleaseReturnValue(*(id *)((char *)&self->super.isa
+                                                                 + OBJC_IVAR___ICNoteEditorActionMenu_invitation));
+}
+
+- (void)setInvitation:(id)a3
+{
+  id v4 = *(Class *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_invitation);
+  *(Class *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_invitation) = (Class)a3;
+  id v3 = a3;
+}
+
+- (BOOL)isMathEnabled
+{
+  return *((unsigned char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_isMathEnabled);
+}
+
+- (void)setIsMathEnabled:(BOOL)a3
+{
+  *((unsigned char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_isMathEnabled) = a3;
+}
+
+- (ICNoteEditorActionMenuDelegate)delegate
+{
+  Strong = (void *)swift_unknownObjectWeakLoadStrong();
+
+  return (ICNoteEditorActionMenuDelegate *)Strong;
+}
+
+- (void)setDelegate:(id)a3
+{
+}
+
+- (ICNAEventReporter)eventReporter
+{
+  uint64_t Strong = swift_unknownObjectWeakLoadStrong();
+  if (Strong)
+  {
+    id v4 = (void *)Strong;
+    self;
+    uint64_t v5 = swift_dynamicCastObjCClass();
+    if (v5)
+    {
+      v6 = (void *)v5;
+      v7 = self;
+      id v8 = [v6 eventReporter];
+    }
+    else
+    {
+      id v8 = 0;
+    }
+  }
+  else
+  {
+    id v8 = 0;
+  }
+
+  return (ICNAEventReporter *)v8;
+}
+
+- (ICNoteEditorActionMenu)initWithNote:(id)a3 invitation:(id)a4 presentingViewController:(id)a5 presentingBarButtonItem:(id)a6 viewControllerManager:(id)a7 delegate:(id)a8 completion:(id)aBlock
+{
+  id v15 = (uint64_t (*)())_Block_copy(aBlock);
+  if (v15)
+  {
+    uint64_t v16 = swift_allocObject();
+    *(void *)(v16 + 16) = v15;
+    id v15 = sub_1002A5318;
+  }
+  else
+  {
+    uint64_t v16 = 0;
+  }
+  id v23 = a3;
+  id v22 = a4;
+  id v17 = a5;
+  id v18 = a6;
+  id v19 = a7;
+  swift_unknownObjectRetain();
+  UIDeferredMenuElement v20 = (ICNoteEditorActionMenu *)sub_1000125F8(a3, a4, (uint64_t)v17, a6, (uint64_t)v19, (uint64_t)a8, (uint64_t)v15, v16);
+  sub_10002E70C((uint64_t)v15);
+
+  swift_unknownObjectRelease();
+  return v20;
+}
+
++ (id)menuWithNote:(id)a3 invitation:(id)a4 presentingViewController:(id)a5 presentingBarButtonItem:(id)a6 viewControllerManager:(id)a7 delegate:(id)a8 completion:(id)aBlock
+{
+  uint64_t v14 = (uint64_t (*)())_Block_copy(aBlock);
+  if (v14)
+  {
+    uint64_t v15 = swift_allocObject();
+    *(void *)(v15 + 16) = v14;
+    uint64_t v14 = sub_1002A5318;
+  }
+  else
+  {
+    uint64_t v15 = 0;
+  }
+  id v16 = objc_allocWithZone((Class)type metadata accessor for NoteEditorActionMenu());
+  id v24 = a3;
+  id v23 = a4;
+  id v17 = a5;
+  id v22 = a6;
+  id v18 = a7;
+  swift_unknownObjectRetain();
+  sub_10002E71C((uint64_t)v14);
+  id v19 = sub_1000125F8(a3, a4, (uint64_t)v17, a6, (uint64_t)v18, (uint64_t)a8, (uint64_t)v14, v15);
+  sub_10002E70C((uint64_t)v14);
+  sub_100034908();
+  v20.super.super.isa = ActionMenuProvider.makeMenu(deferredChildren:)(1).super.super.isa;
+
+  sub_10002E70C((uint64_t)v14);
+  swift_unknownObjectRelease();
+
+  return v20.super.super.isa;
+}
+
++ (id)menuWithNote:(id)a3 invitation:(id)a4 presentingViewController:(id)a5 presentingBarButtonItem:(id)a6 viewControllerManager:(id)a7 deferredChildren:(BOOL)a8 delegate:(id)a9 completion:(id)a10
+{
+  uint64_t v15 = (uint64_t (*)())_Block_copy(a10);
+  if (v15)
+  {
+    uint64_t v16 = swift_allocObject();
+    *(void *)(v16 + 16) = v15;
+    uint64_t v15 = sub_1002A5318;
+  }
+  else
+  {
+    uint64_t v16 = 0;
+  }
+  id v17 = objc_allocWithZone((Class)type metadata accessor for NoteEditorActionMenu());
+  id v25 = a3;
+  id v24 = a4;
+  id v18 = a5;
+  id v23 = a6;
+  id v19 = a7;
+  swift_unknownObjectRetain();
+  sub_10002E71C((uint64_t)v15);
+  id v20 = sub_1000125F8(a3, a4, (uint64_t)v18, a6, (uint64_t)v19, (uint64_t)a9, (uint64_t)v15, v16);
+  sub_10002E70C((uint64_t)v15);
+  sub_100034908();
+  v21.super.super.isa = ActionMenuProvider.makeMenu(deferredChildren:)(a8).super.super.isa;
+
+  sub_10002E70C((uint64_t)v15);
+  swift_unknownObjectRelease();
+
+  return v21.super.super.isa;
+}
+
+- (id)completion
+{
+  if (*(Class *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_completion))
+  {
+    uint64_t v2 = *(void *)&self->note[OBJC_IVAR___ICNoteEditorActionMenu_completion];
+    v5[4] = *(Class *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_completion);
+    v5[5] = v2;
+    v5[0] = _NSConcreteStackBlock;
+    v5[1] = 1107296256;
+    v5[2] = sub_1002A43E4;
+    v5[3] = &unk_10063CB78;
+    id v3 = _Block_copy(v5);
+    swift_retain();
+    swift_release();
+  }
+  else
+  {
+    id v3 = 0;
+  }
+
+  return v3;
+}
+
+- (void)setCompletion:(id)a3
+{
+  uint64_t v4 = (uint64_t)_Block_copy(a3);
+  if (v4)
+  {
+    uint64_t v5 = v4;
+    uint64_t v4 = swift_allocObject();
+    *(void *)(v4 + 16) = v5;
+    v6 = sub_100262970;
+  }
+  else
+  {
+    v6 = 0;
+  }
+  v7 = (void (**)(char, uint64_t, uint64_t))((char *)self + OBJC_IVAR___ICNoteEditorActionMenu_completion);
+  uint64_t v8 = *(uint64_t *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_completion);
+  ICNoteEditorActionMenu *v7 = v6;
+  v7[1] = (void (*)(char, uint64_t, uint64_t))v4;
+
+  sub_10002E70C(v8);
+}
+
+- (UIViewController)presentingViewController
+{
+  uint64_t Strong = (void *)swift_unknownObjectWeakLoadStrong();
+
+  return (UIViewController *)Strong;
+}
+
+- (void)setPresentingViewController:(id)a3
+{
+}
+
+- (UIBarButtonItem)presentingBarButtonItem
+{
+  return (UIBarButtonItem *)objc_retainAutoreleaseReturnValue(*(id *)((char *)&self->super.isa
+                                                                    + OBJC_IVAR___ICNoteEditorActionMenu_presentingBarButtonItem));
+}
+
+- (void)setPresentingBarButtonItem:(id)a3
+{
+  id v4 = *(Class *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_presentingBarButtonItem);
+  *(Class *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_presentingBarButtonItem) = (Class)a3;
+  id v3 = a3;
+}
+
+- (ICViewControllerManager)viewControllerManager
+{
+  uint64_t Strong = (void *)swift_unknownObjectWeakLoadStrong();
+
+  return (ICViewControllerManager *)Strong;
+}
+
+- (void)setViewControllerManager:(id)a3
+{
+}
+
+- (void)willShowMenu
+{
+  uint64_t v2 = self;
+  sub_10045F0D0();
+}
+
+- (id)menuSections
+{
+  uint64_t v2 = self;
+  sub_10045F274();
+
+  sub_100031418(0, (unint64_t *)&qword_1006A4D30);
+  v3.super.isa = Array._bridgeToObjectiveC()().super.isa;
+  swift_bridgeObjectRelease();
+
+  return v3.super.isa;
+}
+
+- (ICNoteEditorActionMenu)init
+{
+  result = (ICNoteEditorActionMenu *)_swift_stdlib_reportUnimplementedInitializer();
+  __break(1u);
+  return result;
+}
+
+- (void).cxx_destruct
+{
+  sub_10015E5E8((uint64_t)self + OBJC_IVAR___ICNoteEditorActionMenu_delegate);
+  sub_10002E70C(*(uint64_t *)((char *)&self->super.isa + OBJC_IVAR___ICNoteEditorActionMenu_completion));
+  swift_unknownObjectWeakDestroy();
+
+  swift_unknownObjectWeakDestroy();
+}
+
+@end

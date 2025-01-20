@@ -1,0 +1,81 @@
+@interface _HKObserverQueryServerConfiguration
++ (BOOL)supportsSecureCoding;
+- (BOOL)observeUnfrozenSeries;
+- (NSArray)queryDescriptors;
+- (_HKObserverQueryServerConfiguration)initWithCoder:(id)a3;
+- (id)copyWithZone:(_NSZone *)a3;
+- (void)encodeWithCoder:(id)a3;
+- (void)setObserveUnfrozenSeries:(BOOL)a3;
+- (void)setQueryDescriptors:(id)a3;
+@end
+
+@implementation _HKObserverQueryServerConfiguration
+
++ (BOOL)supportsSecureCoding
+{
+  return 1;
+}
+
+- (_HKObserverQueryServerConfiguration)initWithCoder:(id)a3
+{
+  id v4 = a3;
+  v12.receiver = self;
+  v12.super_class = (Class)_HKObserverQueryServerConfiguration;
+  v5 = [(HKQueryServerConfiguration *)&v12 initWithCoder:v4];
+  if (v5)
+  {
+    v5->_observeUnfrozenSeries = [v4 decodeBoolForKey:@"observe_unfrozen"];
+    v6 = (void *)MEMORY[0x1E4F1CAD0];
+    uint64_t v7 = objc_opt_class();
+    v8 = objc_msgSend(v6, "setWithObjects:", v7, objc_opt_class(), 0);
+    uint64_t v9 = [v4 decodeObjectOfClasses:v8 forKey:@"queryDescriptors"];
+    queryDescriptors = v5->_queryDescriptors;
+    v5->_queryDescriptors = (NSArray *)v9;
+  }
+  return v5;
+}
+
+- (void)encodeWithCoder:(id)a3
+{
+  v5.receiver = self;
+  v5.super_class = (Class)_HKObserverQueryServerConfiguration;
+  id v4 = a3;
+  [(HKQueryServerConfiguration *)&v5 encodeWithCoder:v4];
+  objc_msgSend(v4, "encodeBool:forKey:", self->_observeUnfrozenSeries, @"observe_unfrozen", v5.receiver, v5.super_class);
+  [v4 encodeObject:self->_queryDescriptors forKey:@"queryDescriptors"];
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  v6.receiver = self;
+  v6.super_class = (Class)_HKObserverQueryServerConfiguration;
+  id v4 = [(HKQueryServerConfiguration *)&v6 copyWithZone:a3];
+  [v4 setObserveUnfrozenSeries:self->_observeUnfrozenSeries];
+  [v4 setQueryDescriptors:self->_queryDescriptors];
+  return v4;
+}
+
+- (BOOL)observeUnfrozenSeries
+{
+  return self->_observeUnfrozenSeries;
+}
+
+- (void)setObserveUnfrozenSeries:(BOOL)a3
+{
+  self->_observeUnfrozenSeries = a3;
+}
+
+- (NSArray)queryDescriptors
+{
+  return self->_queryDescriptors;
+}
+
+- (void)setQueryDescriptors:(id)a3
+{
+}
+
+- (void).cxx_destruct
+{
+}
+
+@end

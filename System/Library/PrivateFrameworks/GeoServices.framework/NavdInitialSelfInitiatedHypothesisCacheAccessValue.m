@@ -1,0 +1,11 @@
+@interface NavdInitialSelfInitiatedHypothesisCacheAccessValue
+@end
+
+@implementation NavdInitialSelfInitiatedHypothesisCacheAccessValue
+
+void *GeoServicesConfig_NavdInitialSelfInitiatedHypothesisCacheAccessValue_Metadata_block_invoke_259()
+{
+  return &unk_1ED73E368;
+}
+
+@end

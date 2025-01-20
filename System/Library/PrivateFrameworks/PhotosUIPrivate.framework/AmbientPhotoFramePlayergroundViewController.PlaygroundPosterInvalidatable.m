@@ -1,0 +1,17 @@
+@interface AmbientPhotoFramePlayergroundViewController.PlaygroundPosterInvalidatable
+- (_TtCC15PhotosUIPrivate43AmbientPhotoFramePlayergroundViewControllerP33_AA406F95772BEA5A2E5AABA48A24960029PlaygroundPosterInvalidatable)init;
+- (void)px_invalidate;
+@end
+
+@implementation AmbientPhotoFramePlayergroundViewController.PlaygroundPosterInvalidatable
+
+- (void)px_invalidate
+{
+}
+
+- (_TtCC15PhotosUIPrivate43AmbientPhotoFramePlayergroundViewControllerP33_AA406F95772BEA5A2E5AABA48A24960029PlaygroundPosterInvalidatable)init
+{
+  return (_TtCC15PhotosUIPrivate43AmbientPhotoFramePlayergroundViewControllerP33_AA406F95772BEA5A2E5AABA48A24960029PlaygroundPosterInvalidatable *)sub_1AEB8D0C0();
+}
+
+@end

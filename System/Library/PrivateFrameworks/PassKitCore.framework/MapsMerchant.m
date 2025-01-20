@@ -1,0 +1,421 @@
+@interface MapsMerchant
++ (id)_mapsMerchantsMatchingQuery:(id)a3;
++ (id)_mapsMerchantsWithQuery:(id)a3;
++ (id)_predicateForEndDate:(id)a3;
++ (id)_predicateForIdentifier:(id)a3;
++ (id)_predicateForPID:(id)a3;
++ (id)_predicateForPIDs:(id)a3;
++ (id)_predicateForStartDate:(id)a3;
++ (id)_propertySetters;
++ (id)_propertyValuesForMapsMerchant:(id)a3;
++ (id)anyInDatabase:(id)a3 withIdentifier:(id)a4;
++ (id)anyInDatabase:(id)a3 withPID:(id)a4;
++ (id)databaseTable;
++ (id)insertMapsMerchant:(id)a3 inDatabase:(id)a4;
++ (id)insertOrUpdateMapsMerchant:(id)a3 inDatabase:(id)a4;
++ (id)mapsMerchantsInDatabase:(id)a3;
++ (id)mapsMerchantsWithLastUpdatedDateFromStartDate:(id)a3 endDate:(id)a4 limit:(int64_t)a5 inDatabase:(id)a6;
++ (void)associateMapsMerchantsToPaymentTransactions:(id)a3 inDatabase:(id)a4;
+- (MapsMerchant)initWithMapsMerchant:(id)a3 inDatabase:(id)a4;
+- (id)mapsMerchant;
+- (void)updateWithMapsMerchant:(id)a3;
+@end
+
+@implementation MapsMerchant
+
++ (id)databaseTable
+{
+  return @"maps_merchant";
+}
+
+- (MapsMerchant)initWithMapsMerchant:(id)a3 inDatabase:(id)a4
+{
+  id v6 = a4;
+  id v7 = a3;
+  v8 = [(id)objc_opt_class() _propertyValuesForMapsMerchant:v7];
+
+  v9 = [(SQLiteEntity *)self initWithPropertyValues:v8 inDatabase:v6];
+  return v9;
+}
+
++ (id)anyInDatabase:(id)a3 withIdentifier:(id)a4
+{
+  id v6 = a3;
+  id v7 = [a1 _predicateForIdentifier:a4];
+  v8 = [a1 anyInDatabase:v6 predicate:v7];
+
+  return v8;
+}
+
++ (id)anyInDatabase:(id)a3 withPID:(id)a4
+{
+  id v6 = a3;
+  id v7 = [a1 _predicateForPID:a4];
+  v8 = [a1 anyInDatabase:v6 predicate:v7];
+
+  return v8;
+}
+
++ (id)mapsMerchantsInDatabase:(id)a3
+{
+  v4 = [a1 queryWithDatabase:a3 predicate:0];
+  v5 = [a1 _mapsMerchantsMatchingQuery:v4];
+
+  return v5;
+}
+
++ (id)mapsMerchantsWithLastUpdatedDateFromStartDate:(id)a3 endDate:(id)a4 limit:(int64_t)a5 inDatabase:(id)a6
+{
+  id v10 = a6;
+  id v11 = a4;
+  v12 = [a1 _predicateForStartDate:a3];
+  v19[0] = v12;
+  v13 = [a1 _predicateForEndDate:v11];
+
+  v19[1] = v13;
+  v14 = +[NSArray arrayWithObjects:v19 count:2];
+  v15 = +[SQLiteCompoundPredicate predicateMatchingAllPredicates:v14];
+
+  v16 = +[SQLiteEntity queryWithDatabase:v10 predicate:v15 orderingProperties:0 orderingDirections:0 limit:a5];
+
+  v17 = [a1 _mapsMerchantsWithQuery:v16];
+
+  return v17;
+}
+
++ (id)_mapsMerchantsWithQuery:(id)a3
+{
+  id v4 = a3;
+  v5 = [a1 _propertySetters];
+  id v6 = objc_alloc_init((Class)NSMutableSet);
+  id v7 = [v5 allKeys];
+  v12[0] = _NSConcreteStackBlock;
+  v12[1] = 3221225472;
+  v12[2] = sub_1003751F0;
+  v12[3] = &unk_10072EAD8;
+  id v15 = a1;
+  id v13 = v5;
+  id v8 = v6;
+  id v14 = v8;
+  id v9 = v5;
+  [v4 enumeratePersistentIDsAndProperties:v7 usingBlock:v12];
+
+  if ([v8 count]) {
+    id v10 = [v8 copy];
+  }
+  else {
+    id v10 = 0;
+  }
+
+  return v10;
+}
+
++ (void)associateMapsMerchantsToPaymentTransactions:(id)a3 inDatabase:(id)a4
+{
+  id v6 = a3;
+  id v7 = a4;
+  if ([v6 count])
+  {
+    id v8 = [v6 allKeys];
+    id v9 = [a1 _predicateForPIDs:v8];
+    id v10 = +[SQLiteEntity queryWithDatabase:v7 predicate:v9];
+
+    id v11 = [a1 _propertySetters];
+    v12 = [v11 allKeys];
+    v14[0] = _NSConcreteStackBlock;
+    v14[1] = 3221225472;
+    v14[2] = sub_1003753D0;
+    v14[3] = &unk_10072EAD8;
+    id v17 = a1;
+    id v15 = v11;
+    id v16 = v6;
+    id v13 = v11;
+    [v10 enumeratePersistentIDsAndProperties:v12 usingBlock:v14];
+  }
+}
+
++ (id)insertMapsMerchant:(id)a3 inDatabase:(id)a4
+{
+  id v6 = a4;
+  id v7 = a3;
+  id v8 = [objc_alloc((Class)a1) initWithMapsMerchant:v7 inDatabase:v6];
+
+  return v8;
+}
+
++ (id)insertOrUpdateMapsMerchant:(id)a3 inDatabase:(id)a4
+{
+  id v5 = a3;
+  id v6 = a4;
+  if ([v5 isValid])
+  {
+    id v7 = +[NSNumber numberWithUnsignedLongLong:](NSNumber, "numberWithUnsignedLongLong:", [v5 identifier]);
+    id v8 = +[MapsMerchant anyInDatabase:v6 withIdentifier:v7];
+
+    if (v8)
+    {
+      [v8 updateWithMapsMerchant:v5];
+    }
+    else
+    {
+      id v8 = +[MapsMerchant insertMapsMerchant:v5 inDatabase:v6];
+    }
+  }
+  else
+  {
+    id v8 = 0;
+  }
+
+  return v8;
+}
+
+- (void)updateWithMapsMerchant:(id)a3
+{
+  id v4 = a3;
+  id v5 = [(SQLiteEntity *)self valueForProperty:@"last_processed_date"];
+  id v6 = (void *)_DateForSQLValue();
+
+  id v7 = [v4 lastProcessedDate];
+  id v8 = v7;
+  if (v7 || !v6)
+  {
+    if (!v7 || !v6 || ([v7 timeIntervalSinceDate:v6], v13 >= 0.0))
+    {
+      id v14 = [(id)objc_opt_class() _propertyValuesForMapsMerchant:v4];
+      [(SQLiteEntity *)self setValuesWithDictionary:v14];
+
+      goto LABEL_13;
+    }
+    id v9 = PKLogFacilityTypeGetObject();
+    if (os_log_type_enabled(v9, OS_LOG_TYPE_DEFAULT))
+    {
+      int v15 = 138412802;
+      id v16 = v4;
+      __int16 v17 = 2112;
+      v18 = v8;
+      __int16 v19 = 2112;
+      v20 = v6;
+      id v10 = "Not updating mapsMerchant %@ since the new merchant date %@ is older than the current last processed date %@.";
+      id v11 = v9;
+      uint32_t v12 = 32;
+      goto LABEL_10;
+    }
+  }
+  else
+  {
+    id v9 = PKLogFacilityTypeGetObject();
+    if (os_log_type_enabled(v9, OS_LOG_TYPE_DEFAULT))
+    {
+      int v15 = 138412546;
+      id v16 = v4;
+      __int16 v17 = 2112;
+      v18 = v6;
+      id v10 = "Not updating mapsMerchant %@ since the new merchant doesnt have a last processed date defined. The current l"
+            "ast processed date is %@";
+      id v11 = v9;
+      uint32_t v12 = 22;
+LABEL_10:
+      _os_log_impl((void *)&_mh_execute_header, v11, OS_LOG_TYPE_DEFAULT, v10, (uint8_t *)&v15, v12);
+    }
+  }
+
+LABEL_13:
+}
+
+- (id)mapsMerchant
+{
+  id v3 = objc_alloc_init((Class)PKMapsMerchant);
+  id v4 = [(id)objc_opt_class() _propertySetters];
+  id v5 = [v4 allKeys];
+  v11[0] = _NSConcreteStackBlock;
+  v11[1] = 3221225472;
+  v11[2] = sub_100375954;
+  v11[3] = &unk_10072DDD8;
+  v11[4] = self;
+  id v12 = v4;
+  id v6 = v3;
+  id v13 = v6;
+  id v7 = v4;
+  [(SQLiteEntity *)self getValuesForProperties:v5 withApplier:v11];
+
+  id v8 = v13;
+  id v9 = v6;
+
+  return v9;
+}
+
++ (id)_mapsMerchantsMatchingQuery:(id)a3
+{
+  id v4 = a3;
+  id v5 = [a1 _propertySetters];
+  id v6 = +[NSMutableSet set];
+  id v7 = [v5 allKeys];
+  v13[0] = _NSConcreteStackBlock;
+  v13[1] = 3221225472;
+  v13[2] = sub_100375AD4;
+  v13[3] = &unk_10072EAD8;
+  id v16 = a1;
+  id v14 = v5;
+  id v8 = v6;
+  id v15 = v8;
+  id v9 = v5;
+  [v4 enumeratePersistentIDsAndProperties:v7 usingBlock:v13];
+
+  id v10 = v15;
+  id v11 = v8;
+
+  return v11;
+}
+
++ (id)_predicateForIdentifier:(id)a3
+{
+  return +[SQLiteComparisonPredicate predicateWithProperty:@"identifier" equalToValue:a3];
+}
+
++ (id)_predicateForPID:(id)a3
+{
+  return +[SQLiteComparisonPredicate predicateWithProperty:@"pid" equalToValue:a3];
+}
+
++ (id)_predicateForPIDs:(id)a3
+{
+  return +[SQLiteContainsPredicate containsPredicateWithProperty:@"pid" values:a3];
+}
+
++ (id)_predicateForStartDate:(id)a3
+{
+  if (a3)
+  {
+    id v3 = (void *)_SQLValueForDate();
+    id v4 = +[SQLiteComparisonPredicate predicateWithProperty:@"last_processed_date" greaterThanOrEqualToValue:v3];
+  }
+  else
+  {
+    id v4 = +[SQLiteBooleanPredicate truePredicate];
+  }
+  return v4;
+}
+
++ (id)_predicateForEndDate:(id)a3
+{
+  if (a3)
+  {
+    id v3 = (void *)_SQLValueForDate();
+    id v4 = +[SQLiteComparisonPredicate predicateWithProperty:@"last_processed_date" lessThanOrEqualToValue:v3];
+  }
+  else
+  {
+    id v4 = +[SQLiteBooleanPredicate truePredicate];
+  }
+  return v4;
+}
+
++ (id)_propertyValuesForMapsMerchant:(id)a3
+{
+  id v3 = a3;
+  id v4 = objc_alloc_init((Class)NSMutableDictionary);
+  objc_msgSend(v4, "setUnsignedLongLong:forKey:", objc_msgSend(v3, "identifier"), @"identifier");
+  id v5 = +[NSNumber numberWithInt:](NSNumber, "numberWithInt:", [v3 resultProviderIdentifier]);
+  [v4 setObjectOrNull:v5 forKey:@"result_provider_identifier"];
+
+  id v6 = [v3 name];
+  [v4 setObjectOrNull:v6 forKey:@"name"];
+
+  id v7 = [v3 phoneNumber];
+  [v4 setObjectOrNull:v7 forKey:@"phone_number"];
+
+  id v8 = [v3 url];
+  id v9 = (void *)_SQLValueForURL();
+  [v4 setObjectOrNull:v9 forKey:@"url"];
+
+  [v3 locationLatitude];
+  id v10 = +[NSNumber numberWithDouble:](NSNumber, "numberWithDouble:");
+  [v4 setObjectOrNull:v10 forKey:@"location_latitude"];
+
+  [v3 locationLongitude];
+  id v11 = +[NSNumber numberWithDouble:](NSNumber, "numberWithDouble:");
+  [v4 setObjectOrNull:v11 forKey:@"location_longitude"];
+
+  id v12 = [v3 postalAddress];
+  id v13 = (void *)_SQLValueForPostalAddress();
+  [v4 setObjectOrNull:v13 forKey:@"postal_address"];
+
+  id v14 = [v3 heroImageURL];
+  id v15 = (void *)_SQLValueForURL();
+  [v4 setObjectOrNull:v15 forKey:@"a"];
+
+  id v16 = +[NSNumber numberWithInteger:](NSNumber, "numberWithInteger:", [v3 category]);
+  [v4 setObjectOrNull:v16 forKey:@"c"];
+
+  __int16 v17 = [v3 detailedCategory];
+  [v4 setObjectOrNull:v17 forKey:@"d"];
+
+  v18 = [v3 lastProcessedDate];
+  __int16 v19 = (void *)_SQLValueForDate();
+  [v4 setObjectOrNull:v19 forKey:@"last_processed_date"];
+
+  v20 = [v3 businessChatURL];
+
+  if (v20)
+  {
+    v21 = [v3 businessChatURL];
+    v22 = (void *)_SQLValueForURL();
+    [v4 setObjectOrNull:v22 forKey:@"i"];
+  }
+  v23 = [v3 heroImageAttributionName];
+
+  if (v23)
+  {
+    v24 = [v3 heroImageAttributionName];
+    [v4 setObjectOrNull:v24 forKey:@"h"];
+  }
+  v25 = [v3 stylingInfo];
+
+  if (v25)
+  {
+    v26 = [v3 stylingInfo];
+    v25 = +[NSKeyedArchiver archivedDataWithRootObject:v26 requiringSecureCoding:1 error:0];
+  }
+  [v4 setObjectOrNull:v25 forKey:@"g"];
+  id v27 = [v4 copy];
+
+  return v27;
+}
+
++ (id)_propertySetters
+{
+  v4[0] = @"identifier";
+  v4[1] = @"result_provider_identifier";
+  v5[0] = &stru_10074BB38;
+  v5[1] = &stru_10074BB58;
+  v4[2] = @"name";
+  v4[3] = @"phone_number";
+  v5[2] = &stru_10074BB78;
+  v5[3] = &stru_10074BB98;
+  v4[4] = @"url";
+  v4[5] = @"location_latitude";
+  v5[4] = &stru_10074BBB8;
+  v5[5] = &stru_10074BBD8;
+  v4[6] = @"location_longitude";
+  v4[7] = @"postal_address";
+  v5[6] = &stru_10074BBF8;
+  v5[7] = &stru_10074BC18;
+  v4[8] = @"a";
+  v4[9] = @"h";
+  v5[8] = &stru_10074BC38;
+  v5[9] = &stru_10074BC58;
+  v4[10] = @"c";
+  v4[11] = @"d";
+  v5[10] = &stru_10074BC78;
+  v5[11] = &stru_10074BC98;
+  v4[12] = @"i";
+  v4[13] = @"last_processed_date";
+  v5[12] = &stru_10074BCB8;
+  v5[13] = &stru_10074BCD8;
+  v4[14] = @"g";
+  v5[14] = &stru_10074BCF8;
+  v2 = +[NSDictionary dictionaryWithObjects:v5 forKeys:v4 count:15];
+  return v2;
+}
+
+@end

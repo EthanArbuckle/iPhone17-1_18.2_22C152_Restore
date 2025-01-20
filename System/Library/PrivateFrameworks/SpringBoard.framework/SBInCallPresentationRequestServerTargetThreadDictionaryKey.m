@@ -1,0 +1,11 @@
+@interface SBInCallPresentationRequestServerTargetThreadDictionaryKey
+@end
+
+@implementation SBInCallPresentationRequestServerTargetThreadDictionaryKey
+
+uint64_t ___SBInCallPresentationRequestServerTargetThreadDictionaryKey_block_invoke()
+{
+  return pthread_key_create((pthread_key_t *)&_SBInCallPresentationRequestServerTargetThreadDictionaryKey_sSBInCallPresentationRequestServerTargetThreadDictionaryKey, 0);
+}
+
+@end

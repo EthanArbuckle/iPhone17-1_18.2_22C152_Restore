@@ -1,0 +1,11 @@
+@interface AutomaticallyEndOnVehicleDisconnectAfterArrival
+@end
+
+@implementation AutomaticallyEndOnVehicleDisconnectAfterArrival
+
+uint64_t NavigationConfig_AutomaticallyEndOnVehicleDisconnectAfterArrival_Metadata_block_invoke_17()
+{
+  return MEMORY[0x1E4F1CC38];
+}
+
+@end

@@ -1,0 +1,15 @@
+@interface PXCuratedLibraryViewConfiguration.AssociatedData
+- (_TtCE12PhotosUICoreCSo33PXCuratedLibraryViewConfigurationP33_75D970158E8B950190794F9BFB2C659F14AssociatedData)init;
+@end
+
+@implementation PXCuratedLibraryViewConfiguration.AssociatedData
+
+- (_TtCE12PhotosUICoreCSo33PXCuratedLibraryViewConfigurationP33_75D970158E8B950190794F9BFB2C659F14AssociatedData)init
+{
+}
+
+- (void).cxx_destruct
+{
+}
+
+@end

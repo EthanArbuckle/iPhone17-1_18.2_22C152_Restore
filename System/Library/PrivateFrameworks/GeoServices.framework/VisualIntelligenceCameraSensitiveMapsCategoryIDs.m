@@ -1,0 +1,11 @@
+@interface VisualIntelligenceCameraSensitiveMapsCategoryIDs
+@end
+
+@implementation VisualIntelligenceCameraSensitiveMapsCategoryIDs
+
+uint64_t GeoServicesConfig_VisualIntelligenceCameraSensitiveMapsCategoryIDs_Metadata_block_invoke_468()
+{
+  return MEMORY[0x1E4F1CBF0];
+}
+
+@end

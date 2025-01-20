@@ -1,0 +1,114 @@
+@interface NTKStringFromComplicationTypeDict
+@end
+
+@implementation NTKStringFromComplicationTypeDict
+
+void ___NTKStringFromComplicationTypeDict_block_invoke()
+{
+  v3[50] = *MEMORY[0x1E4F143B8];
+  v2[0] = &unk_1F16E2EF8;
+  v2[1] = &unk_1F16E2F10;
+  v3[0] = @"date";
+  v3[1] = @"alarm";
+  v2[2] = &unk_1F16E2F28;
+  v2[3] = &unk_1F16E2F40;
+  v3[2] = @"timer";
+  v3[3] = @"stopwatch";
+  v2[4] = &unk_1F16E2F58;
+  v2[5] = &unk_1F16E2F70;
+  v3[4] = @"world clock";
+  v3[5] = @"activity";
+  v2[6] = &unk_1F16E2F88;
+  v2[7] = &unk_1F16E2FA0;
+  v3[6] = @"calendar";
+  v3[7] = @"stocks";
+  v2[8] = &unk_1F16E2FB8;
+  v2[9] = &unk_1F16E2FD0;
+  v3[8] = @"weather";
+  v3[9] = @"moon phase";
+  v2[10] = &unk_1F16E2FE8;
+  v2[11] = &unk_1F16E3000;
+  v3[10] = @"sunrise";
+  v3[11] = @"battery";
+  v2[12] = &unk_1F16E3018;
+  v2[13] = &unk_1F16E3030;
+  v3[12] = @"monogram";
+  v3[13] = @"lunar date";
+  v2[14] = &unk_1F16E3048;
+  v2[15] = &unk_1F16E3060;
+  v3[14] = @"music";
+  v3[15] = @"radio";
+  v2[16] = &unk_1F16E3078;
+  v2[17] = &unk_1F16E3090;
+  v3[16] = @"podcast";
+  v3[17] = @"now playing";
+  v2[18] = &unk_1F16E30A8;
+  v2[19] = &unk_1F16E30C0;
+  v3[18] = @"workout";
+  v3[19] = @"breathing";
+  v2[20] = &unk_1F16E30D8;
+  v2[21] = &unk_1F16E30F0;
+  v3[20] = @"reminders";
+  v3[21] = @"remote";
+  v2[22] = &unk_1F16E3108;
+  v2[23] = &unk_1F16E3120;
+  v3[22] = @"weather conditions";
+  v3[23] = @"messages";
+  v2[24] = &unk_1F16E3138;
+  v2[25] = &unk_1F16E3150;
+  v3[24] = @"phone";
+  v3[25] = @"maps";
+  v2[26] = &unk_1F16E3168;
+  v2[27] = &unk_1F16E3180;
+  v3[26] = @"news";
+  v3[27] = @"mail";
+  v2[28] = &unk_1F16E3198;
+  v2[29] = &unk_1F16E31B0;
+  v3[28] = @"homekit";
+  v3[29] = @"find my";
+  v2[30] = &unk_1F16E31C8;
+  v2[31] = &unk_1F16E31E0;
+  v3[30] = @"heartrate";
+  v3[31] = @"siri";
+  v2[32] = &unk_1F16E31F8;
+  v2[33] = &unk_1F16E3210;
+  v3[32] = @"walkie-talkie";
+  v3[33] = @"connectivity";
+  v2[34] = &unk_1F16E3228;
+  v2[35] = &unk_1F16E3240;
+  v3[34] = @"weather air quality";
+  v3[35] = @"weather uv index";
+  v2[36] = &unk_1F16E3258;
+  v2[37] = &unk_1F16E3270;
+  v3[36] = @"weather wind";
+  v3[37] = @"people";
+  v2[38] = &unk_1F16E3288;
+  v2[39] = &unk_1F16E32A0;
+  v3[38] = @"solar";
+  v3[39] = @"astronomy earth";
+  v2[40] = &unk_1F16E32B8;
+  v2[41] = &unk_1F16E32D0;
+  v3[40] = @"astronomy luna";
+  v3[41] = @"astronomy orrery";
+  v2[42] = &unk_1F16E32E8;
+  v2[43] = &unk_1F16E3300;
+  v3[42] = @"digital time";
+  v3[43] = @"digital time no seconds";
+  v2[44] = &unk_1F16E3318;
+  v2[45] = &unk_1F16E3330;
+  v3[44] = @"ecg";
+  v3[45] = @"greenfield placehoder";
+  v2[46] = &unk_1F16E3348;
+  v2[47] = &unk_1F16E3360;
+  v3[46] = @"lux viewer";
+  v3[47] = @"nits viewer";
+  v2[48] = &unk_1F16E3378;
+  v2[49] = &unk_1F16E3390;
+  v3[48] = @"gizmo build vers";
+  v3[49] = @"phone build vers";
+  uint64_t v0 = [MEMORY[0x1E4F1C9E8] dictionaryWithObjects:v3 forKeys:v2 count:50];
+  v1 = (void *)_NTKStringFromComplicationTypeDict_dictionary;
+  _NTKStringFromComplicationTypeDict_dictionary = v0;
+}
+
+@end

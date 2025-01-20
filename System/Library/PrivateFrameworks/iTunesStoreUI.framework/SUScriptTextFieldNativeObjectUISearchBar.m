@@ -1,0 +1,136 @@
+@interface SUScriptTextFieldNativeObjectUISearchBar
+- (BOOL)becomeFirstResponder;
+- (BOOL)resignFirstResponder;
+- (double)width;
+- (id)_nativeObjectDelegate;
+- (id)placeholder;
+- (id)value;
+- (int64_t)autocapitalizationType;
+- (int64_t)autocorrectionType;
+- (int64_t)keyboardType;
+- (void)_setNativeObjectDelegate:(id)a3;
+- (void)setAutocapitalizationType:(int64_t)a3;
+- (void)setAutocorrectionType:(int64_t)a3;
+- (void)setKeyboardType:(int64_t)a3;
+- (void)setPlaceholder:(id)a3;
+- (void)setValue:(id)a3;
+- (void)setWidth:(double)a3;
+@end
+
+@implementation SUScriptTextFieldNativeObjectUISearchBar
+
+- (int64_t)autocapitalizationType
+{
+  id v2 = [(SUScriptNativeObject *)self object];
+
+  return [v2 autocapitalizationType];
+}
+
+- (int64_t)autocorrectionType
+{
+  id v2 = [(SUScriptNativeObject *)self object];
+
+  return [v2 autocorrectionType];
+}
+
+- (BOOL)becomeFirstResponder
+{
+  id v2 = [(SUScriptNativeObject *)self object];
+
+  return [v2 becomeFirstResponder];
+}
+
+- (int64_t)keyboardType
+{
+  id v2 = [(SUScriptNativeObject *)self object];
+
+  return [v2 keyboardType];
+}
+
+- (id)_nativeObjectDelegate
+{
+  id v2 = [(SUScriptNativeObject *)self object];
+
+  return (id)[v2 delegate];
+}
+
+- (id)placeholder
+{
+  id v2 = [(SUScriptNativeObject *)self object];
+
+  return (id)[v2 placeholder];
+}
+
+- (BOOL)resignFirstResponder
+{
+  id v2 = [(SUScriptNativeObject *)self object];
+
+  return [v2 resignFirstResponder];
+}
+
+- (void)setAutocapitalizationType:(int64_t)a3
+{
+  id v4 = [(SUScriptNativeObject *)self object];
+
+  [v4 setAutocapitalizationType:a3];
+}
+
+- (void)setAutocorrectionType:(int64_t)a3
+{
+  id v4 = [(SUScriptNativeObject *)self object];
+
+  [v4 setAutocorrectionType:a3];
+}
+
+- (void)setKeyboardType:(int64_t)a3
+{
+  id v4 = [(SUScriptNativeObject *)self object];
+
+  [v4 setKeyboardType:a3];
+}
+
+- (void)_setNativeObjectDelegate:(id)a3
+{
+  id v4 = [(SUScriptNativeObject *)self object];
+
+  [v4 setDelegate:a3];
+}
+
+- (void)setPlaceholder:(id)a3
+{
+  id v4 = [(SUScriptNativeObject *)self object];
+
+  [v4 setPlaceholder:a3];
+}
+
+- (void)setValue:(id)a3
+{
+  objc_msgSend(-[SUScriptNativeObject object](self, "object"), "setText:", a3);
+
+  [(SUScriptTextFieldNativeObject *)self _sendScriptDidChange];
+}
+
+- (void)setWidth:(double)a3
+{
+  id v3 = [(SUScriptNativeObject *)self object];
+  [v3 frame];
+  objc_msgSend(v3, "setFrame:");
+  id v4 = (void *)[v3 superview];
+
+  [v4 setNeedsLayout];
+}
+
+- (id)value
+{
+  id v2 = [(SUScriptNativeObject *)self object];
+
+  return (id)[v2 text];
+}
+
+- (double)width
+{
+  objc_msgSend(-[SUScriptNativeObject object](self, "object"), "frame");
+  return v2;
+}
+
+@end

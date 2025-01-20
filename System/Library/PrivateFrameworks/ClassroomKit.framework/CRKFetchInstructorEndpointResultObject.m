@@ -1,0 +1,55 @@
+@interface CRKFetchInstructorEndpointResultObject
++ (BOOL)supportsSecureCoding;
+- (CRKFetchInstructorEndpointResultObject)initWithCoder:(id)a3;
+- (NSXPCListenerEndpoint)endpoint;
+- (void)encodeWithCoder:(id)a3;
+- (void)setEndpoint:(id)a3;
+@end
+
+@implementation CRKFetchInstructorEndpointResultObject
+
++ (BOOL)supportsSecureCoding
+{
+  return 1;
+}
+
+- (CRKFetchInstructorEndpointResultObject)initWithCoder:(id)a3
+{
+  id v4 = a3;
+  v10.receiver = self;
+  v10.super_class = (Class)CRKFetchInstructorEndpointResultObject;
+  v5 = [(CATTaskResultObject *)&v10 initWithCoder:v4];
+  if (v5)
+  {
+    v6 = objc_msgSend(MEMORY[0x263EFFA08], "setWithObjects:", objc_opt_class(), 0);
+    uint64_t v7 = [v4 decodeObjectOfClasses:v6 forKey:@"endpoint"];
+    endpoint = v5->_endpoint;
+    v5->_endpoint = (NSXPCListenerEndpoint *)v7;
+  }
+  return v5;
+}
+
+- (void)encodeWithCoder:(id)a3
+{
+  v6.receiver = self;
+  v6.super_class = (Class)CRKFetchInstructorEndpointResultObject;
+  id v4 = a3;
+  [(CATTaskResultObject *)&v6 encodeWithCoder:v4];
+  v5 = [(CRKFetchInstructorEndpointResultObject *)self endpoint];
+  [v4 encodeObject:v5 forKey:@"endpoint"];
+}
+
+- (NSXPCListenerEndpoint)endpoint
+{
+  return self->_endpoint;
+}
+
+- (void)setEndpoint:(id)a3
+{
+}
+
+- (void).cxx_destruct
+{
+}
+
+@end

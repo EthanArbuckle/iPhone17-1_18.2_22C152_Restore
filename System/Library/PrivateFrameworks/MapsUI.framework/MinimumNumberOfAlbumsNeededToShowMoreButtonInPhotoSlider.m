@@ -1,0 +1,11 @@
+@interface MinimumNumberOfAlbumsNeededToShowMoreButtonInPhotoSlider
+@end
+
+@implementation MinimumNumberOfAlbumsNeededToShowMoreButtonInPhotoSlider
+
+void *MapsUIConfig_MinimumNumberOfAlbumsNeededToShowMoreButtonInPhotoSlider_Metadata_block_invoke_17()
+{
+  return &unk_1EE404FD0;
+}
+
+@end

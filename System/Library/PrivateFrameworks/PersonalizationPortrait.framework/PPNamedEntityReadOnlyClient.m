@@ -1,0 +1,307 @@
+@interface PPNamedEntityReadOnlyClient
++ (id)sharedInstance;
+- (BOOL)namedEntityRecordsWithQuery:(id)a3 error:(id *)a4 handleBatch:(id)a5;
+- (BOOL)rankedNamedEntitiesWithQuery:(id)a3 error:(id *)a4 handleBatch:(id)a5;
+- (PPNamedEntityReadOnlyClient)init;
+- (id)_remoteObjectProxy;
+- (id)_synchronousRemoteObjectProxyWithErrorHandler:(id)a3;
+- (id)mapItemForPlaceName:(id)a3 error:(id *)a4;
+- (void)_unblockPendingQueries;
+- (void)namedEntityBatch:(id)a3 isLast:(BOOL)a4 error:(id)a5 queryId:(unint64_t)a6 completion:(id)a7;
+- (void)namedEntityRecordBatch:(id)a3 isLast:(BOOL)a4 error:(id)a5 queryId:(unint64_t)a6 completion:(id)a7;
+- (void)registerFeedback:(id)a3 completion:(id)a4;
+@end
+
+@implementation PPNamedEntityReadOnlyClient
+
+- (void).cxx_destruct
+{
+  objc_storeStrong((id *)&self->_queryManager, 0);
+  objc_storeStrong((id *)&self->_clientHelper, 0);
+}
+
+- (void)registerFeedback:(id)a3 completion:(id)a4
+{
+  id v6 = a4;
+  id v7 = a3;
+  id v8 = [(PPNamedEntityReadOnlyClient *)self _remoteObjectProxy];
+  [v8 registerFeedback:v7 completion:v6];
+}
+
+- (id)mapItemForPlaceName:(id)a3 error:(id *)a4
+{
+  id v6 = a3;
+  uint64_t v18 = 0;
+  v19 = &v18;
+  uint64_t v20 = 0x3032000000;
+  v21 = __Block_byref_object_copy__6144;
+  v22 = __Block_byref_object_dispose__6145;
+  id v23 = 0;
+  uint64_t v12 = 0;
+  v13 = &v12;
+  uint64_t v14 = 0x3032000000;
+  v15 = __Block_byref_object_copy__6144;
+  v16 = __Block_byref_object_dispose__6145;
+  id v17 = 0;
+  v11[0] = MEMORY[0x1E4F143A8];
+  v11[1] = 3221225472;
+  v11[2] = __57__PPNamedEntityReadOnlyClient_mapItemForPlaceName_error___block_invoke;
+  v11[3] = &unk_1E550F638;
+  v11[4] = &v12;
+  id v7 = [(PPNamedEntityReadOnlyClient *)self _synchronousRemoteObjectProxyWithErrorHandler:v11];
+  v10[0] = MEMORY[0x1E4F143A8];
+  v10[1] = 3221225472;
+  v10[2] = __57__PPNamedEntityReadOnlyClient_mapItemForPlaceName_error___block_invoke_2;
+  v10[3] = &unk_1E550F0B8;
+  v10[4] = &v18;
+  v10[5] = &v12;
+  [v7 mapItemForPlaceName:v6 completion:v10];
+
+  if (a4) {
+    *a4 = (id) v13[5];
+  }
+  id v8 = (id)v19[5];
+  _Block_object_dispose(&v12, 8);
+
+  _Block_object_dispose(&v18, 8);
+  return v8;
+}
+
+void __57__PPNamedEntityReadOnlyClient_mapItemForPlaceName_error___block_invoke(uint64_t a1, void *a2)
+{
+}
+
+void __57__PPNamedEntityReadOnlyClient_mapItemForPlaceName_error___block_invoke_2(uint64_t a1, void *a2, void *a3)
+{
+  id v5 = a2;
+  id v6 = a3;
+  uint64_t v7 = *(void *)(*(void *)(a1 + 32) + 8);
+  id v8 = *(void **)(v7 + 40);
+  *(void *)(v7 + 40) = v5;
+  id v11 = v5;
+
+  uint64_t v9 = *(void *)(*(void *)(a1 + 40) + 8);
+  v10 = *(void **)(v9 + 40);
+  *(void *)(v9 + 40) = v6;
+}
+
+- (BOOL)namedEntityRecordsWithQuery:(id)a3 error:(id *)a4 handleBatch:(id)a5
+{
+  id v8 = a3;
+  id v9 = a5;
+  uint64_t v10 = objc_opt_class();
+  queryManager = self->_queryManager;
+  v19[0] = MEMORY[0x1E4F143A8];
+  v19[1] = 3221225472;
+  v19[2] = __77__PPNamedEntityReadOnlyClient_namedEntityRecordsWithQuery_error_handleBatch___block_invoke;
+  v19[3] = &unk_1E550F4B0;
+  v19[4] = self;
+  id v20 = v8;
+  v15[0] = MEMORY[0x1E4F143A8];
+  v15[1] = 3221225472;
+  v15[2] = __77__PPNamedEntityReadOnlyClient_namedEntityRecordsWithQuery_error_handleBatch___block_invoke_2;
+  v15[3] = &unk_1E550F4D8;
+  id v17 = v9;
+  uint64_t v18 = v10;
+  v16 = @"namedEntityRecordsWithQuery";
+  id v12 = v9;
+  id v13 = v8;
+  LOBYTE(a4) = [(PPXPCClientPipelinedBatchQueryManager *)queryManager syncExecuteQueryWithName:@"namedEntityRecordsWithQuery" error:a4 queryInitializer:v19 handleBatch:v15];
+
+  return (char)a4;
+}
+
+void __77__PPNamedEntityReadOnlyClient_namedEntityRecordsWithQuery_error_handleBatch___block_invoke(uint64_t a1, uint64_t a2)
+{
+  id v4 = [*(id *)(a1 + 32) _remoteObjectProxy];
+  [v4 namedEntityRecordsWithQuery:*(void *)(a1 + 40) queryId:a2];
+}
+
+void __77__PPNamedEntityReadOnlyClient_namedEntityRecordsWithQuery_error_handleBatch___block_invoke_2(void *a1, void *a2)
+{
+  uint64_t v3 = a1[4];
+  uint64_t v4 = a1[6];
+  id v5 = a2;
+  +[PPXPCClientPipelinedBatchQueryManager assertBatch:v5 forQueryName:v3 hasExpectedContainedType:v4];
+  (*(void (**)(void))(a1[5] + 16))();
+}
+
+- (BOOL)rankedNamedEntitiesWithQuery:(id)a3 error:(id *)a4 handleBatch:(id)a5
+{
+  id v8 = a3;
+  id v9 = a5;
+  uint64_t v10 = objc_opt_class();
+  queryManager = self->_queryManager;
+  v19[0] = MEMORY[0x1E4F143A8];
+  v19[1] = 3221225472;
+  v19[2] = __78__PPNamedEntityReadOnlyClient_rankedNamedEntitiesWithQuery_error_handleBatch___block_invoke;
+  v19[3] = &unk_1E550F4B0;
+  v19[4] = self;
+  id v20 = v8;
+  v15[0] = MEMORY[0x1E4F143A8];
+  v15[1] = 3221225472;
+  v15[2] = __78__PPNamedEntityReadOnlyClient_rankedNamedEntitiesWithQuery_error_handleBatch___block_invoke_2;
+  v15[3] = &unk_1E550F4D8;
+  id v17 = v9;
+  uint64_t v18 = v10;
+  v16 = @"rankedNamedEntitiesWithQuery";
+  id v12 = v9;
+  id v13 = v8;
+  LOBYTE(a4) = [(PPXPCClientPipelinedBatchQueryManager *)queryManager syncExecuteQueryWithName:@"rankedNamedEntitiesWithQuery" error:a4 queryInitializer:v19 handleBatch:v15];
+
+  return (char)a4;
+}
+
+void __78__PPNamedEntityReadOnlyClient_rankedNamedEntitiesWithQuery_error_handleBatch___block_invoke(uint64_t a1, uint64_t a2)
+{
+  id v4 = [*(id *)(a1 + 32) _remoteObjectProxy];
+  [v4 rankedNamedEntitiesWithQuery:*(void *)(a1 + 40) queryId:a2];
+}
+
+void __78__PPNamedEntityReadOnlyClient_rankedNamedEntitiesWithQuery_error_handleBatch___block_invoke_2(void *a1, void *a2)
+{
+  uint64_t v3 = a1[4];
+  uint64_t v4 = a1[6];
+  id v5 = a2;
+  +[PPXPCClientPipelinedBatchQueryManager assertBatch:v5 forQueryName:v3 hasExpectedContainedType:v4];
+  (*(void (**)(void))(a1[5] + 16))();
+}
+
+- (id)_synchronousRemoteObjectProxyWithErrorHandler:(id)a3
+{
+  return [(PPXPCClientHelper *)self->_clientHelper synchronousRemoteObjectProxyWithErrorHandler:a3];
+}
+
+- (id)_remoteObjectProxy
+{
+  return [(PPXPCClientHelper *)self->_clientHelper remoteObjectProxy];
+}
+
+- (void)namedEntityRecordBatch:(id)a3 isLast:(BOOL)a4 error:(id)a5 queryId:(unint64_t)a6 completion:(id)a7
+{
+}
+
+- (void)namedEntityBatch:(id)a3 isLast:(BOOL)a4 error:(id)a5 queryId:(unint64_t)a6 completion:(id)a7
+{
+}
+
+- (void)_unblockPendingQueries
+{
+  v9[1] = *MEMORY[0x1E4F143B8];
+  uint64_t v3 = (void *)[[NSString alloc] initWithFormat:@"connection to %@ was unexpectedly terminated", @"com.apple.proactive.PersonalizationPortrait.NamedEntity.readOnly"];
+  id v4 = objc_alloc(MEMORY[0x1E4F28C58]);
+  uint64_t v5 = *MEMORY[0x1E4F28798];
+  uint64_t v8 = *MEMORY[0x1E4F28588];
+  v9[0] = v3;
+  id v6 = [MEMORY[0x1E4F1C9E8] dictionaryWithObjects:v9 forKeys:&v8 count:1];
+  uint64_t v7 = (void *)[v4 initWithDomain:v5 code:5 userInfo:v6];
+
+  [(PPXPCClientPipelinedBatchQueryManager *)self->_queryManager cancelPendingQueriesWithError:v7];
+}
+
+- (PPNamedEntityReadOnlyClient)init
+{
+  v28.receiver = self;
+  v28.super_class = (Class)PPNamedEntityReadOnlyClient;
+  v2 = [(PPNamedEntityReadOnlyClient *)&v28 init];
+  if (v2)
+  {
+    uint64_t v3 = [MEMORY[0x1E4F29280] interfaceWithProtocol:&unk_1EDA7ABE8];
+    id v4 = [MEMORY[0x1E4F29280] interfaceWithProtocol:&unk_1EDA75060];
+    uint64_t v5 = (void *)MEMORY[0x192F97350]();
+    id v6 = objc_alloc(MEMORY[0x1E4F1CAD0]);
+    uint64_t v7 = objc_opt_class();
+    uint64_t v8 = objc_msgSend(v6, "initWithObjects:", v7, objc_opt_class(), 0);
+    [v4 setClasses:v8 forSelector:sel_namedEntityBatch_isLast_error_queryId_completion_ argumentIndex:0 ofReply:0];
+
+    id v9 = (void *)MEMORY[0x192F97350]();
+    id v10 = objc_alloc(MEMORY[0x1E4F1CAD0]);
+    uint64_t v11 = objc_opt_class();
+    id v12 = objc_msgSend(v10, "initWithObjects:", v11, objc_opt_class(), 0);
+    [v4 setClasses:v12 forSelector:sel_namedEntityRecordBatch_isLast_error_queryId_completion_ argumentIndex:0 ofReply:0];
+
+    id location = 0;
+    objc_initWeak(&location, v2);
+    v25[0] = MEMORY[0x1E4F143A8];
+    v25[1] = 3221225472;
+    v25[2] = __35__PPNamedEntityReadOnlyClient_init__block_invoke;
+    v25[3] = &unk_1E550F488;
+    objc_copyWeak(&v26, &location);
+    id v13 = (void *)MEMORY[0x192F975A0](v25);
+    v23[0] = MEMORY[0x1E4F143A8];
+    v23[1] = 3221225472;
+    v23[2] = __35__PPNamedEntityReadOnlyClient_init__block_invoke_76;
+    v23[3] = &unk_1E550F488;
+    objc_copyWeak(&v24, &location);
+    uint64_t v14 = (void *)MEMORY[0x192F975A0](v23);
+    v15 = [[PPXPCClientHelper alloc] initWithServiceName:@"com.apple.proactive.PersonalizationPortrait.NamedEntity.readOnly" allowedServerInterface:v3 allowedClientInterface:v4 clientExportedObject:v2 interruptionHandler:v13 invalidationHandler:v14];
+    clientHelper = v2->_clientHelper;
+    v2->_clientHelper = v15;
+
+    id v17 = [PPXPCClientPipelinedBatchQueryManager alloc];
+    uint64_t v18 = (objc_class *)objc_opt_class();
+    v19 = NSStringFromClass(v18);
+    uint64_t v20 = [(PPXPCClientPipelinedBatchQueryManager *)v17 initWithName:v19];
+    queryManager = v2->_queryManager;
+    v2->_queryManager = (PPXPCClientPipelinedBatchQueryManager *)v20;
+
+    objc_destroyWeak(&v24);
+    objc_destroyWeak(&v26);
+    objc_destroyWeak(&location);
+  }
+  return v2;
+}
+
+void __35__PPNamedEntityReadOnlyClient_init__block_invoke(uint64_t a1)
+{
+  uint64_t v6 = *MEMORY[0x1E4F143B8];
+  v2 = pp_xpc_client_log_handle();
+  if (os_log_type_enabled(v2, OS_LOG_TYPE_ERROR))
+  {
+    int v4 = 138412290;
+    uint64_t v5 = @"com.apple.proactive.PersonalizationPortrait.NamedEntity.readOnly";
+    _os_log_error_impl(&dword_18CAA6000, v2, OS_LOG_TYPE_ERROR, "Connection to %@ interrupted.", (uint8_t *)&v4, 0xCu);
+  }
+
+  id WeakRetained = objc_loadWeakRetained((id *)(a1 + 32));
+  [WeakRetained _unblockPendingQueries];
+}
+
+void __35__PPNamedEntityReadOnlyClient_init__block_invoke_76(uint64_t a1)
+{
+  uint64_t v6 = *MEMORY[0x1E4F143B8];
+  v2 = pp_xpc_client_log_handle();
+  if (os_log_type_enabled(v2, OS_LOG_TYPE_INFO))
+  {
+    int v4 = 138412290;
+    uint64_t v5 = @"com.apple.proactive.PersonalizationPortrait.NamedEntity.readOnly";
+    _os_log_impl(&dword_18CAA6000, v2, OS_LOG_TYPE_INFO, "Connection to %@ invalidated.", (uint8_t *)&v4, 0xCu);
+  }
+
+  id WeakRetained = objc_loadWeakRetained((id *)(a1 + 32));
+  [WeakRetained _unblockPendingQueries];
+}
+
++ (id)sharedInstance
+{
+  block[0] = MEMORY[0x1E4F143A8];
+  block[1] = 3221225472;
+  block[2] = __45__PPNamedEntityReadOnlyClient_sharedInstance__block_invoke;
+  block[3] = &__block_descriptor_40_e5_v8__0l;
+  block[4] = a1;
+  if (sharedInstance__pasOnceToken8_6189 != -1) {
+    dispatch_once(&sharedInstance__pasOnceToken8_6189, block);
+  }
+  v2 = (void *)sharedInstance__pasExprOnceResult_6190;
+  return v2;
+}
+
+void __45__PPNamedEntityReadOnlyClient_sharedInstance__block_invoke()
+{
+  v0 = (void *)MEMORY[0x192F97350]();
+  uint64_t v1 = objc_opt_new();
+  v2 = (void *)sharedInstance__pasExprOnceResult_6190;
+  sharedInstance__pasExprOnceResult_6190 = v1;
+}
+
+@end

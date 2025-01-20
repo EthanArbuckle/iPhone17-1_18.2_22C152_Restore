@@ -1,0 +1,11 @@
+@interface MapsSuggestionsTransportationModeDebugPanelSettingKey
+@end
+
+@implementation MapsSuggestionsTransportationModeDebugPanelSettingKey
+
+uint64_t MapKitConfig_MapsSuggestionsTransportationModeDebugPanelSettingKey_Metadata_block_invoke_42()
+{
+  return MEMORY[0x1E4F1CC28];
+}
+
+@end

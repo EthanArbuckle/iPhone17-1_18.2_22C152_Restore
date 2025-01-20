@@ -1,0 +1,153 @@
+@interface PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata
++ (BOOL)supportsSecureCoding;
+- (NSData)readerIdentifier;
+- (NSData)readerPublicKey;
+- (NSDictionary)serverParameters;
+- (PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata)initWithCoder:(id)a3;
+- (PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata)initWithDictionary:(id)a3;
+- (id)copyWithZone:(_NSZone *)a3;
+- (id)description;
+- (void)encodeWithCoder:(id)a3;
+@end
+
+@implementation PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata
+
+- (PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata)initWithDictionary:(id)a3
+{
+  id v4 = a3;
+  v15.receiver = self;
+  v15.super_class = (Class)PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata;
+  v5 = [(PKPassAuxiliaryCapabilityKeyCreationMetadata *)&v15 initWithDictionary:v4];
+  if (v5)
+  {
+    v6 = [v4 PKStringForKey:@"readerGroupIdentifier"];
+    uint64_t v7 = objc_msgSend(v6, "pk_decodeHexadecimal");
+    readerIdentifier = v5->_readerIdentifier;
+    v5->_readerIdentifier = (NSData *)v7;
+
+    v9 = [v4 PKStringForKey:@"readerGroupPublicKey"];
+    if (v9)
+    {
+      uint64_t v10 = [objc_alloc(MEMORY[0x1E4F1C9B8]) initWithBase64EncodedString:v9 options:0];
+      readerPublicKey = v5->_readerPublicKey;
+      v5->_readerPublicKey = (NSData *)v10;
+    }
+    uint64_t v12 = [v4 PKDictionaryForKey:@"serverParameters"];
+    serverParameters = v5->_serverParameters;
+    v5->_serverParameters = (NSDictionary *)v12;
+
+    if (!v5->_readerIdentifier || !v5->_readerPublicKey || !v5->_serverParameters)
+    {
+
+      v5 = 0;
+    }
+  }
+  return v5;
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  id v4 = [(PKPassAuxiliaryCapabilityKeyCreationMetadata *)[PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata alloc] _init];
+  [(PKPassAuxiliaryCapabilityKeyCreationMetadata *)self _copyInto:v4];
+  uint64_t v5 = [(NSData *)self->_readerIdentifier copy];
+  v6 = (void *)v4[1];
+  v4[1] = v5;
+
+  uint64_t v7 = [(NSData *)self->_readerPublicKey copy];
+  v8 = (void *)v4[2];
+  v4[2] = v7;
+
+  uint64_t v9 = [(NSDictionary *)self->_serverParameters copy];
+  uint64_t v10 = (void *)v4[3];
+  v4[3] = v9;
+
+  return v4;
+}
+
++ (BOOL)supportsSecureCoding
+{
+  return 1;
+}
+
+- (PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata)initWithCoder:(id)a3
+{
+  id v4 = a3;
+  v18.receiver = self;
+  v18.super_class = (Class)PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata;
+  uint64_t v5 = [(PKPassAuxiliaryCapabilityKeyCreationMetadata *)&v18 initWithCoder:v4];
+  if (v5)
+  {
+    uint64_t v6 = [v4 decodeObjectOfClass:objc_opt_class() forKey:@"readerIdentifier"];
+    readerIdentifier = v5->_readerIdentifier;
+    v5->_readerIdentifier = (NSData *)v6;
+
+    uint64_t v8 = [v4 decodeObjectOfClass:objc_opt_class() forKey:@"readerPublicKey"];
+    readerPublicKey = v5->_readerPublicKey;
+    v5->_readerPublicKey = (NSData *)v8;
+
+    id v10 = objc_alloc(MEMORY[0x1E4F1CAD0]);
+    uint64_t v11 = objc_opt_class();
+    uint64_t v12 = objc_opt_class();
+    uint64_t v13 = objc_opt_class();
+    v14 = objc_msgSend(v10, "initWithObjects:", v11, v12, v13, objc_opt_class(), 0);
+    uint64_t v15 = [v4 decodeObjectOfClasses:v14 forKey:@"serverParameters"];
+    serverParameters = v5->_serverParameters;
+    v5->_serverParameters = (NSDictionary *)v15;
+  }
+  return v5;
+}
+
+- (void)encodeWithCoder:(id)a3
+{
+  v5.receiver = self;
+  v5.super_class = (Class)PKPassAuxiliaryCapabilitySignatureAliroHydraKeyCreationMetadata;
+  id v4 = a3;
+  [(PKPassAuxiliaryCapabilityKeyCreationMetadata *)&v5 encodeWithCoder:v4];
+  objc_msgSend(v4, "encodeObject:forKey:", self->_readerIdentifier, @"readerIdentifier", v5.receiver, v5.super_class);
+  [v4 encodeObject:self->_readerPublicKey forKey:@"readerPublicKey"];
+  [v4 encodeObject:self->_serverParameters forKey:@"serverParameters"];
+}
+
+- (id)description
+{
+  v3 = (void *)MEMORY[0x1E4F28E78];
+  id v4 = (objc_class *)objc_opt_class();
+  objc_super v5 = NSStringFromClass(v4);
+  uint64_t v6 = [v3 stringWithFormat:@"<%@: %p", v5, self];
+
+  uint64_t v7 = [(NSData *)self->_readerIdentifier hexEncoding];
+  [v6 appendFormat:@"; readerIdentifier: '%@'", v7];
+
+  uint64_t v8 = [(NSData *)self->_readerPublicKey hexEncoding];
+  [v6 appendFormat:@"; readerPublicKey: '%@'", v8];
+
+  [v6 appendFormat:@"; serverParameters: '%@'", self->_serverParameters];
+  [v6 appendFormat:@">"];
+  uint64_t v9 = [NSString stringWithString:v6];
+
+  return v9;
+}
+
+- (NSData)readerIdentifier
+{
+  return self->_readerIdentifier;
+}
+
+- (NSData)readerPublicKey
+{
+  return self->_readerPublicKey;
+}
+
+- (NSDictionary)serverParameters
+{
+  return self->_serverParameters;
+}
+
+- (void).cxx_destruct
+{
+  objc_storeStrong((id *)&self->_serverParameters, 0);
+  objc_storeStrong((id *)&self->_readerPublicKey, 0);
+  objc_storeStrong((id *)&self->_readerIdentifier, 0);
+}
+
+@end

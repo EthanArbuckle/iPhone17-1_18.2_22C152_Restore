@@ -1,0 +1,202 @@
+@interface SIRINLUEXTERNALUserWantedToRepeat
+- (BOOL)hasReference;
+- (BOOL)hasSystemDialogActId;
+- (BOOL)isEqual:(id)a3;
+- (BOOL)readFrom:(id)a3;
+- (SIRINLUEXTERNALUUID)systemDialogActId;
+- (SIRINLUEXTERNALUsoGraph)reference;
+- (id)copyWithZone:(_NSZone *)a3;
+- (id)description;
+- (id)dictionaryRepresentation;
+- (unint64_t)hash;
+- (void)copyTo:(id)a3;
+- (void)mergeFrom:(id)a3;
+- (void)setReference:(id)a3;
+- (void)setSystemDialogActId:(id)a3;
+- (void)writeTo:(id)a3;
+@end
+
+@implementation SIRINLUEXTERNALUserWantedToRepeat
+
+- (void).cxx_destruct
+{
+  objc_storeStrong((id *)&self->_systemDialogActId, 0);
+  objc_storeStrong((id *)&self->_reference, 0);
+}
+
+- (void)setReference:(id)a3
+{
+}
+
+- (SIRINLUEXTERNALUsoGraph)reference
+{
+  return self->_reference;
+}
+
+- (void)setSystemDialogActId:(id)a3
+{
+}
+
+- (SIRINLUEXTERNALUUID)systemDialogActId
+{
+  return self->_systemDialogActId;
+}
+
+- (void)mergeFrom:(id)a3
+{
+  v4 = a3;
+  systemDialogActId = self->_systemDialogActId;
+  uint64_t v6 = v4[2];
+  v9 = v4;
+  if (systemDialogActId)
+  {
+    if (!v6) {
+      goto LABEL_7;
+    }
+    -[SIRINLUEXTERNALUUID mergeFrom:](systemDialogActId, "mergeFrom:");
+  }
+  else
+  {
+    if (!v6) {
+      goto LABEL_7;
+    }
+    -[SIRINLUEXTERNALUserWantedToRepeat setSystemDialogActId:](self, "setSystemDialogActId:");
+  }
+  v4 = v9;
+LABEL_7:
+  reference = self->_reference;
+  uint64_t v8 = v4[1];
+  if (reference)
+  {
+    if (v8) {
+      -[SIRINLUEXTERNALUsoGraph mergeFrom:](reference, "mergeFrom:");
+    }
+  }
+  else if (v8)
+  {
+    -[SIRINLUEXTERNALUserWantedToRepeat setReference:](self, "setReference:");
+  }
+  MEMORY[0x1F41817F8]();
+}
+
+- (unint64_t)hash
+{
+  unint64_t v3 = [(SIRINLUEXTERNALUUID *)self->_systemDialogActId hash];
+  return [(SIRINLUEXTERNALUsoGraph *)self->_reference hash] ^ v3;
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  v4 = a3;
+  if ([v4 isMemberOfClass:objc_opt_class()]
+    && ((systemDialogActId = self->_systemDialogActId, !((unint64_t)systemDialogActId | v4[2]))
+     || -[SIRINLUEXTERNALUUID isEqual:](systemDialogActId, "isEqual:")))
+  {
+    reference = self->_reference;
+    if ((unint64_t)reference | v4[1]) {
+      char v7 = -[SIRINLUEXTERNALUsoGraph isEqual:](reference, "isEqual:");
+    }
+    else {
+      char v7 = 1;
+    }
+  }
+  else
+  {
+    char v7 = 0;
+  }
+
+  return v7;
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  v5 = objc_msgSend((id)objc_msgSend((id)objc_opt_class(), "allocWithZone:", a3), "init");
+  id v6 = [(SIRINLUEXTERNALUUID *)self->_systemDialogActId copyWithZone:a3];
+  char v7 = (void *)v5[2];
+  v5[2] = v6;
+
+  id v8 = [(SIRINLUEXTERNALUsoGraph *)self->_reference copyWithZone:a3];
+  v9 = (void *)v5[1];
+  v5[1] = v8;
+
+  return v5;
+}
+
+- (void)copyTo:(id)a3
+{
+  id v4 = a3;
+  id v5 = v4;
+  if (self->_systemDialogActId)
+  {
+    objc_msgSend(v4, "setSystemDialogActId:");
+    id v4 = v5;
+  }
+  if (self->_reference)
+  {
+    objc_msgSend(v5, "setReference:");
+    id v4 = v5;
+  }
+}
+
+- (void)writeTo:(id)a3
+{
+  id v4 = a3;
+  id v5 = v4;
+  if (self->_systemDialogActId)
+  {
+    PBDataWriterWriteSubmessage();
+    id v4 = v5;
+  }
+  if (self->_reference)
+  {
+    PBDataWriterWriteSubmessage();
+    id v4 = v5;
+  }
+}
+
+- (BOOL)readFrom:(id)a3
+{
+  return SIRINLUEXTERNALUserWantedToRepeatReadFrom((uint64_t)self, (uint64_t)a3);
+}
+
+- (id)dictionaryRepresentation
+{
+  unint64_t v3 = [MEMORY[0x1E4F1CA60] dictionary];
+  systemDialogActId = self->_systemDialogActId;
+  if (systemDialogActId)
+  {
+    id v5 = [(SIRINLUEXTERNALUUID *)systemDialogActId dictionaryRepresentation];
+    [v3 setObject:v5 forKey:@"system_dialog_act_id"];
+  }
+  reference = self->_reference;
+  if (reference)
+  {
+    char v7 = [(SIRINLUEXTERNALUsoGraph *)reference dictionaryRepresentation];
+    [v3 setObject:v7 forKey:@"reference"];
+  }
+  return v3;
+}
+
+- (id)description
+{
+  unint64_t v3 = NSString;
+  v8.receiver = self;
+  v8.super_class = (Class)SIRINLUEXTERNALUserWantedToRepeat;
+  id v4 = [(SIRINLUEXTERNALUserWantedToRepeat *)&v8 description];
+  id v5 = [(SIRINLUEXTERNALUserWantedToRepeat *)self dictionaryRepresentation];
+  id v6 = [v3 stringWithFormat:@"%@ %@", v4, v5];
+
+  return v6;
+}
+
+- (BOOL)hasReference
+{
+  return self->_reference != 0;
+}
+
+- (BOOL)hasSystemDialogActId
+{
+  return self->_systemDialogActId != 0;
+}
+
+@end

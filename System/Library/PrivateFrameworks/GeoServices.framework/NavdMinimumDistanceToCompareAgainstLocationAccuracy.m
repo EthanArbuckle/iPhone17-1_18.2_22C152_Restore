@@ -1,0 +1,11 @@
+@interface NavdMinimumDistanceToCompareAgainstLocationAccuracy
+@end
+
+@implementation NavdMinimumDistanceToCompareAgainstLocationAccuracy
+
+void *GeoServicesConfig_NavdMinimumDistanceToCompareAgainstLocationAccuracy_Metadata_block_invoke_258()
+{
+  return &unk_1ED73F550;
+}
+
+@end

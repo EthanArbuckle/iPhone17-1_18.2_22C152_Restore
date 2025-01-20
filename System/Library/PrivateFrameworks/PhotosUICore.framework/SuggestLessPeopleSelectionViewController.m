@@ -1,0 +1,71 @@
+@interface SuggestLessPeopleSelectionViewController
+- (_TtC12PhotosUICore40SuggestLessPeopleSelectionViewController)initWithCoder:(id)a3;
+- (_TtC12PhotosUICore40SuggestLessPeopleSelectionViewController)initWithNibName:(id)a3 bundle:(id)a4;
+- (_TtC12PhotosUICore40SuggestLessPeopleSelectionViewController)initWithPeople:(id)a3 delegate:(id)a4 completionHandler:(id)a5;
+- (void)setupSelectionView;
+- (void)viewDidLoad;
+@end
+
+@implementation SuggestLessPeopleSelectionViewController
+
+- (_TtC12PhotosUICore40SuggestLessPeopleSelectionViewController)initWithPeople:(id)a3 delegate:(id)a4 completionHandler:(id)a5
+{
+  v6 = _Block_copy(a5);
+  sub_1A9B21070(0, (unint64_t *)&qword_1E981B820);
+  uint64_t v7 = sub_1AB23AADC();
+  uint64_t v8 = swift_allocObject();
+  *(void *)(v8 + 16) = v6;
+  swift_unknownObjectRetain();
+  v9 = (_TtC12PhotosUICore40SuggestLessPeopleSelectionViewController *)sub_1AA7650CC(v7, (uint64_t)a4, (uint64_t)sub_1A9D5E1DC, v8);
+  swift_unknownObjectRelease();
+  swift_release();
+  return v9;
+}
+
+- (_TtC12PhotosUICore40SuggestLessPeopleSelectionViewController)initWithCoder:(id)a3
+{
+  swift_unknownObjectWeakInit();
+  v5 = (Class *)((char *)&self->super.super.super.isa
+               + OBJC_IVAR____TtC12PhotosUICore40SuggestLessPeopleSelectionViewController_completionHandler);
+  void *v5 = 0;
+  v5[1] = 0;
+  id v6 = a3;
+
+  result = (_TtC12PhotosUICore40SuggestLessPeopleSelectionViewController *)sub_1AB23C1FC();
+  __break(1u);
+  return result;
+}
+
+- (void)viewDidLoad
+{
+  v3.receiver = self;
+  v3.super_class = (Class)type metadata accessor for SuggestLessPeopleSelectionViewController();
+  id v2 = v3.receiver;
+  [(SuggestLessPeopleSelectionViewController *)&v3 viewDidLoad];
+  objc_msgSend(v2, sel_setupSelectionView, v3.receiver, v3.super_class);
+}
+
+- (void)setupSelectionView
+{
+  id v2 = self;
+  sub_1AA7610FC();
+}
+
+- (_TtC12PhotosUICore40SuggestLessPeopleSelectionViewController)initWithNibName:(id)a3 bundle:(id)a4
+{
+  id v4 = a4;
+  result = (_TtC12PhotosUICore40SuggestLessPeopleSelectionViewController *)_swift_stdlib_reportUnimplementedInitializer();
+  __break(1u);
+  return result;
+}
+
+- (void).cxx_destruct
+{
+  swift_bridgeObjectRelease();
+  sub_1A9D6D380((uint64_t)self + OBJC_IVAR____TtC12PhotosUICore40SuggestLessPeopleSelectionViewController_delegate);
+  uint64_t v3 = *(uint64_t *)((char *)&self->super.super.super.isa
+                  + OBJC_IVAR____TtC12PhotosUICore40SuggestLessPeopleSelectionViewController_completionHandler);
+  sub_1A9BB8934(v3);
+}
+
+@end

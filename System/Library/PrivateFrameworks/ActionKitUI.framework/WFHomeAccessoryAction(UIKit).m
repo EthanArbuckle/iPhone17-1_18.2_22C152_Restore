@@ -1,0 +1,15 @@
+@interface WFHomeAccessoryAction(UIKit)
+- (id)localizedFooter;
+@end
+
+@implementation WFHomeAccessoryAction(UIKit)
+
+- (id)localizedFooter
+{
+  v0 = [MEMORY[0x263F86C08] sharedManager];
+  v1 = WFFooterTextForHomeAction();
+
+  return v1;
+}
+
+@end

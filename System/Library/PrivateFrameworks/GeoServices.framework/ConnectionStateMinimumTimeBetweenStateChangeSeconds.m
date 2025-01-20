@@ -1,0 +1,11 @@
+@interface ConnectionStateMinimumTimeBetweenStateChangeSeconds
+@end
+
+@implementation ConnectionStateMinimumTimeBetweenStateChangeSeconds
+
+void *GeoServicesConfig_ConnectionStateMinimumTimeBetweenStateChangeSeconds_Metadata_block_invoke_113()
+{
+  return &unk_1ED73F4C0;
+}
+
+@end

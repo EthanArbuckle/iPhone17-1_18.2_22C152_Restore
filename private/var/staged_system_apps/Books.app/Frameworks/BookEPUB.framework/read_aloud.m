@@ -1,0 +1,18 @@
+@interface read_aloud
++ (NSString)source;
++ (NSString)sourceName;
+@end
+
+@implementation read_aloud
+
++ (NSString)sourceName
+{
+  return (NSString *)@"read_aloud.js";
+}
+
++ (NSString)source
+{
+  return (NSString *)@"// Copyright © 2018-2021 Apple Inc. All rights reserved.\nReflect.defineProperty(window,'__ibooks_read_aloud',{value:{},writable:!1}),function(e){e.kEPUBNameSpace='http://www.idpf.org/2007/ops',e.kiBooksNameSpace='http://apple.com/ibooks/html-extensions',e.kiBooksNameSpace2='http://vocabulary.itunes.apple.com/rdf/ibooks/vocabulary-extensions-1.0',e.hasMediaOverlayActiveStyle=!1,e._epubMediaOverlayClass='-epub-media-overlay-active',e._CustomEvent='CustomEvent',e._CustomEventName='ibooksMediaOverlayActive',e._MediaOverlayEnabledClass='media-overlay-enabled',e._MediaOverlayEnabledBooksClass='-ibooks-media-overlay-enabled',e._MediaOverlayEnabledEventName='ibooksMediaOverlayEnabled',e.HandlerEvent={MediaSourceLoad:'media_source_load',Click:'click',Action:'action',AudioEnded:'audio-ended'},e.didFinishDocumentLoad=()=>{e._installActionHandlers();const t=e._replaceAudioPlayerAndGetSourceTrack();return t&&e._postMessage(e.HandlerEvent.MediaSourceLoad,{media_source:t}),t},e.highlightElement=(t,a)=>{const o=document.getElementById(t);o.classList.add(a),o.classList.add(e._epubMediaOverlayClass);const n=document.createEvent(e._CustomEvent);n.initCustomEvent(e._CustomEventName,!0,!1,!0),o.dispatchEvent(n)},e.removeHighlightElement=(t,a)=>{const o=document.getElementById(t);o.classList.remove(a),o.classList.remove(e._epubMediaOverlayClass);const n=document.createEvent(e._CustomEvent);n.initCustomEvent(e._CustomEventName,!0,!1,!1),o.dispatchEvent(n)},e.installTapHandlerElementIDAndHREF=(t,a)=>{const o=document.getElementById(t);o.addEventListener('click',o.ReadAloudElementTapHandler=()=>{e._postMessage(e.HandlerEvent.Click,{id:t,href:a})},!1)},e.removeTapHandlerElementID=e=>{const t=document.getElementById(e);t.removeEventListener('click',t.ReadAloudElementTapHandler,!1)},e.addMediaOverlayClassToDocument=()=>{document.documentElement.classList.add(e._MediaOverlayEnabledClass),document.documentElement.classList.add(e._MediaOverlayEnabledBooksClass);const t=document.createEvent(e._CustomEvent);t.initCustomEvent(e._MediaOverlayEnabledEventName,!0,!1,!0),document.dispatchEvent(t)},e.removeMediaOverlayClassFromDocument=()=>{document.documentElement.classList.remove(e._MediaOverlayEnabledClass),document.documentElement.classList.remove(e._MediaOverlayEnabledBooksClass);const t=document.createEvent(e._CustomEvent);t.initCustomEvent(e._MediaOverlayEnabledEventName,!0,!1,!1),document.dispatchEvent(t)},e._replaceAudioPlayerAndGetSourceTrack=()=>{const t=document.getElementsByTagName('audio');for (const a of t){const t=a.getAttributeNS(e.kEPUBNameSpace,'type');if (t&&t.includes('ibooks:soundtrack'))return a.parentNode.removeChild(a),a.getAttribute('src')}return null},e._installActionHandlers=()=>{const t=document.querySelectorAll('[*|readaloud]');for (const a of t){let t=a.getAttributeNS(e.kiBooksNameSpace,'readaloud');if (t||(t=a.getAttributeNS(e.kiBooksNameSpace2,'readaloud')),t){let o=a.getAttributeNS(e.kiBooksNameSpace,'readaloud-turn-style');o||(o=a.getAttributeNS(e.kiBooksNameSpace2,'readaloud-turn-style')),e._wrapAction(a,t,o)}}},e._wrapAction=(t,a,o)=>{t.addEventListener('click',t.ReadAloudActionTapHandler=()=>{e._postMessage(e.HandlerEvent.Action,{action:a,auto_turn:o})},!1)},e._postMessage=(e,t)=>{const a={event:e,data:t};iBooks.postMessage('readAloudHandler',a)},window.addEventListener('DOMContentLoaded',e.didFinishDocumentLoad)}(__ibooks_read_aloud);\n";
+}
+
+@end

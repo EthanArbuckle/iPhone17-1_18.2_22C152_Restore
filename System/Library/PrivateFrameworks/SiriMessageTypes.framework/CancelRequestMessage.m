@@ -1,0 +1,17 @@
+@interface CancelRequestMessage
+- (NSString)description;
+@end
+
+@implementation CancelRequestMessage
+
+- (NSString)description
+{
+  v2 = self;
+  sub_25CF775BC();
+
+  v3 = (void *)sub_25D0BD2D0();
+  swift_bridgeObjectRelease();
+  return (NSString *)v3;
+}
+
+@end

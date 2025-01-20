@@ -1,0 +1,12 @@
+@interface WKShapeView
++ (Class)layerClass;
+@end
+
+@implementation WKShapeView
+
++ (Class)layerClass
+{
+  return (Class)objc_opt_class();
+}
+
+@end

@@ -1,0 +1,114 @@
+@interface CIKeystoneCorrectionCombined
+- (void)computeRotation;
+@end
+
+@implementation CIKeystoneCorrectionCombined
+
+- (void)computeRotation
+{
+  v3 = [(CIKeystoneCorrection *)self inputBottomLeft];
+  [(CIVector *)v3 X];
+  *(float *)&double v4 = v4;
+  float v80 = *(float *)&v4;
+  [(CIVector *)v3 Y];
+  *(float *)&double v5 = v5;
+  float v77 = *(float *)&v5;
+  v6 = [(CIKeystoneCorrection *)self inputTopLeft];
+  [(CIVector *)v6 X];
+  *(float *)&double v7 = v7;
+  float v74 = *(float *)&v7;
+  [(CIVector *)v6 Y];
+  *(float *)&double v8 = v8;
+  float v71 = *(float *)&v8;
+  v9 = [(CIKeystoneCorrection *)self inputBottomRight];
+  [(CIVector *)v9 X];
+  *(float *)&double v10 = v10;
+  float v68 = *(float *)&v10;
+  [(CIVector *)v9 Y];
+  *(float *)&double v11 = v11;
+  float v65 = *(float *)&v11;
+  v12 = [(CIKeystoneCorrection *)self inputTopRight];
+  [(CIVector *)v12 X];
+  *(float *)&double v13 = v13;
+  float v62 = *(float *)&v13;
+  [(CIVector *)v12 Y];
+  float v15 = v14;
+  float32x4_t v16 = *(float32x4_t *)self->super._anon_80;
+  float32x4_t v17 = *(float32x4_t *)&self->super._anon_80[16];
+  float32x4_t v18 = *(float32x4_t *)&self->super._anon_80[32];
+  int32x4_t v19 = (int32x4_t)vaddq_f32(v18, vmlaq_n_f32(vmulq_n_f32(v16, v80), v17, v77));
+  int32x4_t v20 = (int32x4_t)vaddq_f32(v18, vmlaq_n_f32(vmulq_n_f32(v16, v74), v17, v71));
+  int32x4_t v21 = (int32x4_t)vaddq_f32(v18, vmlaq_n_f32(vmulq_n_f32(v16, v68), v17, v65));
+  int32x4_t v22 = (int32x4_t)vaddq_f32(v18, vmlaq_n_f32(vmulq_n_f32(v16, v62), v17, v15));
+  self->super.pitch = CI::Perspective::keystoneV(COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v19.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v19, 2))), COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v20.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v20, 2))), COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v21.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v21, 2))), COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v22.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v22, 2))));
+  v23 = [(CIKeystoneCorrection *)self inputTopLeft];
+  [(CIVector *)v23 X];
+  *(float *)&double v24 = v24;
+  float v81 = *(float *)&v24;
+  [(CIVector *)v23 Y];
+  *(float *)&double v25 = v25;
+  float v78 = *(float *)&v25;
+  v26 = [(CIKeystoneCorrection *)self inputTopRight];
+  [(CIVector *)v26 X];
+  *(float *)&double v27 = v27;
+  float v75 = *(float *)&v27;
+  [(CIVector *)v26 Y];
+  *(float *)&double v28 = v28;
+  float v72 = *(float *)&v28;
+  v29 = [(CIKeystoneCorrection *)self inputBottomLeft];
+  [(CIVector *)v29 X];
+  *(float *)&double v30 = v30;
+  float v69 = *(float *)&v30;
+  [(CIVector *)v29 Y];
+  *(float *)&double v31 = v31;
+  float v66 = *(float *)&v31;
+  v32 = [(CIKeystoneCorrection *)self inputBottomRight];
+  [(CIVector *)v32 X];
+  *(float *)&double v33 = v33;
+  float v63 = *(float *)&v33;
+  [(CIVector *)v32 Y];
+  float v35 = v34;
+  float32x4_t v36 = *(float32x4_t *)&self->super._anon_80[16];
+  float32x4_t v37 = *(float32x4_t *)&self->super._anon_80[32];
+  int32x4_t v38 = (int32x4_t)vaddq_f32(v37, vmlaq_n_f32(vmulq_n_f32(*(float32x4_t *)self->super._anon_80, v81), v36, v78));
+  int32x4_t v39 = (int32x4_t)vaddq_f32(v37, vmlaq_n_f32(vmulq_n_f32(*(float32x4_t *)self->super._anon_80, v75), v36, v72));
+  int32x4_t v40 = (int32x4_t)vaddq_f32(v37, vmlaq_n_f32(vmulq_n_f32(*(float32x4_t *)self->super._anon_80, v69), v36, v66));
+  int32x4_t v41 = (int32x4_t)vaddq_f32(v37, vmlaq_n_f32(vmulq_n_f32(*(float32x4_t *)self->super._anon_80, v63), v36, v35));
+  self->super.yaw = CI::Perspective::keystoneH(COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v38.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v38, 2))), COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v39.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v39, 2))), COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v40.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v40, 2))), COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v41.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v41, 2))));
+  v42 = [(CIKeystoneCorrection *)self inputBottomLeft];
+  [(CIVector *)v42 X];
+  *(float *)&double v43 = v43;
+  float v82 = *(float *)&v43;
+  [(CIVector *)v42 Y];
+  *(float *)&double v44 = v44;
+  float v79 = *(float *)&v44;
+  v45 = [(CIKeystoneCorrection *)self inputTopLeft];
+  [(CIVector *)v45 X];
+  *(float *)&double v46 = v46;
+  float v76 = *(float *)&v46;
+  [(CIVector *)v45 Y];
+  *(float *)&double v47 = v47;
+  float v73 = *(float *)&v47;
+  v48 = [(CIKeystoneCorrection *)self inputBottomRight];
+  [(CIVector *)v48 X];
+  *(float *)&double v49 = v49;
+  float v70 = *(float *)&v49;
+  [(CIVector *)v48 Y];
+  *(float *)&double v50 = v50;
+  float v67 = *(float *)&v50;
+  v51 = [(CIKeystoneCorrection *)self inputTopRight];
+  [(CIVector *)v51 X];
+  *(float *)&double v52 = v52;
+  float v64 = *(float *)&v52;
+  v53 = (CI::Perspective *)[(CIVector *)v51 Y];
+  float32x4_t v54 = *(float32x4_t *)&self->super._anon_80[16];
+  float32x4_t v55 = *(float32x4_t *)&self->super._anon_80[32];
+  int32x4_t v56 = (int32x4_t)vaddq_f32(v55, vmlaq_n_f32(vmulq_n_f32(*(float32x4_t *)self->super._anon_80, v82), v54, v79));
+  float v58 = v57;
+  int32x4_t v59 = (int32x4_t)vaddq_f32(v55, vmlaq_n_f32(vmulq_n_f32(*(float32x4_t *)self->super._anon_80, v76), v54, v73));
+  int32x4_t v60 = (int32x4_t)vaddq_f32(v55, vmlaq_n_f32(vmulq_n_f32(*(float32x4_t *)self->super._anon_80, v70), v54, v67));
+  int32x4_t v61 = (int32x4_t)vaddq_f32(v55, vmlaq_n_f32(vmulq_n_f32(*(float32x4_t *)self->super._anon_80, v64), v54, v58));
+  self->super.roll = CI::Perspective::horizonV(v53, COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v56.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v56, 2))), COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v59.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v59, 2))), COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v60.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v60, 2))), COERCE_DOUBLE(vdiv_f32(*(float32x2_t *)v61.i8, (float32x2_t)*(_OWORD *)&vdupq_laneq_s32(v61, 2))), self->super.pitch, self->super.yaw);
+}
+
+@end

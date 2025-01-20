@@ -1,0 +1,10 @@
+@interface UISceneRenderingEnvironmentClientComponent
+@end
+
+@implementation UISceneRenderingEnvironmentClientComponent
+
+void __71___UISceneRenderingEnvironmentClientComponent_scene_didUpdateSettings___block_invoke(uint64_t a1)
+{
+}
+
+@end

@@ -1,0 +1,11 @@
+@interface VisualIntelligenceCameraUnsupportedMapsCategoryIDs
+@end
+
+@implementation VisualIntelligenceCameraUnsupportedMapsCategoryIDs
+
+uint64_t GeoServicesConfig_VisualIntelligenceCameraUnsupportedMapsCategoryIDs_Metadata_block_invoke_469()
+{
+  return MEMORY[0x1E4F1CBF0];
+}
+
+@end

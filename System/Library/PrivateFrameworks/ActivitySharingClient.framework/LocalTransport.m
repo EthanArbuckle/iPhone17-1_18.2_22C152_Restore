@@ -1,0 +1,75 @@
+@interface LocalTransport
+- (_TtC21ActivitySharingClient14LocalTransport)init;
+- (void)transportRequest:(int64_t)a3 data:(id)a4 completion:(id)a5;
+@end
+
+@implementation LocalTransport
+
+- (_TtC21ActivitySharingClient14LocalTransport)init
+{
+  uint64_t v3 = OBJC_IVAR____TtC21ActivitySharingClient14LocalTransport_transportDispatchService;
+  type metadata accessor for TransportDispatchService();
+  v4 = (objc_class *)swift_allocObject();
+  v5 = self;
+  swift_defaultActor_initialize();
+  *((void *)v4 + 14) = MEMORY[0x263F8EE80];
+  *(Class *)((char *)&self->super.isa + v3) = v4;
+  *(Class *)((char *)&v5->super.isa + OBJC_IVAR____TtC21ActivitySharingClient14LocalTransport_proxy) = 0;
+
+  v7.receiver = v5;
+  v7.super_class = (Class)type metadata accessor for LocalTransport();
+  return [(LocalTransport *)&v7 init];
+}
+
+- (void).cxx_destruct
+{
+  swift_release();
+  swift_unknownObjectRelease();
+}
+
+- (void)transportRequest:(int64_t)a3 data:(id)a4 completion:(id)a5
+{
+  uint64_t v9 = __swift_instantiateConcreteTypeFromMangledName(&qword_26B12CC80);
+  MEMORY[0x270FA5388](v9 - 8);
+  v11 = (char *)&v22 - ((v10 + 15) & 0xFFFFFFFFFFFFFFF0);
+  v12 = _Block_copy(a5);
+  v13 = self;
+  if (a4)
+  {
+    id v14 = a4;
+    a4 = (id)sub_2474B0BC0();
+    unint64_t v16 = v15;
+  }
+  else
+  {
+    unint64_t v16 = 0xF000000000000000;
+  }
+  uint64_t v17 = swift_allocObject();
+  *(void *)(v17 + 16) = v12;
+  if (qword_26B12CCD0 != -1) {
+    swift_once();
+  }
+  uint64_t v18 = sub_2474B0EC0();
+  __swift_project_value_buffer(v18, (uint64_t)qword_26B12CCE8);
+  sub_24743FD94(0xD000000000000071, 0x80000002474B6FA0, 0xD000000000000024, 0x80000002474B7020);
+  uint64_t v19 = sub_2474B1110();
+  (*(void (**)(char *, uint64_t, uint64_t, uint64_t))(*(void *)(v19 - 8) + 56))(v11, 1, 1, v19);
+  v20 = (void *)swift_allocObject();
+  v20[2] = 0;
+  v20[3] = 0;
+  v20[4] = self;
+  v20[5] = a3;
+  v20[6] = a4;
+  v20[7] = v16;
+  v20[8] = sub_24747DBEC;
+  v20[9] = v17;
+  v21 = self;
+  sub_247446DC4((uint64_t)a4, v16);
+  swift_retain();
+  sub_24747D41C((uint64_t)v11, (uint64_t)&unk_269251078, (uint64_t)v20);
+  swift_release();
+  swift_release();
+  sub_24743E498((uint64_t)a4, v16);
+}
+
+@end

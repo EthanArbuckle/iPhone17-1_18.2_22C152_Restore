@@ -1,0 +1,11 @@
+@interface NavdLocationUpdateDesiredAccuracyWhileStationaryForDriving
+@end
+
+@implementation NavdLocationUpdateDesiredAccuracyWhileStationaryForDriving
+
+void *GeoServicesConfig_NavdLocationUpdateDesiredAccuracyWhileStationaryForDriving_Metadata_block_invoke_247()
+{
+  return &unk_1ED73F550;
+}
+
+@end

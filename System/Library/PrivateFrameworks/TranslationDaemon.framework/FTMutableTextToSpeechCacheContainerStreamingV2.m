@@ -1,0 +1,97 @@
+@interface FTMutableTextToSpeechCacheContainerStreamingV2
+- (FTBeginTextToSpeechStreamingResponse)cached_begin_response;
+- (FTFinalTextToSpeechStreamingResponse)cached_final_response;
+- (FTMutableTextToSpeechCacheContainerStreamingV2)init;
+- (FTStartTextToSpeechStreamingRequest)cached_request;
+- (NSArray)cached_partial_response;
+- (NSString)original_session_id;
+- (id)copyWithZone:(_NSZone *)a3;
+- (void)setCached_begin_response:(id)a3;
+- (void)setCached_final_response:(id)a3;
+- (void)setCached_partial_response:(id)a3;
+- (void)setCached_request:(id)a3;
+- (void)setOriginal_session_id:(id)a3;
+@end
+
+@implementation FTMutableTextToSpeechCacheContainerStreamingV2
+
+- (FTMutableTextToSpeechCacheContainerStreamingV2)init
+{
+  v6.receiver = self;
+  v6.super_class = (Class)FTMutableTextToSpeechCacheContainerStreamingV2;
+  v2 = [(FTMutableTextToSpeechCacheContainerStreamingV2 *)&v6 init];
+  if (v2)
+  {
+    uint64_t v3 = [MEMORY[0x263EFF9A0] dictionary];
+    storage = v2->super._storage;
+    v2->super._storage = (NSMutableDictionary *)v3;
+  }
+  return v2;
+}
+
+- (id)copyWithZone:(_NSZone *)a3
+{
+  v4 = objc_msgSend((id)objc_msgSend((id)objc_opt_class(), "allocWithZone:", a3), "init");
+  uint64_t v5 = [(NSMutableDictionary *)self->super._storage copy];
+  objc_super v6 = (void *)v4[1];
+  v4[1] = v5;
+
+  return v4;
+}
+
+- (NSString)original_session_id
+{
+  return (NSString *)[(NSMutableDictionary *)self->super._storage objectForKeyedSubscript:@"original_session_id"];
+}
+
+- (void)setOriginal_session_id:(id)a3
+{
+  id v4 = (id)[a3 copy];
+  -[NSMutableDictionary setObject:forKeyedSubscript:](self->super._storage, "setObject:forKeyedSubscript:");
+}
+
+- (FTStartTextToSpeechStreamingRequest)cached_request
+{
+  return (FTStartTextToSpeechStreamingRequest *)[(NSMutableDictionary *)self->super._storage objectForKeyedSubscript:@"cached_request"];
+}
+
+- (void)setCached_request:(id)a3
+{
+  id v4 = (id)[a3 copy];
+  -[NSMutableDictionary setObject:forKeyedSubscript:](self->super._storage, "setObject:forKeyedSubscript:");
+}
+
+- (FTBeginTextToSpeechStreamingResponse)cached_begin_response
+{
+  return (FTBeginTextToSpeechStreamingResponse *)[(NSMutableDictionary *)self->super._storage objectForKeyedSubscript:@"cached_begin_response"];
+}
+
+- (void)setCached_begin_response:(id)a3
+{
+  id v4 = (id)[a3 copy];
+  -[NSMutableDictionary setObject:forKeyedSubscript:](self->super._storage, "setObject:forKeyedSubscript:");
+}
+
+- (NSArray)cached_partial_response
+{
+  return (NSArray *)[(NSMutableDictionary *)self->super._storage objectForKeyedSubscript:@"cached_partial_response"];
+}
+
+- (void)setCached_partial_response:(id)a3
+{
+  id v4 = (id)[a3 copy];
+  -[NSMutableDictionary setObject:forKeyedSubscript:](self->super._storage, "setObject:forKeyedSubscript:");
+}
+
+- (FTFinalTextToSpeechStreamingResponse)cached_final_response
+{
+  return (FTFinalTextToSpeechStreamingResponse *)[(NSMutableDictionary *)self->super._storage objectForKeyedSubscript:@"cached_final_response"];
+}
+
+- (void)setCached_final_response:(id)a3
+{
+  id v4 = (id)[a3 copy];
+  -[NSMutableDictionary setObject:forKeyedSubscript:](self->super._storage, "setObject:forKeyedSubscript:");
+}
+
+@end

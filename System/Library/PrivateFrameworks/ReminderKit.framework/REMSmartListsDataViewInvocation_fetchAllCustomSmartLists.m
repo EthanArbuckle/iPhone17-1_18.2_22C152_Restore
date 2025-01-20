@@ -1,0 +1,22 @@
+@interface REMSmartListsDataViewInvocation_fetchAllCustomSmartLists
++ (BOOL)supportsSecureCoding;
+- (BOOL)isEqual:(id)a3;
+@end
+
+@implementation REMSmartListsDataViewInvocation_fetchAllCustomSmartLists
+
++ (BOOL)supportsSecureCoding
+{
+  return 1;
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  id v3 = a3;
+  objc_opt_class();
+  char isKindOfClass = objc_opt_isKindOfClass();
+
+  return isKindOfClass & 1;
+}
+
+@end

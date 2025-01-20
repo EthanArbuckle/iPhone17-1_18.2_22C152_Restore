@@ -1,0 +1,11 @@
+@interface ARLabelHighPrecisionAltitudeMaximumDelayWithoutFeatures
+@end
+
+@implementation ARLabelHighPrecisionAltitudeMaximumDelayWithoutFeatures
+
+void *VectorKitConfig_ARLabelHighPrecisionAltitudeMaximumDelayWithoutFeatures_Metadata_block_invoke_45()
+{
+  return &unk_1EF5BB220;
+}
+
+@end

@@ -1,0 +1,11 @@
+@interface Library.Streams.IntelligenceFlow.Transcript.Datastream.Indexes.Datestamp_ClientSessionID_ClientRequestIDIndex
+- (_TtCOOOOOO27IntelligencePlatformLibrary7Library7Streams16IntelligenceFlow10Transcript10Datastream7Indexes46Datestamp_ClientSessionID_ClientRequestIDIndex)initWithName:(id)a3 fields:(id)a4 streamIdentifier:(id)a5;
+@end
+
+@implementation Library.Streams.IntelligenceFlow.Transcript.Datastream.Indexes.Datestamp_ClientSessionID_ClientRequestIDIndex
+
+- (_TtCOOOOOO27IntelligencePlatformLibrary7Library7Streams16IntelligenceFlow10Transcript10Datastream7Indexes46Datestamp_ClientSessionID_ClientRequestIDIndex)initWithName:(id)a3 fields:(id)a4 streamIdentifier:(id)a5
+{
+}
+
+@end

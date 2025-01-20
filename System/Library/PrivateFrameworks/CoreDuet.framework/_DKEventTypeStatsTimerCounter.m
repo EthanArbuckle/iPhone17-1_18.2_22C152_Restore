@@ -1,0 +1,80 @@
+@interface _DKEventTypeStatsTimerCounter
++ (id)counterInCollection:(void *)a3 withEventName:(void *)a4 eventType:(void *)a5 eventTypePossibleValues:;
+- (_DKEventStatsCounterInternal)internal;
+- (id)eventName;
+- (void)addTimingWithStartDate:(void *)a3 endDate:(void *)a4 typeValue:;
+- (void)addTimingWithTimeInterval:(double)a3 typeValue:;
+- (void)setInternal:(id)a3;
+@end
+
+@implementation _DKEventTypeStatsTimerCounter
+
++ (id)counterInCollection:(void *)a3 withEventName:(void *)a4 eventType:(void *)a5 eventTypePossibleValues:
+{
+  id v8 = a5;
+  id v9 = a4;
+  id v10 = a3;
+  id v11 = a2;
+  uint64_t v12 = self;
+  v13 = +[_DKEventStatsCollection counterWithClass:collectionName:eventName:eventType:eventTypePossibleValues:hasResult:scalar:]((uint64_t)_DKEventStatsCollection, v12, v11, v10, v9, v8, 0, 0);
+
+  return v13;
+}
+
+- (id)eventName
+{
+  internal = self->_internal;
+  if (internal) {
+    return internal->_eventName;
+  }
+  else {
+    return 0;
+  }
+}
+
+- (void)addTimingWithTimeInterval:(double)a3 typeValue:
+{
+  uint64_t v12 = *MEMORY[0x1E4F143B8];
+  id v5 = a2;
+  if (a1)
+  {
+    -[_DKEventStatsCounterInternal incrementCountByNumber:typeValue:success:](*(void *)(a1 + 8), 1, v5, 0);
+    if ((_DKEventStatsLogExternally & 1) == 0)
+    {
+      id Property = *(id *)(a1 + 8);
+      if (Property) {
+        id Property = objc_getProperty(Property, v6, 64, 1);
+      }
+      id v11 = v5;
+      id v8 = (void *)MEMORY[0x1E4F1C978];
+      id v9 = Property;
+      id v10 = [v8 arrayWithObjects:&v11 count:1];
+      objc_msgSend(v9, "trackEventWithPropertyValues:value:", v10, a3, v11, v12);
+    }
+  }
+}
+
+- (void)addTimingWithStartDate:(void *)a3 endDate:(void *)a4 typeValue:
+{
+  if (a1)
+  {
+    id v8 = a4;
+    [a3 timeIntervalSinceDate:a2];
+    -[_DKEventTypeStatsTimerCounter addTimingWithTimeInterval:typeValue:](a1, v8, v7);
+  }
+}
+
+- (_DKEventStatsCounterInternal)internal
+{
+  return (_DKEventStatsCounterInternal *)objc_getProperty(self, a2, 8, 1);
+}
+
+- (void)setInternal:(id)a3
+{
+}
+
+- (void).cxx_destruct
+{
+}
+
+@end

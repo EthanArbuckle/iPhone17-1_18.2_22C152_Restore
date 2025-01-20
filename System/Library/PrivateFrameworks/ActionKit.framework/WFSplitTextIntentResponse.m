@@ -1,0 +1,35 @@
+@interface WFSplitTextIntentResponse
+- (WFSplitTextIntentResponse)initWithCode:(int64_t)a3 userActivity:(id)a4;
+- (int64_t)code;
+- (void)setCode:(int64_t)a3;
+@end
+
+@implementation WFSplitTextIntentResponse
+
+- (void)setCode:(int64_t)a3
+{
+  self->_code = a3;
+}
+
+- (int64_t)code
+{
+  return self->_code;
+}
+
+- (WFSplitTextIntentResponse)initWithCode:(int64_t)a3 userActivity:(id)a4
+{
+  id v6 = a4;
+  v10.receiver = self;
+  v10.super_class = (Class)WFSplitTextIntentResponse;
+  v7 = [(WFSplitTextIntentResponse *)&v10 init];
+  v8 = v7;
+  if (v7)
+  {
+    v7->_code = a3;
+    [(WFSplitTextIntentResponse *)v7 setUserActivity:v6];
+  }
+
+  return v8;
+}
+
+@end

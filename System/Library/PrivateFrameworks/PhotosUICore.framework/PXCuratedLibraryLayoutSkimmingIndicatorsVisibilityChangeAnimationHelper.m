@@ -1,0 +1,10 @@
+@interface PXCuratedLibraryLayoutSkimmingIndicatorsVisibilityChangeAnimationHelper
+@end
+
+@implementation PXCuratedLibraryLayoutSkimmingIndicatorsVisibilityChangeAnimationHelper
+
+void __187___PXCuratedLibraryLayoutSkimmingIndicatorsVisibilityChangeAnimationHelper_animation_doubleSidedAnimatedSpriteIndexesForModifiedSpriteIndexes_rootLayout_presentedGeometries_styles_infos___block_invoke()
+{
+}
+
+@end

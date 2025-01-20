@@ -1,0 +1,11 @@
+@interface NavdLocationUpdateDesiredAccuracyWhileStationaryForTransit
+@end
+
+@implementation NavdLocationUpdateDesiredAccuracyWhileStationaryForTransit
+
+void *GeoServicesConfig_NavdLocationUpdateDesiredAccuracyWhileStationaryForTransit_Metadata_block_invoke_249()
+{
+  return &unk_1ED73F560;
+}
+
+@end

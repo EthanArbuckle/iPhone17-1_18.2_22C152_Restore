@@ -1,0 +1,147 @@
+@interface BadgeView
+- (CGSize)sizeThatFits:(CGSize)a3;
+- (UIView)accessibilityValueView;
+- (_TtC19AppStoreKitInternal16DynamicTypeLabel)accessibilityCaptionLabel;
+- (_TtC19AppStoreKitInternal16DynamicTypeLabel)accessibilityHeadingLabel;
+- (_TtC19AppStoreKitInternal16DynamicTypeLabel)accessibilityValueLabel;
+- (_TtC20ProductPageExtension9BadgeView)initWithCoder:(id)a3;
+- (_TtC20ProductPageExtension9BadgeView)initWithFrame:(CGRect)a3;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)dealloc;
+- (void)didTapBadgeView:(id)a3;
+- (void)layoutSubviews;
+- (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)a3;
+@end
+
+@implementation BadgeView
+
+- (_TtC20ProductPageExtension9BadgeView)initWithFrame:(CGRect)a3
+{
+  return (_TtC20ProductPageExtension9BadgeView *)sub_1004FC754(a3.origin.x, a3.origin.y, a3.size.width, a3.size.height);
+}
+
+- (_TtC20ProductPageExtension9BadgeView)initWithCoder:(id)a3
+{
+  id v3 = a3;
+  sub_1004FFCD4();
+}
+
+- (void)dealloc
+{
+  id v3 = self;
+  v4 = self;
+  id v5 = [v3 defaultCenter];
+  [v5 removeObserver:v4];
+
+  v6.receiver = v4;
+  v6.super_class = (Class)type metadata accessor for BadgeView(0);
+  [(BadgeView *)&v6 dealloc];
+}
+
+- (void).cxx_destruct
+{
+  id v3 = (char *)self + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_leadingValue;
+  uint64_t v4 = sub_10076F880();
+  (*(void (**)(char *, uint64_t))(*(void *)(v4 - 8) + 8))(v3, v4);
+  swift_bridgeObjectRelease();
+  objc_release(*(id *)((char *)&self->super.super.super.isa
+                     + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_captionView));
+  swift_bridgeObjectRelease();
+  swift_bridgeObjectRelease();
+  id v5 = (char *)self + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_captionCappingType;
+  uint64_t v6 = sub_100773470();
+  (*(void (**)(char *, uint64_t))(*(void *)(v6 - 8) + 8))(v5, v6);
+
+  v7 = (char *)self + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_valueViewAlignment;
+  uint64_t v8 = sub_100773480();
+  (*(void (**)(char *, uint64_t))(*(void *)(v8 - 8) + 8))(v7, v8);
+  v9 = (char *)self + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_spacing;
+  uint64_t v10 = sub_10076EDE0();
+  (*(void (**)(char *, uint64_t))(*(void *)(v10 - 8) + 8))(v9, v10);
+  sub_10000FA80((uint64_t)self + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_action, &qword_10095BF20);
+  v11 = (char *)self + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_badgeType;
+  uint64_t v12 = sub_100778A90();
+  (*(void (**)(char *, uint64_t))(*(void *)(v12 - 8) + 8))(v11, v12);
+  objc_release(*(id *)((char *)&self->super.super.super.isa
+                     + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_artworkView));
+  objc_release(*(id *)((char *)&self->super.super.super.isa
+                     + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_tapGestureRecognizer));
+  objc_release(*(id *)((char *)&self->super.super.super.isa
+                     + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_captionLabel));
+  v13 = *(Class *)((char *)&self->super.super.super.isa + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_headingLabel);
+}
+
+- (void)tintColorDidChange
+{
+  v2 = self;
+  sub_1004FD860();
+}
+
+- (void)_dynamicUserInterfaceTraitDidChange
+{
+  v3.receiver = self;
+  v3.super_class = (Class)type metadata accessor for BadgeView(0);
+  id v2 = v3.receiver;
+  [(BadgeView *)&v3 _dynamicUserInterfaceTraitDidChange];
+  sub_1004FD9E8();
+}
+
+- (void)layoutSubviews
+{
+  id v2 = self;
+  sub_1004FE1BC();
+}
+
+- (CGSize)sizeThatFits:(CGSize)a3
+{
+  objc_super v3 = self;
+  double v4 = sub_1004FE524();
+  double v6 = v5;
+
+  double v7 = v4;
+  double v8 = v6;
+  result.height = v8;
+  result.width = v7;
+  return result;
+}
+
+- (void)traitCollectionDidChange:(id)a3
+{
+  id v5 = a3;
+  double v6 = self;
+  sub_1004FE814((uint64_t)a3);
+}
+
+- (void)didTapBadgeView:(id)a3
+{
+  id v4 = a3;
+  id v5 = self;
+  sub_100500040();
+}
+
+- (_TtC19AppStoreKitInternal16DynamicTypeLabel)accessibilityValueLabel
+{
+  return (_TtC19AppStoreKitInternal16DynamicTypeLabel *)objc_retainAutoreleaseReturnValue(*(id *)((char *)&self->super.super.super.isa
+                                                                                                + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_valueLabel));
+}
+
+- (_TtC19AppStoreKitInternal16DynamicTypeLabel)accessibilityCaptionLabel
+{
+  return (_TtC19AppStoreKitInternal16DynamicTypeLabel *)objc_retainAutoreleaseReturnValue(*(id *)((char *)&self->super.super.super.isa
+                                                                                                + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_captionLabel));
+}
+
+- (_TtC19AppStoreKitInternal16DynamicTypeLabel)accessibilityHeadingLabel
+{
+  return (_TtC19AppStoreKitInternal16DynamicTypeLabel *)objc_retainAutoreleaseReturnValue(*(id *)((char *)&self->super.super.super.isa
+                                                                                                + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_headingLabel));
+}
+
+- (UIView)accessibilityValueView
+{
+  return (UIView *)objc_retainAutoreleaseReturnValue(*(id *)((char *)&self->super.super.super.isa
+                                                           + OBJC_IVAR____TtC20ProductPageExtension9BadgeView_valueView));
+}
+
+@end

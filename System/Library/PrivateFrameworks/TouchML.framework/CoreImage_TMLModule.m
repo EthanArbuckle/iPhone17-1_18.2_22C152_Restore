@@ -1,0 +1,174 @@
+@interface CoreImage_TMLModule
++ (BOOL)loadModule;
++ (void)defineConstants:(id)a3;
+@end
+
+@implementation CoreImage_TMLModule
+
++ (BOOL)loadModule
+{
+  uint64_t v5 = 0;
+  v6 = &v5;
+  uint64_t v7 = 0x2020000000;
+  char v8 = 1;
+  block[0] = MEMORY[0x263EF8330];
+  block[1] = 3221225472;
+  block[2] = sub_239830BA0;
+  block[3] = &unk_264DAB4D8;
+  block[4] = &v5;
+  if (qword_268A056A8 != -1) {
+    dispatch_once(&qword_268A056A8, block);
+  }
+  char v2 = *((unsigned char *)v6 + 24);
+  _Block_object_dispose(&v5, 8);
+  return v2;
+}
+
++ (void)defineConstants:(id)a3
+{
+  v3 = (void *)MEMORY[0x263EFF9A0];
+  id v4 = a3;
+  objc_msgSend_dictionary(v3, v5, v6);
+  id v284 = (id)objc_claimAutoreleasedReturnValue();
+  uint64_t v7 = *MEMORY[0x263F10368];
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v8, v9, *MEMORY[0x263F009D0], *MEMORY[0x263F10368]);
+  objc_msgSend_defineProperty_descriptor_(v4, v10, v11, @"kCIOutputImageKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v12, v13, *MEMORY[0x263F00930], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v14, v15, @"kCIInputBackgroundImageKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v16, v17, *MEMORY[0x263F00968], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v18, v19, @"kCIInputImageKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v20, v21, *MEMORY[0x263F009A8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v22, v23, @"kCIInputTimeKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v24, v25, *MEMORY[0x263F009B0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v26, v27, @"kCIInputTransformKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v28, v29, *MEMORY[0x263F00990], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v30, v31, @"kCIInputScaleKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v32, v33, *MEMORY[0x263F00928], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v34, v35, @"kCIInputAspectRatioKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v36, v37, *MEMORY[0x263F00940], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v38, v39, @"kCIInputCenterKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v40, v41, *MEMORY[0x263F00980], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v42, v43, @"kCIInputRadiusKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v44, v45, *MEMORY[0x263F00920], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v46, v47, @"kCIInputAngleKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v48, v49, *MEMORY[0x263F009C0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v50, v51, @"kCIInputWidthKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v52, v53, *MEMORY[0x263F00998], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v54, v55, @"kCIInputSharpnessKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v56, v57, *MEMORY[0x263F00970], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v58, v59, @"kCIInputIntensityKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v60, v61, *MEMORY[0x263F00958], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v62, v63, @"kCIInputEVKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v64, v65, *MEMORY[0x263F00988], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v66, v67, @"kCIInputSaturationKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v68, v69, *MEMORY[0x263F00948], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v70, v71, @"kCIInputColorKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v72, v73, *MEMORY[0x263F00938], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v74, v75, @"kCIInputBrightnessKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v76, v77, *MEMORY[0x263F00950], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v78, v79, @"kCIInputContrastKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v80, v81, *MEMORY[0x263F00978], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v82, v83, @"kCIInputMaskImageKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v84, v85, *MEMORY[0x263F009A0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v86, v87, @"kCIInputTargetImageKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v88, v89, *MEMORY[0x263F00960], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v90, v91, @"kCIInputExtentKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v92, v93, *MEMORY[0x263F009B8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v94, v95, @"kCIInputVersionKey", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v96, v97, *MEMORY[0x263F006B8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v98, v99, @"kCIAttributeFilterName", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v100, v101, *MEMORY[0x263F006B0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v102, v103, @"kCIAttributeFilterDisplayName", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v104, v105, *MEMORY[0x263F006A8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v106, v107, @"kCIAttributeFilterCategories", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v108, v109, *MEMORY[0x263F00690], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v110, v111, @"kCIAttributeClass", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v112, v113, *MEMORY[0x263F006F0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v114, v115, @"kCIAttributeType", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v116, v117, *MEMORY[0x263F006D0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v118, v119, @"kCIAttributeMin", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v120, v121, *MEMORY[0x263F006C8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v122, v123, @"kCIAttributeMax", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v124, v125, *MEMORY[0x263F006E8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v126, v127, @"kCIAttributeSliderMin", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v128, v129, *MEMORY[0x263F006E0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v130, v131, @"kCIAttributeSliderMax", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v132, v133, *MEMORY[0x263F00698], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v134, v135, @"kCIAttributeDefault", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v136, v137, *MEMORY[0x263F006C0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v138, v139, @"kCIAttributeIdentity", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v140, v141, *MEMORY[0x263F006D8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v142, v143, @"kCIAttributeName", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v144, v145, *MEMORY[0x263F006A0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v146, v147, @"kCIAttributeDisplayName", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v148, v149, *MEMORY[0x263F00758], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v150, v151, @"kCIAttributeTypeTime", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v152, v153, *MEMORY[0x263F00750], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v154, v155, @"kCIAttributeTypeScalar", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v156, v157, *MEMORY[0x263F00718], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v158, v159, @"kCIAttributeTypeDistance", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v160, v161, *MEMORY[0x263F006F8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v162, v163, @"kCIAttributeTypeAngle", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v164, v165, *MEMORY[0x263F00700], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v166, v167, @"kCIAttributeTypeBoolean", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v168, v169, *MEMORY[0x263F00728], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v170, v171, @"kCIAttributeTypeInteger", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v172, v173, *MEMORY[0x263F00710], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v174, v175, @"kCIAttributeTypeCount", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v176, v177, *MEMORY[0x263F00738], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v178, v179, @"kCIAttributeTypePosition", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v180, v181, *MEMORY[0x263F00730], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v182, v183, @"kCIAttributeTypeOffset", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v184, v185, *MEMORY[0x263F00740], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v186, v187, @"kCIAttributeTypePosition3", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v188, v189, *MEMORY[0x263F00748], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v190, v191, @"kCIAttributeTypeRectangle", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v192, v193, *MEMORY[0x263F00708], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v194, v195, @"kCIAttributeTypeColor", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v196, v197, *MEMORY[0x263F00720], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v198, v199, @"kCIAttributeTypeImage", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v200, v201, *MEMORY[0x263F00760], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v202, v203, @"kCIAttributeTypeTransform", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v204, v205, *MEMORY[0x263F00790], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v206, v207, @"kCICategoryDistortionEffect", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v208, v209, *MEMORY[0x263F007A0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v210, v211, @"kCICategoryGeometryAdjustment", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v212, v213, *MEMORY[0x263F00788], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v214, v215, @"kCICategoryCompositeOperation", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v216, v217, *MEMORY[0x263F007B0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v218, v219, @"kCICategoryHalftoneEffect", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v220, v221, *MEMORY[0x263F00778], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v222, v223, @"kCICategoryColorAdjustment", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v224, v225, *MEMORY[0x263F00780], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v226, v227, @"kCICategoryColorEffect", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v228, v229, *MEMORY[0x263F007F8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v230, v231, @"kCICategoryTransition", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v232, v233, *MEMORY[0x263F007F0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v234, v235, @"kCICategoryTileEffect", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v236, v237, *MEMORY[0x263F00798], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v238, v239, @"kCICategoryGenerator", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v240, v241, *MEMORY[0x263F007D0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v242, v243, @"kCICategoryReduction", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v244, v245, *MEMORY[0x263F007A8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v246, v247, @"kCICategoryGradient", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v248, v249, *MEMORY[0x263F007E8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v250, v251, @"kCICategoryStylize", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v252, v253, *MEMORY[0x263F007D8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v254, v255, @"kCICategorySharpen", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v256, v257, *MEMORY[0x263F00768], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v258, v259, @"kCICategoryBlur", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v260, v261, *MEMORY[0x263F00800], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v262, v263, @"kCICategoryVideo", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v264, v265, *MEMORY[0x263F007E0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v266, v267, @"kCICategoryStillImage", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v268, v269, *MEMORY[0x263F007C0], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v270, v271, @"kCICategoryInterlaced", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v272, v273, *MEMORY[0x263F007C8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v274, v275, @"kCICategoryNonSquarePixels", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v276, v277, *MEMORY[0x263F007B8], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v278, v279, @"kCICategoryHighDynamicRange", v284);
+  objc_msgSend_setObject_forKeyedSubscript_(v284, v280, v281, *MEMORY[0x263F00770], v7);
+  objc_msgSend_defineProperty_descriptor_(v4, v282, v283, @"kCICategoryBuiltIn", v284);
+}
+
+@end

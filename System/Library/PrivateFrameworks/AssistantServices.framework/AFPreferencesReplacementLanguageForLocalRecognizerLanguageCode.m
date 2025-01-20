@@ -1,0 +1,12 @@
+@interface AFPreferencesReplacementLanguageForLocalRecognizerLanguageCode
+@end
+
+@implementation AFPreferencesReplacementLanguageForLocalRecognizerLanguageCode
+
+void ___AFPreferencesReplacementLanguageForLocalRecognizerLanguageCode_block_invoke()
+{
+  v0 = (void *)_AFPreferencesReplacementLanguageForLocalRecognizerLanguageCode_sAlternativeLocalRecognizerLocaleOverrideMap;
+  _AFPreferencesReplacementLanguageForLocalRecognizerLanguageCode_sAlternativeLocalRecognizerLocaleOverrideMap = (uint64_t)&unk_1EEE98900;
+}
+
+@end

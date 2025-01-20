@@ -1,0 +1,197 @@
+@interface ASCScreenshotDisplayConfiguration
++ (BOOL)supportsSecureCoding;
++ (double)defaultCornerRadius;
++ (id)defaultConfiguration;
+- (ASCScreenshotDisplayConfiguration)initWithCoder:(id)a3;
+- (ASCScreenshotDisplayConfiguration)initWithDeviceCornerRadiusFactor:(id)a3;
+- (BOOL)isEqual:(id)a3;
+- (NSNumber)deviceCornerRadiusFactor;
+- (NSString)cornerCurve;
+- (double)cornerRadiusForSize:(CGSize)a3;
+- (id)description;
+- (unint64_t)hash;
+- (unint64_t)maskedCorners;
+- (void)encodeWithCoder:(id)a3;
+@end
+
+@implementation ASCScreenshotDisplayConfiguration
+
++ (id)defaultConfiguration
+{
+  v2 = (void *)[objc_alloc((Class)a1) initWithDeviceCornerRadiusFactor:0];
+
+  return v2;
+}
+
+- (ASCScreenshotDisplayConfiguration)initWithDeviceCornerRadiusFactor:(id)a3
+{
+  id v4 = a3;
+  v9.receiver = self;
+  v9.super_class = (Class)ASCScreenshotDisplayConfiguration;
+  v5 = [(ASCScreenshotDisplayConfiguration *)&v9 init];
+  if (v5)
+  {
+    uint64_t v6 = [v4 copy];
+    deviceCornerRadiusFactor = v5->_deviceCornerRadiusFactor;
+    v5->_deviceCornerRadiusFactor = (NSNumber *)v6;
+  }
+  return v5;
+}
+
++ (BOOL)supportsSecureCoding
+{
+  return 1;
+}
+
+- (ASCScreenshotDisplayConfiguration)initWithCoder:(id)a3
+{
+  id v4 = a3;
+  v5 = [v4 decodeObjectOfClass:objc_opt_class() forKey:@"deviceCornerRadiusFactor"];
+
+  v10.receiver = self;
+  v10.super_class = (Class)ASCScreenshotDisplayConfiguration;
+  uint64_t v6 = [(ASCScreenshotDisplayConfiguration *)&v10 init];
+  if (v6)
+  {
+    uint64_t v7 = [v5 copy];
+    deviceCornerRadiusFactor = v6->_deviceCornerRadiusFactor;
+    v6->_deviceCornerRadiusFactor = (NSNumber *)v7;
+  }
+  return v6;
+}
+
+- (void)encodeWithCoder:(id)a3
+{
+  id v4 = a3;
+  id v5 = [(ASCScreenshotDisplayConfiguration *)self deviceCornerRadiusFactor];
+  [v4 encodeObject:v5 forKey:@"deviceCornerRadiusFactor"];
+}
+
+- (BOOL)isEqual:(id)a3
+{
+  id v4 = (ASCScreenshotDisplayConfiguration *)a3;
+  if (self == v4)
+  {
+    char v7 = 1;
+  }
+  else
+  {
+    objc_opt_class();
+    id v5 = v4;
+    if (v5)
+    {
+      if (objc_opt_isKindOfClass()) {
+        uint64_t v6 = v5;
+      }
+      else {
+        uint64_t v6 = 0;
+      }
+    }
+    else
+    {
+      uint64_t v6 = 0;
+    }
+    v8 = v6;
+
+    if (v8)
+    {
+      objc_super v9 = [(ASCScreenshotDisplayConfiguration *)self deviceCornerRadiusFactor];
+      uint64_t v10 = [(ASCScreenshotDisplayConfiguration *)v8 deviceCornerRadiusFactor];
+      v11 = (void *)v10;
+      if (v9 && v10) {
+        char v7 = [v9 isEqual:v10];
+      }
+      else {
+        char v7 = v9 == (void *)v10;
+      }
+    }
+    else
+    {
+      char v7 = 0;
+    }
+  }
+  return v7;
+}
+
+- (id)description
+{
+  v3 = [[ASCDescriber alloc] initWithObject:self];
+  id v4 = [(ASCScreenshotDisplayConfiguration *)self deviceCornerRadiusFactor];
+  [(ASCDescriber *)v3 addObject:v4 withName:@"deviceCornerRadiusFactor"];
+
+  id v5 = [(ASCDescriber *)v3 finalizeDescription];
+
+  return v5;
+}
+
+- (unint64_t)hash
+{
+  v3 = objc_alloc_init(ASCHasher);
+  id v4 = [(ASCScreenshotDisplayConfiguration *)self deviceCornerRadiusFactor];
+  [(ASCHasher *)v3 combineObject:v4];
+
+  unint64_t v5 = [(ASCHasher *)v3 finalizeHash];
+  return v5;
+}
+
++ (double)defaultCornerRadius
+{
+  return 5.0;
+}
+
+- (double)cornerRadiusForSize:(CGSize)a3
+{
+  double height = a3.height;
+  double width = a3.width;
+  uint64_t v6 = [(ASCScreenshotDisplayConfiguration *)self deviceCornerRadiusFactor];
+
+  if (v6)
+  {
+    char v7 = [(ASCScreenshotDisplayConfiguration *)self deviceCornerRadiusFactor];
+    [v7 floatValue];
+    double v9 = v8;
+    if (width >= height) {
+      double v10 = height;
+    }
+    else {
+      double v10 = width;
+    }
+    double v11 = v10 * v9;
+
+    return v11;
+  }
+  else
+  {
+    +[ASCScreenshotDisplayConfiguration defaultCornerRadius];
+  }
+  return result;
+}
+
+- (NSString)cornerCurve
+{
+  v2 = [(ASCScreenshotDisplayConfiguration *)self deviceCornerRadiusFactor];
+
+  v3 = (void **)MEMORY[0x1E4F39EA8];
+  if (!v2) {
+    v3 = (void **)MEMORY[0x1E4F39EA0];
+  }
+  id v4 = *v3;
+
+  return (NSString *)v4;
+}
+
+- (unint64_t)maskedCorners
+{
+  return 15;
+}
+
+- (NSNumber)deviceCornerRadiusFactor
+{
+  return self->_deviceCornerRadiusFactor;
+}
+
+- (void).cxx_destruct
+{
+}
+
+@end

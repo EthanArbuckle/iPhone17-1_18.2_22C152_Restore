@@ -1,0 +1,92 @@
+@interface TVTrainerDetailViewController
+- (NSArray)preferredFocusEnvironments;
+- (_TtC9SeymourUI29TVTrainerDetailViewController)initWithCoder:(id)a3;
+- (_TtC9SeymourUI29TVTrainerDetailViewController)initWithNibName:(id)a3 bundle:(id)a4;
+- (_TtC9SeymourUI29TVTrainerDetailViewController)initWithStyle:(int64_t)a3;
+- (void)didUpdateFocusInContext:(id)a3 withAnimationCoordinator:(id)a4;
+- (void)viewDidAppear:(BOOL)a3;
+- (void)viewDidLoad;
+- (void)viewWillDisappear:(BOOL)a3;
+@end
+
+@implementation TVTrainerDetailViewController
+
+- (NSArray)preferredFocusEnvironments
+{
+  __swift_instantiateConcreteTypeFromMangledName((uint64_t *)&unk_26AF608E0);
+  uint64_t v3 = swift_allocObject();
+  uint64_t v4 = *(uint64_t *)((char *)&self->super.super.super.super.isa
+                  + OBJC_IVAR____TtC9SeymourUI29TVTrainerDetailViewController_coordinator);
+  *(_OWORD *)(v3 + 16) = xmmword_23A80FD70;
+  v5 = *(void **)(v4 + qword_268A47FF0);
+  *(void *)(v3 + 32) = v5;
+  sub_23A7FFC98();
+  id v6 = v5;
+  __swift_instantiateConcreteTypeFromMangledName((uint64_t *)&unk_268A0E2A0);
+  v7 = (void *)sub_23A7FFC58();
+  swift_bridgeObjectRelease();
+
+  return (NSArray *)v7;
+}
+
+- (_TtC9SeymourUI29TVTrainerDetailViewController)initWithCoder:(id)a3
+{
+  result = (_TtC9SeymourUI29TVTrainerDetailViewController *)sub_23A800DD8();
+  __break(1u);
+  return result;
+}
+
+- (void)viewDidLoad
+{
+  v3.receiver = self;
+  v3.super_class = (Class)type metadata accessor for TVTrainerDetailViewController();
+  v2 = (char *)v3.receiver;
+  [(TVTrainerDetailViewController *)&v3 viewDidLoad];
+  objc_msgSend(v2, sel_showDetailViewController_sender_, *(void *)(*(void *)&v2[OBJC_IVAR____TtC9SeymourUI29TVTrainerDetailViewController_coordinator] + qword_268A47FD0), 0, v3.receiver, v3.super_class);
+}
+
+- (void)viewDidAppear:(BOOL)a3
+{
+  uint64_t v4 = self;
+  sub_23A708B40(a3);
+}
+
+- (void)viewWillDisappear:(BOOL)a3
+{
+  uint64_t v4 = self;
+  sub_23A708E28(a3);
+}
+
+- (void)didUpdateFocusInContext:(id)a3 withAnimationCoordinator:(id)a4
+{
+  v9.receiver = self;
+  v9.super_class = (Class)type metadata accessor for TVTrainerDetailViewController();
+  id v6 = a3;
+  id v7 = a4;
+  id v8 = v9.receiver;
+  [(TVTrainerDetailViewController *)&v9 didUpdateFocusInContext:v6 withAnimationCoordinator:v7];
+  sub_23A57E3BC(v6);
+}
+
+- (_TtC9SeymourUI29TVTrainerDetailViewController)initWithNibName:(id)a3 bundle:(id)a4
+{
+  id v4 = a4;
+  result = (_TtC9SeymourUI29TVTrainerDetailViewController *)_swift_stdlib_reportUnimplementedInitializer();
+  __break(1u);
+  return result;
+}
+
+- (_TtC9SeymourUI29TVTrainerDetailViewController)initWithStyle:(int64_t)a3
+{
+  result = (_TtC9SeymourUI29TVTrainerDetailViewController *)_swift_stdlib_reportUnimplementedInitializer();
+  __break(1u);
+  return result;
+}
+
+- (void).cxx_destruct
+{
+  objc_release(*(id *)((char *)&self->super.super.super.super.isa
+                     + OBJC_IVAR____TtC9SeymourUI29TVTrainerDetailViewController_coordinator));
+}
+
+@end

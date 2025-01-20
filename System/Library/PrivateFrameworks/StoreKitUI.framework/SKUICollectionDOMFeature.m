@@ -1,0 +1,117 @@
+@interface SKUICollectionDOMFeature
++ (id)featureName;
++ (id)makeFeatureJSObjectForFeature:(id)a3;
+- (IKAppContext)appContext;
+- (NSString)featureName;
+- (SKUICollectionDOMFeature)initWithDOMNode:(id)a3 featureName:(id)a4;
+- (SKUICollectionDOMFeatureTargetting)collectionTarget;
+- (void)setCollectionTarget:(id)a3;
+- (void)setEditing:(BOOL)a3 options:(id)a4;
+@end
+
+@implementation SKUICollectionDOMFeature
+
+- (SKUICollectionDOMFeature)initWithDOMNode:(id)a3 featureName:(id)a4
+{
+  id v6 = a3;
+  id v7 = a4;
+  if (os_variant_has_internal_content()
+    && _os_feature_enabled_impl()
+    && os_log_type_enabled(MEMORY[0x1E4F14500], OS_LOG_TYPE_FAULT))
+  {
+    -[SKUICollectionDOMFeature initWithDOMNode:featureName:]();
+  }
+  v13.receiver = self;
+  v13.super_class = (Class)SKUICollectionDOMFeature;
+  v8 = [(SKUICollectionDOMFeature *)&v13 init];
+  if (v8)
+  {
+    v9 = [v6 appContext];
+    objc_storeWeak((id *)&v8->_appContext, v9);
+
+    uint64_t v10 = [v7 copy];
+    featureName = v8->_featureName;
+    v8->_featureName = (NSString *)v10;
+  }
+  return v8;
+}
+
++ (id)makeFeatureJSObjectForFeature:(id)a3
+{
+  id v3 = a3;
+  v4 = [SKUIJSDOMFeatureCollection alloc];
+  v5 = [v3 appContext];
+  id v6 = [(IKJSObject *)v4 initWithAppContext:v5];
+
+  [(SKUIJSDOMFeatureCollection *)v6 setAppBridge:v3];
+
+  return v6;
+}
+
++ (id)featureName
+{
+  return @"Collection";
+}
+
+- (void)setEditing:(BOOL)a3 options:(id)a4
+{
+  id v6 = a4;
+  id WeakRetained = objc_loadWeakRetained((id *)&self->_appContext);
+  v9[0] = MEMORY[0x1E4F143A8];
+  v9[1] = 3221225472;
+  v9[2] = __47__SKUICollectionDOMFeature_setEditing_options___block_invoke;
+  v9[3] = &unk_1E64255F8;
+  BOOL v11 = a3;
+  v9[4] = self;
+  id v10 = v6;
+  id v8 = v6;
+  [WeakRetained evaluateDelegateBlockSync:v9];
+}
+
+void __47__SKUICollectionDOMFeature_setEditing_options___block_invoke(uint64_t a1)
+{
+  id WeakRetained = objc_loadWeakRetained((id *)(*(void *)(a1 + 32) + 24));
+  uint64_t v2 = *(unsigned __int8 *)(a1 + 48);
+  id v3 = [*(id *)(a1 + 40) objectForKey:@"animated"];
+  objc_msgSend(WeakRetained, "setEditing:animated:", v2, objc_msgSend(v3, "BOOLValue"));
+}
+
+- (IKAppContext)appContext
+{
+  id WeakRetained = objc_loadWeakRetained((id *)&self->_appContext);
+
+  return (IKAppContext *)WeakRetained;
+}
+
+- (NSString)featureName
+{
+  return self->_featureName;
+}
+
+- (SKUICollectionDOMFeatureTargetting)collectionTarget
+{
+  id WeakRetained = objc_loadWeakRetained((id *)&self->_collectionTarget);
+
+  return (SKUICollectionDOMFeatureTargetting *)WeakRetained;
+}
+
+- (void)setCollectionTarget:(id)a3
+{
+}
+
+- (void).cxx_destruct
+{
+  objc_destroyWeak((id *)&self->_collectionTarget);
+  objc_storeStrong((id *)&self->_featureName, 0);
+
+  objc_destroyWeak((id *)&self->_appContext);
+}
+
+- (void)initWithDOMNode:featureName:.cold.1()
+{
+  uint64_t v2 = *MEMORY[0x1E4F143B8];
+  int v0 = 136446210;
+  v1 = "-[SKUICollectionDOMFeature initWithDOMNode:featureName:]";
+}
+
+@end

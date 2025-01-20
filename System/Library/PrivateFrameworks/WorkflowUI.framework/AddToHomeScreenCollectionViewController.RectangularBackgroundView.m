@@ -1,0 +1,17 @@
+@interface AddToHomeScreenCollectionViewController.RectangularBackgroundView
+- (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController25RectangularBackgroundView)initWithCoder:(id)a3;
+- (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController25RectangularBackgroundView)initWithFrame:(CGRect)a3;
+@end
+
+@implementation AddToHomeScreenCollectionViewController.RectangularBackgroundView
+
+- (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController25RectangularBackgroundView)initWithFrame:(CGRect)a3
+{
+  return (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController25RectangularBackgroundView *)sub_22DA42A58();
+}
+
+- (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController25RectangularBackgroundView)initWithCoder:(id)a3
+{
+}
+
+@end

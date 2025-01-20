@@ -1,0 +1,24 @@
+@interface IMLocatingChatItem
+- (id)_initWithItem:(id)a3;
+@end
+
+@implementation IMLocatingChatItem
+
+- (id)_initWithItem:(id)a3
+{
+  id v4 = a3;
+  v14.receiver = self;
+  v14.super_class = (Class)IMLocatingChatItem;
+  id v8 = [(IMChatItem *)&v14 _initWithItem:v4];
+  if (v8)
+  {
+    v9 = objc_msgSend_guid(v4, v5, v6, v7);
+    v10 = (void *)sub_1A4C4EEE8();
+
+    objc_msgSend__setGUID_(v8, v11, (uint64_t)v10, v12);
+  }
+
+  return v8;
+}
+
+@end

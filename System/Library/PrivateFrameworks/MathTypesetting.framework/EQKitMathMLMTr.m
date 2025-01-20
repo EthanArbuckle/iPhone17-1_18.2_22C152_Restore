@@ -1,0 +1,152 @@
+@interface EQKitMathMLMTr
+- (BOOL)isBaseFontNameUsed;
+- (EQKitMathMLMTr)init;
+- (EQKitMathMLMTr)initWithChildren:(id)a3;
+- (EQKitMathMLMTr)initWithChildren:(id)a3 node:(_xmlNode *)a4;
+- (EQKitSourceAttribution)sourceAttribution;
+- (NSString)description;
+- (const)mathMLAttributes;
+- (id)initFromXMLNode:(_xmlNode *)a3 parser:(id)a4;
+- (id)schemataChildren;
+- (void)dealloc;
+- (void)setSourceAttribution:(id)a3;
+@end
+
+@implementation EQKitMathMLMTr
+
+- (EQKitMathMLMTr)init
+{
+  uint64_t v3 = [MEMORY[0x263EFF8C0] array];
+
+  return [(EQKitMathMLMTr *)self initWithChildren:v3];
+}
+
+- (EQKitMathMLMTr)initWithChildren:(id)a3
+{
+  return [(EQKitMathMLMTr *)self initWithChildren:a3 node:0];
+}
+
+- (EQKitMathMLMTr)initWithChildren:(id)a3 node:(_xmlNode *)a4
+{
+  uint64_t v18 = *MEMORY[0x263EF8340];
+  v16.receiver = self;
+  v16.super_class = (Class)EQKitMathMLMTr;
+  v5 = [(EQKitMathMLMTr *)&v16 init];
+  if (v5)
+  {
+    v6 = (NSArray *)a3;
+    v5->mChildren = v6;
+    long long v14 = 0u;
+    long long v15 = 0u;
+    long long v12 = 0u;
+    long long v13 = 0u;
+    uint64_t v7 = [(NSArray *)v6 countByEnumeratingWithState:&v12 objects:v17 count:16];
+    if (v7)
+    {
+      uint64_t v8 = v7;
+      uint64_t v9 = *(void *)v13;
+      do
+      {
+        uint64_t v10 = 0;
+        do
+        {
+          if (*(void *)v13 != v9) {
+            objc_enumerationMutation(v6);
+          }
+          [*(id *)(*((void *)&v12 + 1) + 8 * v10++) setParent:v5];
+        }
+        while (v8 != v10);
+        uint64_t v8 = [(NSArray *)v6 countByEnumeratingWithState:&v12 objects:v17 count:16];
+      }
+      while (v8);
+    }
+  }
+  return v5;
+}
+
+- (id)initFromXMLNode:(_xmlNode *)a3 parser:(id)a4
+{
+  [a4 pushState:3];
+  uint64_t v7 = [a4 parseChildrenAsArrayFromXMLNode:a3];
+  [a4 popState];
+
+  return [(EQKitMathMLMTr *)self initWithChildren:v7 node:a3];
+}
+
+- (const)mathMLAttributes
+{
+  {
+    std::set<EQKitTypes::Attributes::Enum>::set[abi:ne180100]<EQKitTypes::Attributes::Enum const*>((uint64_t)&-[EQKitMathMLMTr mathMLAttributes]::sAttributesSet, (int *)&-[EQKitMathMLMTr mathMLAttributes]::sAttributesData, (int *)&-[EQKitMathMLMTd mathMLAttributes]::sAttributesData);
+  }
+  return &-[EQKitMathMLMTr mathMLAttributes]::sAttributesSet;
+}
+
+- (void)dealloc
+{
+  v3.receiver = self;
+  v3.super_class = (Class)EQKitMathMLMTr;
+  [(EQKitMathMLMTr *)&v3 dealloc];
+}
+
+- (BOOL)isBaseFontNameUsed
+{
+  uint64_t v13 = *MEMORY[0x263EF8340];
+  long long v8 = 0u;
+  long long v9 = 0u;
+  long long v10 = 0u;
+  long long v11 = 0u;
+  mChildren = self->mChildren;
+  uint64_t v3 = [(NSArray *)mChildren countByEnumeratingWithState:&v8 objects:v12 count:16];
+  if (v3)
+  {
+    uint64_t v4 = v3;
+    uint64_t v5 = *(void *)v9;
+    while (2)
+    {
+      uint64_t v6 = 0;
+      do
+      {
+        if (*(void *)v9 != v5) {
+          objc_enumerationMutation(mChildren);
+        }
+        if ([*(id *)(*((void *)&v8 + 1) + 8 * v6) isBaseFontNameUsed])
+        {
+          LOBYTE(v3) = 1;
+          return v3;
+        }
+        ++v6;
+      }
+      while (v4 != v6);
+      uint64_t v3 = [(NSArray *)mChildren countByEnumeratingWithState:&v8 objects:v12 count:16];
+      uint64_t v4 = v3;
+      if (v3) {
+        continue;
+      }
+      break;
+    }
+  }
+  return v3;
+}
+
+- (NSString)description
+{
+  uint64_t v3 = NSString;
+  uint64_t v4 = (objc_class *)objc_opt_class();
+  return (NSString *)[v3 stringWithFormat:@"<%@ %p %@>", NSStringFromClass(v4), self, self->mChildren];
+}
+
+- (id)schemataChildren
+{
+  return self->mChildren;
+}
+
+- (EQKitSourceAttribution)sourceAttribution
+{
+  return self->mSourceAttribution;
+}
+
+- (void)setSourceAttribution:(id)a3
+{
+}
+
+@end

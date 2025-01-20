@@ -1,0 +1,88 @@
+@interface GTReplayRequestBatch
+- (GTReplayRequestBatch)init;
+- (NSArray)requests;
+- (id)completionHandler;
+- (id)initNoRequestID;
+- (unint64_t)requestID;
+- (unsigned)priority;
+- (void)setCompletionHandler:(id)a3;
+- (void)setPriority:(unsigned int)a3;
+- (void)setRequestID:(unint64_t)a3;
+- (void)setRequests:(id)a3;
+@end
+
+@implementation GTReplayRequestBatch
+
+- (GTReplayRequestBatch)init
+{
+  v6.receiver = self;
+  v6.super_class = (Class)GTReplayRequestBatch;
+  v2 = [(GTReplayRequestBatch *)&v6 init];
+  v3 = v2;
+  if (v2)
+  {
+    v2->_requestID = atomic_fetch_add(globalRequestID, 1u);
+    v4 = v2;
+  }
+
+  return v3;
+}
+
+- (id)initNoRequestID
+{
+  v6.receiver = self;
+  v6.super_class = (Class)GTReplayRequestBatch;
+  v2 = [(GTReplayRequestBatch *)&v6 init];
+  v3 = v2;
+  if (v2) {
+    v4 = v2;
+  }
+
+  return v3;
+}
+
+- (unint64_t)requestID
+{
+  return self->_requestID;
+}
+
+- (void)setRequestID:(unint64_t)a3
+{
+  self->_requestID = a3;
+}
+
+- (unsigned)priority
+{
+  return self->_priority;
+}
+
+- (void)setPriority:(unsigned int)a3
+{
+  self->_priority = a3;
+}
+
+- (NSArray)requests
+{
+  return self->_requests;
+}
+
+- (void)setRequests:(id)a3
+{
+}
+
+- (id)completionHandler
+{
+  return self->_completionHandler;
+}
+
+- (void)setCompletionHandler:(id)a3
+{
+}
+
+- (void).cxx_destruct
+{
+  objc_storeStrong(&self->_completionHandler, 0);
+  objc_storeStrong((id *)&self->_requests, 0);
+}
+
+@end

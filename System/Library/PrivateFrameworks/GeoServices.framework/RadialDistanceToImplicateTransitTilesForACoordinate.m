@@ -1,0 +1,11 @@
+@interface RadialDistanceToImplicateTransitTilesForACoordinate
+@end
+
+@implementation RadialDistanceToImplicateTransitTilesForACoordinate
+
+void *GeoServicesConfig_RadialDistanceToImplicateTransitTilesForACoordinate_Metadata_block_invoke_100()
+{
+  return &unk_1ED73E380;
+}
+
+@end

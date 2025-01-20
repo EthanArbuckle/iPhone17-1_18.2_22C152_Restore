@@ -1,0 +1,10 @@
+@interface UIPreviewPresentationContainerViewAccessibility
+@end
+
+@implementation UIPreviewPresentationContainerViewAccessibility
+
+void __78___UIPreviewPresentationContainerViewAccessibility_accessibilityPerformEscape__block_invoke()
+{
+}
+
+@end

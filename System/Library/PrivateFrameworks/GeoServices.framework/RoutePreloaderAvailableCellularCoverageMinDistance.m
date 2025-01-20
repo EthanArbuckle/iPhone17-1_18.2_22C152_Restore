@@ -1,0 +1,11 @@
+@interface RoutePreloaderAvailableCellularCoverageMinDistance
+@end
+
+@implementation RoutePreloaderAvailableCellularCoverageMinDistance
+
+void *GeoServicesConfig_RoutePreloaderAvailableCellularCoverageMinDistance_Metadata_block_invoke_102()
+{
+  return &unk_1ED73F480;
+}
+
+@end

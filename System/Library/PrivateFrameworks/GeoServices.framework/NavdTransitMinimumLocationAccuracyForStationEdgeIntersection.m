@@ -1,0 +1,11 @@
+@interface NavdTransitMinimumLocationAccuracyForStationEdgeIntersection
+@end
+
+@implementation NavdTransitMinimumLocationAccuracyForStationEdgeIntersection
+
+void *GeoServicesConfig_NavdTransitMinimumLocationAccuracyForStationEdgeIntersection_Metadata_block_invoke_297()
+{
+  return &unk_1ED73F510;
+}
+
+@end

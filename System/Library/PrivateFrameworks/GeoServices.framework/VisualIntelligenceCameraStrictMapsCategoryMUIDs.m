@@ -1,0 +1,11 @@
+@interface VisualIntelligenceCameraStrictMapsCategoryMUIDs
+@end
+
+@implementation VisualIntelligenceCameraStrictMapsCategoryMUIDs
+
+uint64_t GeoServicesConfig_VisualIntelligenceCameraStrictMapsCategoryMUIDs_Metadata_block_invoke_471()
+{
+  return MEMORY[0x1E4F1CBF0];
+}
+
+@end

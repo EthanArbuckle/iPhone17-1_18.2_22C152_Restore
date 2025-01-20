@@ -1,0 +1,12 @@
+@interface MusicKitPlaybackSupport_FinalClass
+- (_TtC23MusicKitPlaybackSupportP33_30DEEFC56FE4284229059B29E1D3259C34MusicKitPlaybackSupport_FinalClass)init;
+@end
+
+@implementation MusicKitPlaybackSupport_FinalClass
+
+- (_TtC23MusicKitPlaybackSupportP33_30DEEFC56FE4284229059B29E1D3259C34MusicKitPlaybackSupport_FinalClass)init
+{
+  return (_TtC23MusicKitPlaybackSupportP33_30DEEFC56FE4284229059B29E1D3259C34MusicKitPlaybackSupport_FinalClass *)sub_2572F6CD4();
+}
+
+@end

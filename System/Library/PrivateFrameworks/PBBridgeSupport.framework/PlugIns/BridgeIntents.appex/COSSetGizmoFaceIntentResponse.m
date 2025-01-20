@@ -1,0 +1,35 @@
+@interface COSSetGizmoFaceIntentResponse
+- (COSSetGizmoFaceIntentResponse)initWithCode:(int64_t)a3 userActivity:(id)a4;
+- (int64_t)code;
+- (void)setCode:(int64_t)a3;
+@end
+
+@implementation COSSetGizmoFaceIntentResponse
+
+- (COSSetGizmoFaceIntentResponse)initWithCode:(int64_t)a3 userActivity:(id)a4
+{
+  id v6 = a4;
+  v10.receiver = self;
+  v10.super_class = (Class)COSSetGizmoFaceIntentResponse;
+  v7 = [(COSSetGizmoFaceIntentResponse *)&v10 init];
+  v8 = v7;
+  if (v7)
+  {
+    v7->_code = a3;
+    [(COSSetGizmoFaceIntentResponse *)v7 setUserActivity:v6];
+  }
+
+  return v8;
+}
+
+- (int64_t)code
+{
+  return self->_code;
+}
+
+- (void)setCode:(int64_t)a3
+{
+  self->_code = a3;
+}
+
+@end

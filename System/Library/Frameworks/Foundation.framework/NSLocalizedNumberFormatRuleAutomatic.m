@@ -1,0 +1,11 @@
+@interface NSLocalizedNumberFormatRuleAutomatic
+@end
+
+@implementation NSLocalizedNumberFormatRuleAutomatic
+
+uint64_t __92___NSLocalizedNumberFormatRuleAutomatic__formattedString_withStringLocale_andDisplayLocale___block_invoke(uint64_t result)
+{
+  return result;
+}
+
+@end

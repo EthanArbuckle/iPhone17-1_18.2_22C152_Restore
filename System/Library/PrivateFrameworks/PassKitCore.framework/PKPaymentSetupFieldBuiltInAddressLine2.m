@@ -1,0 +1,43 @@
+@interface PKPaymentSetupFieldBuiltInAddressLine2
+- (BOOL)isBuiltIn;
+- (BOOL)supportsAddressAutofill;
+- (PKPaymentSetupFieldBuiltInAddressLine2)initWithIdentifier:(id)a3 type:(unint64_t)a4;
+@end
+
+@implementation PKPaymentSetupFieldBuiltInAddressLine2
+
+- (PKPaymentSetupFieldBuiltInAddressLine2)initWithIdentifier:(id)a3 type:(unint64_t)a4
+{
+  v6 = (__CFString *)a3;
+  if ([(__CFString *)v6 length]) {
+    v7 = v6;
+  }
+  else {
+    v7 = @"addressLine2";
+  }
+  v11.receiver = self;
+  v11.super_class = (Class)PKPaymentSetupFieldBuiltInAddressLine2;
+  v8 = [(PKPaymentSetupFieldText *)&v11 initWithIdentifier:v7 type:a4];
+  if (v8)
+  {
+    v9 = PKLocalizedPaymentString(&cfstr_Street2_0.isa, 0);
+    [(PKPaymentSetupField *)v8 _setLocalizedDisplayName:v9];
+
+    [(PKPaymentSetupFieldText *)v8 setMinLength:1];
+    [(PKPaymentSetupFieldText *)v8 setMaxLength:50];
+  }
+
+  return v8;
+}
+
+- (BOOL)isBuiltIn
+{
+  return 1;
+}
+
+- (BOOL)supportsAddressAutofill
+{
+  return 1;
+}
+
+@end

@@ -1,0 +1,63 @@
+@interface DOCUnarchiveOperation
+- (NSString)actionNameForUndoing;
+- (_TtC14RecentsAvocado21DOCUnarchiveOperation)initWithItem:(id)a3 destinationFolder:(id)a4;
+- (id)operationForRedoing;
+- (id)operationForUndoing;
+- (void)registerUndo;
+@end
+
+@implementation DOCUnarchiveOperation
+
+- (NSString)actionNameForUndoing
+{
+  v2 = self;
+  sub_10026D0DC();
+  uint64_t v4 = v3;
+
+  if (v4)
+  {
+    NSString v5 = sub_1004CDB10();
+    swift_bridgeObjectRelease();
+  }
+  else
+  {
+    NSString v5 = 0;
+  }
+  return (NSString *)v5;
+}
+
+- (id)operationForRedoing
+{
+  v2 = self;
+  uint64_t v3 = sub_10026D24C();
+
+  return v3;
+}
+
+- (id)operationForUndoing
+{
+  v2 = self;
+  uint64_t v3 = (void *)sub_10026D3CC();
+
+  return v3;
+}
+
+- (void)registerUndo
+{
+}
+
+- (_TtC14RecentsAvocado21DOCUnarchiveOperation)initWithItem:(id)a3 destinationFolder:(id)a4
+{
+  id v5 = a3;
+  id v6 = a4;
+  result = (_TtC14RecentsAvocado21DOCUnarchiveOperation *)_swift_stdlib_reportUnimplementedInitializer();
+  __break(1u);
+  return result;
+}
+
+- (void).cxx_destruct
+{
+  uint64_t v3 = *(void **)&self->FPUnarchiveOperation_opaque[OBJC_IVAR____TtC14RecentsAvocado21DOCUnarchiveOperation_undoManager];
+}
+
+@end

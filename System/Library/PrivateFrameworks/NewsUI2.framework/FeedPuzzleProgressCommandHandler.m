@@ -1,0 +1,21 @@
+@interface FeedPuzzleProgressCommandHandler
+- (_TtC7NewsUI232FeedPuzzleProgressCommandHandler)init;
+@end
+
+@implementation FeedPuzzleProgressCommandHandler
+
+- (_TtC7NewsUI232FeedPuzzleProgressCommandHandler)init
+{
+  result = (_TtC7NewsUI232FeedPuzzleProgressCommandHandler *)_swift_stdlib_reportUnimplementedInitializer();
+  __break(1u);
+  return result;
+}
+
+- (void).cxx_destruct
+{
+  __swift_destroy_boxed_opaque_existential_1((uint64_t)self + OBJC_IVAR____TtC7NewsUI232FeedPuzzleProgressCommandHandler_puzzleHistory);
+  v3 = (char *)self + OBJC_IVAR____TtC7NewsUI232FeedPuzzleProgressCommandHandler_commandCenter;
+  sub_1DEB1DDEC((uint64_t)v3);
+}
+
+@end

@@ -1,0 +1,11 @@
+@interface DistanceToCurrentManeuverSimilarityThresholdInMeters
+@end
+
+@implementation DistanceToCurrentManeuverSimilarityThresholdInMeters
+
+void *VectorKitConfig_DistanceToCurrentManeuverSimilarityThresholdInMeters_Metadata_block_invoke_2()
+{
+  return &unk_1EF5BB4C0;
+}
+
+@end

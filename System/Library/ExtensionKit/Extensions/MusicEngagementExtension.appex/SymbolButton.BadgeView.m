@@ -1,0 +1,101 @@
+@interface SymbolButton.BadgeView
+- (BOOL)isHidden;
+- (_TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView)initWithCoder:(id)a3;
+- (_TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView)initWithFrame:(CGRect)a3;
+- (double)alpha;
+- (void)didMoveToSuperview;
+- (void)layoutSubviews;
+- (void)setAlpha:(double)a3;
+- (void)setHidden:(BOOL)a3;
+@end
+
+@implementation SymbolButton.BadgeView
+
+- (_TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView)initWithCoder:(id)a3
+{
+  id v3 = a3;
+  specialized SymbolButton.BadgeView.init(coder:)();
+}
+
+- (double)alpha
+{
+  v3.receiver = self;
+  v3.super_class = (Class)type metadata accessor for SymbolButton.BadgeView();
+  [(SymbolButton.BadgeView *)&v3 alpha];
+  return result;
+}
+
+- (void)setAlpha:(double)a3
+{
+  v6.receiver = self;
+  v6.super_class = (Class)type metadata accessor for SymbolButton.BadgeView();
+  v4 = (char *)v6.receiver;
+  [(SymbolButton.BadgeView *)&v6 setAlpha:a3];
+  v5 = *(void **)&v4[OBJC_IVAR____TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView_punchOutView];
+  objc_msgSend(v4, "alpha", v6.receiver, v6.super_class);
+  objc_msgSend(v5, "setAlpha:");
+}
+
+- (BOOL)isHidden
+{
+  return @objc SymbolButton.isHighlighted.getter(self, (uint64_t)a2, (uint64_t (*)(void))type metadata accessor for SymbolButton.BadgeView, (SEL *)&selRef_isHidden);
+}
+
+- (void)setHidden:(BOOL)a3
+{
+  BOOL v3 = a3;
+  v5.receiver = self;
+  v5.super_class = (Class)type metadata accessor for SymbolButton.BadgeView();
+  v4 = (char *)v5.receiver;
+  [(SymbolButton.BadgeView *)&v5 setHidden:v3];
+  objc_msgSend(*(id *)&v4[OBJC_IVAR____TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView_punchOutView], "setHidden:", objc_msgSend(v4, "isHidden", v5.receiver, v5.super_class));
+}
+
+- (void)didMoveToSuperview
+{
+  v5.receiver = self;
+  v5.super_class = (Class)type metadata accessor for SymbolButton.BadgeView();
+  v2 = (char *)v5.receiver;
+  [(SymbolButton.BadgeView *)&v5 didMoveToSuperview];
+  id v3 = objc_msgSend(v2, "superview", v5.receiver, v5.super_class);
+  if (v3)
+  {
+    v4 = v3;
+    [v3 insertSubview:*(void *)&v2[OBJC_IVAR____TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView_punchOutView] belowSubview:v2];
+  }
+  else
+  {
+    [*(id *)&v2[OBJC_IVAR____TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView_punchOutView] removeFromSuperview];
+  }
+}
+
+- (void)layoutSubviews
+{
+  __swift_instantiateConcreteTypeFromMangledName(&demangling cache variable for type metadata for UIView.Corner?);
+  __chkstk_darwin();
+  v4 = (char *)&v8 - ((v3 + 15) & 0xFFFFFFFFFFFFFFF0);
+  objc_super v5 = (objc_class *)type metadata accessor for SymbolButton.BadgeView();
+  v8.receiver = self;
+  v8.super_class = v5;
+  objc_super v6 = self;
+  [(SymbolButton.BadgeView *)&v8 layoutSubviews];
+  static UIView.Corner.rounded.getter();
+  uint64_t v7 = type metadata accessor for UIView.Corner();
+  (*(void (**)(char *, void, uint64_t, uint64_t))(*(void *)(v7 - 8) + 56))(v4, 0, 1, v7);
+  UIView.corner.setter();
+  SymbolButton.BadgeView.layoutPunchOutView()();
+}
+
+- (_TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView)initWithFrame:(CGRect)a3
+{
+}
+
+- (void).cxx_destruct
+{
+  objc_release(*(id *)&self->configuration[OBJC_IVAR____TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView_configuration
+                                         + 8]);
+  uint64_t v3 = *(Class *)((char *)&self->super.super.super.isa
+                + OBJC_IVAR____TtCC11MusicCoreUI12SymbolButtonP33_0D6450BB937596549C350B7D294A2A939BadgeView_punchOutView);
+}
+
+@end

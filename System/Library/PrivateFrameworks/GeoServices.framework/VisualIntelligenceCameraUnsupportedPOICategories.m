@@ -1,0 +1,11 @@
+@interface VisualIntelligenceCameraUnsupportedPOICategories
+@end
+
+@implementation VisualIntelligenceCameraUnsupportedPOICategories
+
+uint64_t GeoServicesConfig_VisualIntelligenceCameraUnsupportedPOICategories_Metadata_block_invoke_465()
+{
+  return 0;
+}
+
+@end

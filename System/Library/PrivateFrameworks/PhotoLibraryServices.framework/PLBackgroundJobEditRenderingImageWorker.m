@@ -1,0 +1,12 @@
+@interface PLBackgroundJobEditRenderingImageWorker
+- (id)_predicateToFetchDeferredAdjustmentNeededAssets;
+@end
+
+@implementation PLBackgroundJobEditRenderingImageWorker
+
+- (id)_predicateToFetchDeferredAdjustmentNeededAssets
+{
+  return (id)objc_msgSend(MEMORY[0x1E4F28F60], "predicateWithFormat:", @"%K == %d && %K == %d", @"deferredProcessingNeeded", 2, @"kind", 0);
+}
+
+@end

@@ -1,0 +1,11 @@
+@interface NavdMaximumTimeBetweenConsecutiveHypothesisUpdatesInSeconds
+@end
+
+@implementation NavdMaximumTimeBetweenConsecutiveHypothesisUpdatesInSeconds
+
+void *GeoServicesConfig_NavdMaximumTimeBetweenConsecutiveHypothesisUpdatesInSeconds_Metadata_block_invoke_268()
+{
+  return &unk_1ED73E470;
+}
+
+@end

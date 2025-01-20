@@ -1,0 +1,17 @@
+@interface AddToHomeScreenCollectionViewController.RoundedBackgroundView
+- (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController21RoundedBackgroundView)initWithCoder:(id)a3;
+- (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController21RoundedBackgroundView)initWithFrame:(CGRect)a3;
+@end
+
+@implementation AddToHomeScreenCollectionViewController.RoundedBackgroundView
+
+- (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController21RoundedBackgroundView)initWithFrame:(CGRect)a3
+{
+  return (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController21RoundedBackgroundView *)sub_22DA42454();
+}
+
+- (_TtCC10WorkflowUI39AddToHomeScreenCollectionViewController21RoundedBackgroundView)initWithCoder:(id)a3
+{
+}
+
+@end

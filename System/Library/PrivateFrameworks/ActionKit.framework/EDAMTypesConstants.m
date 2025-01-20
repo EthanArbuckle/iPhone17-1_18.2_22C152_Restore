@@ -1,0 +1,48 @@
+@interface EDAMTypesConstants
++ (id)CLASSIFICATION_RECIPE_SERVICE_RECIPE;
++ (id)CLASSIFICATION_RECIPE_USER_NON_RECIPE;
++ (id)CLASSIFICATION_RECIPE_USER_RECIPE;
++ (id)EDAM_NOTE_SOURCE_MAIL_CLIP;
++ (id)EDAM_NOTE_SOURCE_MAIL_SMTP_GATEWAY;
++ (id)EDAM_NOTE_SOURCE_WEB_CLIP;
++ (id)EDAM_NOTE_SOURCE_WEB_CLIP_SIMPLIFIED;
+@end
+
+@implementation EDAMTypesConstants
+
++ (id)EDAM_NOTE_SOURCE_MAIL_SMTP_GATEWAY
+{
+  return @"mail.smtp";
+}
+
++ (id)EDAM_NOTE_SOURCE_MAIL_CLIP
+{
+  return @"mail.clip";
+}
+
++ (id)EDAM_NOTE_SOURCE_WEB_CLIP_SIMPLIFIED
+{
+  return @"Clearly";
+}
+
++ (id)EDAM_NOTE_SOURCE_WEB_CLIP
+{
+  return @"web.clip";
+}
+
++ (id)CLASSIFICATION_RECIPE_SERVICE_RECIPE
+{
+  return @"002";
+}
+
++ (id)CLASSIFICATION_RECIPE_USER_RECIPE
+{
+  return @"001";
+}
+
++ (id)CLASSIFICATION_RECIPE_USER_NON_RECIPE
+{
+  return @"000";
+}
+
+@end

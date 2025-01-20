@@ -1,0 +1,273 @@
+@interface SBSSpotlightActivationRequestServer
++ (BSServiceInterface)interface;
++ (BSServiceQuality)serviceQuality;
++ (NSString)identifier;
+- (SBSSpotlightActivationRequestServer)initWithDelegate:(id)a3;
+- (SBSSpotlightActivationRequestServerDelegate)delegate;
+- (void)_addConnection:(id)a3;
+- (void)_removeConnection:(id)a3;
+- (void)dealloc;
+- (void)invalidate;
+- (void)listener:(id)a3 didReceiveConnection:(id)a4 withContext:(id)a5;
+- (void)requestSpotlightActivation;
+- (void)setDelegate:(id)a3;
+- (void)startServer;
+@end
+
+@implementation SBSSpotlightActivationRequestServer
+
++ (NSString)identifier
+{
+  return (NSString *)@"com.apple.springboard.spotlight-activation-service";
+}
+
++ (BSServiceInterface)interface
+{
+  block[0] = MEMORY[0x1E4F143A8];
+  block[1] = 3221225472;
+  block[2] = __48__SBSSpotlightActivationRequestServer_interface__block_invoke;
+  block[3] = &__block_descriptor_40_e5_v8__0l;
+  block[4] = a1;
+  if (interface_onceToken_20 != -1) {
+    dispatch_once(&interface_onceToken_20, block);
+  }
+  v2 = (void *)interface___interface_19;
+  return (BSServiceInterface *)v2;
+}
+
+void __48__SBSSpotlightActivationRequestServer_interface__block_invoke(uint64_t a1)
+{
+  v1 = (void *)MEMORY[0x1E4F50B98];
+  v2 = [*(id *)(a1 + 32) identifier];
+  id v6 = [v1 interfaceWithIdentifier:v2];
+
+  v3 = [MEMORY[0x1E4F4F7B8] protocolForProtocol:&unk_1EDF66B70];
+  [v6 setServer:v3];
+  uint64_t v4 = [v6 copy];
+  v5 = (void *)interface___interface_19;
+  interface___interface_19 = v4;
+}
+
++ (BSServiceQuality)serviceQuality
+{
+  return (BSServiceQuality *)[MEMORY[0x1E4F50BE0] userInitiated];
+}
+
+- (SBSSpotlightActivationRequestServer)initWithDelegate:(id)a3
+{
+  id v4 = a3;
+  v8.receiver = self;
+  v8.super_class = (Class)SBSSpotlightActivationRequestServer;
+  v5 = [(SBSSpotlightActivationRequestServer *)&v8 init];
+  id v6 = v5;
+  if (v5)
+  {
+    objc_storeWeak((id *)&v5->_delegate, v4);
+    v6->_connectionsLock._os_unfair_lock_opaque = 0;
+  }
+
+  return v6;
+}
+
+- (void)startServer
+{
+  if (!self->_connectionListener)
+  {
+    v5[0] = MEMORY[0x1E4F143A8];
+    v5[1] = 3221225472;
+    v5[2] = __50__SBSSpotlightActivationRequestServer_startServer__block_invoke;
+    v5[3] = &unk_1E566D910;
+    v5[4] = self;
+    v3 = [MEMORY[0x1E4F50BC8] listenerWithConfigurator:v5];
+    connectionListener = self->_connectionListener;
+    self->_connectionListener = v3;
+
+    [(BSServiceConnectionListener *)self->_connectionListener activate];
+  }
+}
+
+void __50__SBSSpotlightActivationRequestServer_startServer__block_invoke(uint64_t a1, void *a2)
+{
+  id v4 = a2;
+  [v4 setDomain:@"com.apple.frontboard"];
+  v3 = [(id)objc_opt_class() identifier];
+  [v4 setService:v3];
+
+  [v4 setDelegate:*(void *)(a1 + 32)];
+}
+
+- (void)invalidate
+{
+  [(BSServiceConnectionListener *)self->_connectionListener invalidate];
+  connectionListener = self->_connectionListener;
+  self->_connectionListener = 0;
+}
+
+- (void)dealloc
+{
+  if (self->_connectionListener)
+  {
+    id v4 = [MEMORY[0x1E4F28B00] currentHandler];
+    [v4 handleFailureInMethod:a2 object:self file:@"SBSSpotlightActivationRequestServer.m" lineNumber:70 description:@"Released without invalidation."];
+  }
+  v5.receiver = self;
+  v5.super_class = (Class)SBSSpotlightActivationRequestServer;
+  [(SBSSpotlightActivationRequestServer *)&v5 dealloc];
+}
+
+- (void)_addConnection:(id)a3
+{
+  id v4 = a3;
+  if (v4)
+  {
+    id v8 = v4;
+    os_unfair_lock_lock(&self->_connectionsLock);
+    connectionsLock_connections = self->_connectionsLock_connections;
+    if (connectionsLock_connections)
+    {
+      [(NSMutableSet *)connectionsLock_connections addObject:v8];
+    }
+    else
+    {
+      id v6 = [MEMORY[0x1E4F1CA80] setWithObject:v8];
+      v7 = self->_connectionsLock_connections;
+      self->_connectionsLock_connections = v6;
+    }
+    os_unfair_lock_unlock(&self->_connectionsLock);
+    id v4 = v8;
+  }
+}
+
+- (void)_removeConnection:(id)a3
+{
+  if (a3)
+  {
+    p_connectionsLock = &self->_connectionsLock;
+    id v5 = a3;
+    os_unfair_lock_lock(p_connectionsLock);
+    [(NSMutableSet *)self->_connectionsLock_connections removeObject:v5];
+
+    if (![(NSMutableSet *)self->_connectionsLock_connections count])
+    {
+      connectionsLock_connections = self->_connectionsLock_connections;
+      self->_connectionsLock_connections = 0;
+    }
+    os_unfair_lock_unlock(p_connectionsLock);
+  }
+}
+
+- (void)listener:(id)a3 didReceiveConnection:(id)a4 withContext:(id)a5
+{
+  uint64_t v20 = *MEMORY[0x1E4F143B8];
+  id v8 = a3;
+  id v9 = a4;
+  id v10 = a5;
+  v11 = [v9 remoteProcess];
+  int v12 = [v11 hasEntitlement:@"com.apple.springboard.SBSRequestSpotlightActivationEntitlement"];
+
+  if (v12)
+  {
+    objc_initWeak(&location, self);
+    v13 = SBLogSpotlight();
+    if (os_log_type_enabled(v13, OS_LOG_TYPE_DEFAULT))
+    {
+      *(_DWORD *)buf = 138412290;
+      id v19 = v9;
+      _os_log_impl(&dword_18FBC5000, v13, OS_LOG_TYPE_DEFAULT, "SBSSpotlightActivationRequestServer received connection %@", buf, 0xCu);
+    }
+
+    [(SBSSpotlightActivationRequestServer *)self _addConnection:v9];
+    v15[0] = MEMORY[0x1E4F143A8];
+    v15[1] = 3221225472;
+    v15[2] = __81__SBSSpotlightActivationRequestServer_listener_didReceiveConnection_withContext___block_invoke;
+    v15[3] = &unk_1E566B438;
+    v15[4] = self;
+    objc_copyWeak(&v16, &location);
+    [v9 configureConnection:v15];
+    [v9 activate];
+    objc_destroyWeak(&v16);
+    objc_destroyWeak(&location);
+  }
+  else
+  {
+    v14 = SBLogSpotlight();
+    if (os_log_type_enabled(v14, OS_LOG_TYPE_ERROR)) {
+      -[SBSSpotlightActivationRequestServer listener:didReceiveConnection:withContext:](v9, v14);
+    }
+
+    [v9 invalidate];
+  }
+}
+
+void __81__SBSSpotlightActivationRequestServer_listener_didReceiveConnection_withContext___block_invoke(uint64_t a1, void *a2)
+{
+  id v3 = a2;
+  id v4 = [(id)objc_opt_class() serviceQuality];
+  [v3 setServiceQuality:v4];
+
+  id v5 = [(id)objc_opt_class() interface];
+  [v3 setInterface:v5];
+
+  [v3 setInterfaceTarget:*(void *)(a1 + 32)];
+  v6[0] = MEMORY[0x1E4F143A8];
+  v6[1] = 3221225472;
+  v6[2] = __81__SBSSpotlightActivationRequestServer_listener_didReceiveConnection_withContext___block_invoke_2;
+  v6[3] = &unk_1E566D938;
+  objc_copyWeak(&v7, (id *)(a1 + 40));
+  [v3 setInvalidationHandler:v6];
+  objc_destroyWeak(&v7);
+}
+
+void __81__SBSSpotlightActivationRequestServer_listener_didReceiveConnection_withContext___block_invoke_2(uint64_t a1, void *a2)
+{
+  uint64_t v8 = *MEMORY[0x1E4F143B8];
+  id v3 = a2;
+  id v4 = SBLogSpotlight();
+  if (os_log_type_enabled(v4, OS_LOG_TYPE_DEFAULT))
+  {
+    int v6 = 138412290;
+    id v7 = v3;
+    _os_log_impl(&dword_18FBC5000, v4, OS_LOG_TYPE_DEFAULT, "SBSSpotlightActivationRequestServer invalidated connection %@", (uint8_t *)&v6, 0xCu);
+  }
+
+  id WeakRetained = objc_loadWeakRetained((id *)(a1 + 32));
+  [WeakRetained _removeConnection:v3];
+}
+
+- (void)requestSpotlightActivation
+{
+}
+
+void __65__SBSSpotlightActivationRequestServer_requestSpotlightActivation__block_invoke(uint64_t a1)
+{
+  id v2 = [*(id *)(a1 + 32) delegate];
+  [v2 spotlightActivationRequestServerDidRequestSpotlightActivation:*(void *)(a1 + 32)];
+}
+
+- (SBSSpotlightActivationRequestServerDelegate)delegate
+{
+  id WeakRetained = objc_loadWeakRetained((id *)&self->_delegate);
+  return (SBSSpotlightActivationRequestServerDelegate *)WeakRetained;
+}
+
+- (void)setDelegate:(id)a3
+{
+}
+
+- (void).cxx_destruct
+{
+  objc_destroyWeak((id *)&self->_delegate);
+  objc_storeStrong((id *)&self->_connectionsLock_connections, 0);
+  objc_storeStrong((id *)&self->_connectionListener, 0);
+}
+
+- (void)listener:(void *)a1 didReceiveConnection:(NSObject *)a2 withContext:.cold.1(void *a1, NSObject *a2)
+{
+  uint64_t v6 = *MEMORY[0x1E4F143B8];
+  id v3 = [a1 remoteProcess];
+  int v4 = 138543362;
+  id v5 = v3;
+  _os_log_error_impl(&dword_18FBC5000, a2, OS_LOG_TYPE_ERROR, "Unauthorized process %{public}@ attempted to request spotlight activation.", (uint8_t *)&v4, 0xCu);
+}
+
+@end

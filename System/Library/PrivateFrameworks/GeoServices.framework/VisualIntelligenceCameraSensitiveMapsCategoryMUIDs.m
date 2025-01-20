@@ -1,0 +1,11 @@
+@interface VisualIntelligenceCameraSensitiveMapsCategoryMUIDs
+@end
+
+@implementation VisualIntelligenceCameraSensitiveMapsCategoryMUIDs
+
+uint64_t GeoServicesConfig_VisualIntelligenceCameraSensitiveMapsCategoryMUIDs_Metadata_block_invoke_472()
+{
+  return MEMORY[0x1E4F1CBF0];
+}
+
+@end
